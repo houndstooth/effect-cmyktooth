@@ -7,7 +7,7 @@ SQRT = Math.sqrt(2)
 var ctx = canvas.getContext('2d')
 
 UNIT = 1
-ITERATIONS = 50
+ITERATIONS = 18
 var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
 WHICH_SOLID_OR_STRIPE = [
@@ -66,6 +66,8 @@ function layer(orientation, how_many_squares_fit_in_the_window, is_main_grid_dia
         ]
     }
 
+    ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[orientation]
+
     for (var x = 0; x < concentric_grid_size; x++) {
         for (var y = 0; y < concentric_grid_size; y++) {
             var top_left_x, top_left_y
@@ -86,8 +88,7 @@ function layer(orientation, how_many_squares_fit_in_the_window, is_main_grid_dia
 
 function drawSquare(top_left_x, top_left_y, square_size, is_main_grid_diagonal, which_solid_or_stripe) {
     //for now just shooting for checkers!
-    if (which_solid_or_stripe == 'solid-opaque' || which_solid_or_stripe == 'solid-translucent') {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'
+    if (which_solid_or_stripe == 'solid-opaque') {
         ctx.beginPath()
         ctx.moveTo(top_left_x, top_left_y)
 
@@ -103,8 +104,11 @@ function drawSquare(top_left_x, top_left_y, square_size, is_main_grid_diagonal, 
         
         ctx.closePath()
         ctx.fill()
+    } else if (which_solid_or_stripe == 'striped-top-left-opaque') {
+
+    } else if (which_solid_or_stripe == 'striped-top-left-translucent') {
+
     }
-    
 }
 
 var is_main_grid_diagonal = false
@@ -126,11 +130,18 @@ var how_many_squares_fit_in_the_window = 1
 var concentric_grid_size = 33
 
 //this is going clockwise
-var ORIENTATION_OF_STRIPES_CYCLE = {
+ORIENTATION_OF_STRIPES_CYCLE = {
     'horizontal': 'principal_diagonal',
     'principal_diagonal': 'vertical',
     'vertical': 'minor_diagonal',
     'minor_diagonal': 'horizontal'
+}
+
+ORIENTATION_TO_COLOR_MAPPING = {
+    'horizontal': 'rgba(255, 255, 255, 0.15)', //black
+    'principal_diagonal': 'rgba(0, 255, 255, 0.15)', //cyan
+    'vertical': 'rgba(255, 0, 255, 0.15)', //magenta
+    'minor_diagonal': 'rgba(255, 255, 0, 0.15)' //yellow
 }
 
 iterator.forEach(iter => {
