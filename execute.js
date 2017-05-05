@@ -7,7 +7,22 @@ SQRT = Math.sqrt(2)
 var ctx = canvas.getContext('2d')
 
 UNIT = 1
-ITERATIONS = 11
+//for now just make sure it goes off the edge of the screen
+//later for speed worry about optimizing a formula for how many are actually needed
+//it does maybe need to be odd so that there is always one in the center
+//also, the middle one is always solid translucent, 
+//which means the four corners are always either solid translucent or solid opaque
+//depending on whether it's an odd-odd or an even-odd
+//i.e. 3, 7, 11, 15 vs 5, 9, 13, 17 etc.
+// 2, 6, 10, 14 vs 4, 8, 12, 16
+// 1, 3, 5, 7 vs 2, 4, 6, 8
+// ah ha, so just subtract one and divide by two
+// to tell whether you should start on translucent or opaque
+
+//AH HA, OK, SOMETHING IS WRONG BECAUSE THIS ONLY WORKS WHEN IT IS AN ODD ODD, THAT IS, 17 and 21 DONT WORK, THEY PUT A BLACK IN THE MIDDLE
+//SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
+var GRID_SIZE = 59
+ITERATIONS = 9
 MIN_ITERATION = 1
 var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
@@ -29,9 +44,6 @@ var solidSquare = function(topLeftX, topLeftY, squareSize, isMainGridDiagonal) {
   ctx.closePath()
   ctx.fill()
 }
-
-//implement later
-var horizontalStripes = () => {}
 
 var principalDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
   // console.log('principal ', whichSolidOrStripe)
@@ -88,8 +100,124 @@ var principalDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSol
   }
 }
 
-//implement later
-var verticalStripes = () => {}
+//basically like principal diagonal, just rotated counter-clockwise 45 degrees
+var horizontalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
+  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
+    ctx.beginPath()
+    //top right (move to)
+    ctx.moveTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY - ((squareSize * SQRT) / 2  )    )
+    //top middle
+    ctx.lineTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
+    //middle right
+    ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
+    //close and fill topRightColor
+    ctx.closePath()
+    ctx.fill()
+    ctx.beginPath()
+
+    //bottom right (move to)
+    ctx.moveTo(  topLeftX + squareSize * SQRT , topLeftY   )
+    //top left
+    ctx.lineTo(   topLeftX, topLeftY           )
+    //middle left
+    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
+    //bottom middle
+    ctx.lineTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
+    //close and fill topRightColor
+    ctx.closePath()
+    ctx.fill()
+  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
+    ctx.beginPath()
+    //top middle (move to)
+    ctx.moveTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
+    //top left
+    ctx.lineTo(      topLeftX, topLeftY        )
+    //bottom right
+    ctx.lineTo(  topLeftX + squareSize * SQRT , topLeftY   )
+    //middle right
+    ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
+    //close and fill other color
+    ctx.closePath()
+    ctx.fill()
+    ctx.beginPath()
+
+    //bottom middle (move to)
+    ctx.moveTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
+    //middle left
+    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
+    //bottom left
+    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY + ((squareSize * SQRT) / 2  )    )
+    ctx.closePath()
+    ctx.fill()
+  }
+}
+
+//basically like minor diagonal, just rotated counter-clockwise 45 degrees
+var verticalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
+  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
+    ctx.beginPath()
+    //top left (move to)
+    ctx.moveTo(   topLeftX, topLeftY           )
+
+    //top middle 
+    ctx.lineTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
+
+    //middle left
+    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
+
+    //close and fill
+    ctx.closePath()
+    ctx.fill()
+    //top right (move to)
+    ctx.beginPath()
+        ctx.moveTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY - ((squareSize * SQRT) / 2  )    )
+
+
+    //bottom left
+    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY + ((squareSize * SQRT) / 2  )    )
+
+    //bottom middle
+    ctx.lineTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
+
+    //middle right
+    ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
+
+    //close and fill
+    ctx.closePath()
+    ctx.fill()
+  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
+    ctx.beginPath()
+    //top middle
+        ctx.moveTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
+
+    //top right
+        ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY - ((squareSize * SQRT) / 2  )    )
+
+    //bottom left
+        ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY + ((squareSize * SQRT) / 2  )    )
+
+    //middle left
+        ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
+
+    //close and fill
+    ctx.closePath()
+    ctx.fill()
+
+    ctx.beginPath()
+    //bottom middle (move to)
+        ctx.moveTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
+
+    //middle right
+        ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
+
+    //bottom right
+        ctx.lineTo(  topLeftX + squareSize * SQRT , topLeftY   )
+
+    //close and fill
+    ctx.closePath()
+    ctx.fill()
+  }
+}
 
 var minorDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
   // console.log('minor ', whichSolidOrStripe)
@@ -257,24 +385,8 @@ var howManySquaresFitInTheWindow = 1
 //this is ugly but this is how i'm going to achieve continuity of rotation for now
 var flipGrain = false
 
-//for now just make sure it goes off the edge of the screen
-//later for speed worry about optimizing a formula for how many are actually needed
-//it does maybe need to be odd so that there is always one in the center
-//also, the middle one is always solid translucent, 
-//which means the four corners are always either solid translucent or solid opaque
-//depending on whether it's an odd-odd or an even-odd
-//i.e. 3, 7, 11, 15 vs 5, 9, 13, 17 etc.
-// 2, 6, 10, 14 vs 4, 8, 12, 16
-// 1, 3, 5, 7 vs 2, 4, 6, 8
-// ah ha, so just subtract one and divide by two
-// to tell whether you should start on translucent or opaque
-
-//AH HA, OK, SOMETHING IS WRONG BECAUSE THIS ONLY WORKS WHEN IT IS AN ODD ODD, THAT IS, 17 and 21 DONT WORK, THEY PUT A BLACK IN THE MIDDLE
-//SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
-var gridSize = 3
-
 iterator.forEach(iter => {
-  layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gridSize, iter, flipGrain)
+  layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, GRID_SIZE, iter, flipGrain)
 
   isMainGridDiagonal = !isMainGridDiagonal
   //so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
