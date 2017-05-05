@@ -7,113 +7,249 @@ SQRT = Math.sqrt(2)
 var ctx = canvas.getContext('2d')
 
 UNIT = 1
-ITERATIONS = 18
+ITERATIONS = 5
+MIN_ITERATION = 5
 var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
+var solidSquare = function(topLeftX, topLeftY, squareSize, isMainGridDiagonal) {
+  ctx.beginPath()
+  ctx.moveTo(topLeftX, topLeftY)
+
+  if (isMainGridDiagonal) {
+    ctx.lineTo(topLeftX + squareSize / SQRT, topLeftY - squareSize / SQRT)
+    ctx.lineTo(topLeftX + squareSize * SQRT, topLeftY)
+    ctx.lineTo(topLeftX + squareSize / SQRT, topLeftY + squareSize / SQRT)
+  } else {
+    ctx.lineTo(topLeftX + squareSize, topLeftY)
+    ctx.lineTo(topLeftX + squareSize, topLeftY + squareSize)
+    ctx.lineTo(topLeftX, topLeftY + squareSize)
+  }
+  
+  ctx.closePath()
+  ctx.fill()
+}
+
+//implement later
+var horizontalStripes = () => {}
+
+var principalDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
+  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
+    ctx.beginPath()
+    //top right (move to)
+    ctx.moveTo( topLeftX + squareSize,     topLeftY                 )
+    //top middle
+    ctx.lineTo( topLeftX + squareSize / 2, topLeftY                 )
+    //middle right
+    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize / 2 )
+    //close and fill
+    ctx.closePath()
+    ctx.fill()
+
+    ctx.beginPath()
+    //bottom right (move to)
+    ctx.moveTo( topLeftX + squareSize,     topLeftY + squareSize     )
+    //top left
+    ctx.lineTo( topLeftX,                 topLeftY                 )
+    //middle left
+    ctx.lineTo( topLeftX,                 topLeftY + squareSize / 2 )
+    //bottom middle
+    ctx.lineTo( topLeftX + squareSize / 2, topLeftY + squareSize     )
+    //close and fill
+    ctx.closePath()
+    ctx.fill()
+  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
+    //OKAY THERE MAY BE A TYPO IN HERE OR SOMETHING ??? THESE ARE NOT SHOWING UP 
+    //NO, IT IS SHOWING UP, BUT FOR SOME REASON NOT IN LAYER 5... only in 7
+    //AND THEN IN LAYER 9, THE HORIZONTAL BAND (AKA THE TOP_CUSP_OPAQUE style are not showing up... wtf)
+    ctx.beginPath()
+    //top middle (move to)
+    ctx.moveTo( topLeftX + squareSize / 2, topLeftY                 )
+    //top left
+    ctx.lineTo( topLeftX,                 topLeftY                 )
+    //bottom right
+    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize     )
+    //middle right
+    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize / 2 )
+    //close and fill other color
+    ctx.closePath()
+    ctx.fill()
+    ctx.beginPath()
+
+    //bottom middle (move to)
+    ctx.moveTo( topLeftX + squareSize / 2, topLeftY + squareSize     )
+    //middle left
+    ctx.lineTo( topLeftX,                 topLeftY + squareSize / 2 )
+    //bottom left
+    ctx.lineTo( topLeftX,                 topLeftY + squareSize     )
+    //close and fill other color
+    ctx.closePath()
+    ctx.fill()
+  }
+}
+
+//implement later
+var verticalStripes = () => {}
+
+var minorDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
+  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
+    ctx.beginPath()
+
+    //top right (move to)
+    ctx.moveTo( topLeftX + squareSize,     topLeftY                 )
+    //top middle
+    ctx.lineTo( topLeftX + squareSize / 2, topLeftY                 )
+    //middle right
+    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize / 2 )
+    //close and fill topRightColor
+    ctx.closePath()
+    ctx.fill()
+    ctx.beginPath()
+
+    //bottom right (move to)
+    ctx.moveTo( topLeftX + squareSize,     topLeftY + squareSize     )
+    //top left
+    ctx.lineTo( topLeftX,                 topLeftY                 )
+    //middle left
+    ctx.lineTo( topLeftX,                 topLeftY + squareSize / 2 )
+    //bottom middle
+    ctx.lineTo( topLeftX + squareSize / 2, topLeftY + squareSize     )
+    //close and fill topRightColor
+    ctx.closePath()
+    ctx.fill()
+  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
+    ctx.beginPath()
+
+    //top middle (move to)
+    ctx.moveTo( topLeftX + squareSize / 2, topLeftY                 )
+    //top left
+    ctx.lineTo( topLeftX,                 topLeftY                 )
+    //bottom right
+    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize     )
+    //middle right
+    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize / 2 )
+    //close and fill other color
+    // ctx.fillStyle = topRightColor == "white" ? "black" : "white"
+    ctx.closePath()
+    ctx.fill()
+    ctx.beginPath()
+
+    //bottom middle (move to)
+    ctx.moveTo( topLeftX + squareSize / 2, topLeftY + squareSize     )
+    //middle left
+    ctx.lineTo( topLeftX,                 topLeftY + squareSize / 2 )
+    //bottom left
+    ctx.lineTo( topLeftX,                 topLeftY + squareSize     )
+    //close and fill other color
+    // ctx.fillStyle = topRightColor == "white" ? "black" : "white"
+    ctx.closePath()
+    ctx.fill()
+    // ctx.beginPath()
+  }
+}
+
+//this is going clockwise
+ORIENTATION_OF_STRIPES_CYCLE = {
+  'HORIZONTAL': 'PRINCIPAL_DIAGONAL',
+  'PRINCIPAL_DIAGONAL': 'VERTICAL',
+  'VERTICAL': 'MINOR_DIAGONAL',
+  'MINOR_DIAGONAL': 'HORIZONTAL'
+}
+
+ORIENTATION_TO_COLOR_MAPPING = {
+  'HORIZONTAL': 'rgba(0, 0, 0, 0.15)', //black
+  'PRINCIPAL_DIAGONAL': 'rgba(0, 255, 255, 0.15)', //cyan
+  'VERTICAL': 'rgba(255, 0, 255, 0.15)', //magenta
+  'MINOR_DIAGONAL': 'rgba(255, 255, 0, 0.15)' //yellow
+}
+
+ORIENTATION_TO_STRIPES_FUNCTION = {
+  'HORIZONTAL': horizontalStripes,
+  'PRINCIPAL_DIAGONAL': principalDiagonalStripes,
+  'VERTICAL': verticalStripes,
+  'MINOR_DIAGONAL': minorDiagonalStripes
+}
+
 WHICH_SOLID_OR_STRIPE = [
+  [
     [
-        [
-            'solid-opaque',
-            'striped-top-left-opaque'
-        ],
-        [
-            'striped-top-left-translucent',
-            'solid-translucent'
-        ]
+      'SOLID_OPAQUE',
+      'STRIPED_TOP_CUSP_OPAQUE'
     ],
     [
-        [
-            'solid-translucent',
-            'striped-top-left-translucent'
-        ],
-        [
-            'striped-top-left-opaque',
-            'solid-opaque'
-        ]
+      'STRIPED_TOP_CUSP_TRANSLUCENT',
+      'SOLID_TRANSLUCENT'
     ]
+  ],
+  [
+    [
+      'SOLID_TRANSLUCENT',
+      'STRIPED_TOP_CUSP_TRANSLUCENT'
+    ],
+    [
+      'STRIPED_TOP_CUSP_OPAQUE',
+      'SOLID_OPAQUE'
+    ]
+  ]
 ]
 
-// console.log(WHICH_SOLID_OR_STRIPE)
+function layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gridSize, iter) {
+  var topLeftType = (gridSize - 1) % 2
 
-function layer(orientation, how_many_squares_fit_in_the_window, is_main_grid_diagonal, concentric_grid_size) {
-    // this would only be needed if the transparency of the fillStyle
-    // is not enough
-    // var nextCanvas = document.createElement('canvas')
-    // nextCanvas.setAttribute('id', how_many_squares_fit_in_the_window)
-    // document.body.appendChild()
+  var squareSize
+  if (isMainGridDiagonal) {
+    squareSize = (WIDTH / howManySquaresFitInTheWindow) / SQRT
+  } else {
+    squareSize = WIDTH / howManySquaresFitInTheWindow
+  }
 
-    //wow, for fun later you could just use the modulus result as the index 
-    //and convert GRIDS to an array at the top level too
-    var top_left_type = (concentric_grid_size - 1) % 2
+  //top left position is the leftmost position when diagonal
+  //that is, it would be the top left position if you rotated things
+  //45 degrees clockwise back into "normal" orientation
+  var topLeftPosition
+  if (isMainGridDiagonal) {
+    topLeftPosition = [
+      CENTER[0] - (((gridSize / 2) * SQRT) * squareSize),
+      CENTER[1]
+    ]
+  } else {
+    topLeftPosition = [ 
+      CENTER[0] - ((gridSize / 2) * squareSize),
+      CENTER[1] - ((gridSize / 2) * squareSize)
+    ]
+  }
 
-    var square_size
-    if (is_main_grid_diagonal) {
-        square_size = (WIDTH / how_many_squares_fit_in_the_window) / SQRT
-    } else {
-        square_size = WIDTH / how_many_squares_fit_in_the_window
+  ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[orientation]
+
+  for (var x = 0; x < gridSize; x++) {
+    for (var y = 0; y < gridSize; y++) {
+      var topLeftX, topLeftY
+      if (isMainGridDiagonal) {
+        topLeftX = topLeftPosition[0] + (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
+        topLeftY = topLeftPosition[1] - (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
+      } else {
+        topLeftX = topLeftPosition[0] + (x * squareSize)
+        topLeftY = topLeftPosition[1] + (y * squareSize)
+      }
+
+      drawSquare(topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, WHICH_SOLID_OR_STRIPE[topLeftType][x % 2][y % 2], iter)
     }
-
-    var top_left_position
-    if (is_main_grid_diagonal) {
-        top_left_position = [
-            CENTER[0] - (((concentric_grid_size / 2) * SQRT) * square_size),
-            CENTER[1]
-        ]
-    } else {
-        top_left_position = [ 
-            CENTER[0] - ((concentric_grid_size / 2) * square_size),
-            CENTER[1] - ((concentric_grid_size / 2) * square_size)
-        ]
-    }
-
-    ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[orientation]
-
-    for (var x = 0; x < concentric_grid_size; x++) {
-        for (var y = 0; y < concentric_grid_size; y++) {
-            var top_left_x, top_left_y
-            if (is_main_grid_diagonal) {
-                top_left_x = top_left_position[0] + (x * (square_size / SQRT)) + (y * (square_size / SQRT))
-                top_left_y = top_left_position[1] - (x * (square_size / SQRT)) + (y * (square_size / SQRT))
-            } else {
-                top_left_x = top_left_position[0] + (x * square_size)
-                top_left_y = top_left_position[1] + (y * square_size)
-            }
-
-            // console.log(top_left_type)
-            // console.log(WHICH_SOLID_OR_STRIPE)
-            drawSquare(top_left_x, top_left_y, square_size, is_main_grid_diagonal, WHICH_SOLID_OR_STRIPE[top_left_type][x % 2][y % 2])
-        }
-    }
+  }
 }
 
-function drawSquare(top_left_x, top_left_y, square_size, is_main_grid_diagonal, which_solid_or_stripe) {
-    //for now just shooting for checkers!
-    if (which_solid_or_stripe == 'solid-opaque') {
-        ctx.beginPath()
-        ctx.moveTo(top_left_x, top_left_y)
+function drawSquare(topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, iter) {
+  if (iter < MIN_ITERATION) return
 
-        if (is_main_grid_diagonal) {
-            ctx.lineTo(top_left_x + square_size / SQRT, top_left_y - square_size / SQRT)
-            ctx.lineTo(top_left_x + square_size * SQRT, top_left_y)
-            ctx.lineTo(top_left_x + square_size / SQRT, top_left_y + square_size / SQRT)
-        } else {
-            ctx.lineTo(top_left_x + square_size, top_left_y)
-            ctx.lineTo(top_left_x + square_size, top_left_y + square_size)
-            ctx.lineTo(top_left_x, top_left_y + square_size)
-        }
-        
-        ctx.closePath()
-        ctx.fill()
-    } else if (which_solid_or_stripe == 'striped-top-left-opaque') {
-
-    } else if (which_solid_or_stripe == 'striped-top-left-translucent') {
-
-    }
+  if (whichSolidOrStripe == 'SOLID_OPAQUE') {
+    solidSquare(topLeftX, topLeftY, squareSize, isMainGridDiagonal)
+  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE' || whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
+    var stripesFunction = ORIENTATION_TO_STRIPES_FUNCTION[orientation]
+    stripesFunction(topLeftX, topLeftY, squareSize, whichSolidOrStripe)
+  }
 }
 
-var is_main_grid_diagonal = false
-var orientation = 'minor_diagonal'
-var how_many_squares_fit_in_the_window = 1
+var isMainGridDiagonal = false
+var orientation = 'MINOR_DIAGONAL'
+var howManySquaresFitInTheWindow = 1
 
 //for now just make sure it goes off the edge of the screen
 //later for speed worry about optimizing a formula for how many are actually needed
@@ -127,29 +263,17 @@ var how_many_squares_fit_in_the_window = 1
 // ah ha, so just subtract one and divide by two
 // to tell whether you should start on transparent or opaque
 
-var concentric_grid_size = 33
-
-//this is going clockwise
-ORIENTATION_OF_STRIPES_CYCLE = {
-    'horizontal': 'principal_diagonal',
-    'principal_diagonal': 'vertical',
-    'vertical': 'minor_diagonal',
-    'minor_diagonal': 'horizontal'
-}
-
-ORIENTATION_TO_COLOR_MAPPING = {
-    'horizontal': 'rgba(255, 255, 255, 0.15)', //black
-    'principal_diagonal': 'rgba(0, 255, 255, 0.15)', //cyan
-    'vertical': 'rgba(255, 0, 255, 0.15)', //magenta
-    'minor_diagonal': 'rgba(255, 255, 0, 0.15)' //yellow
-}
+//AH HA, OK, SOMETHING IS WRONG BECAUSE THIS ONLY WORKS WHEN IT IS AN ODD ODD, THAT IS, 17 and 21 DONT WORK, THEY PUT A BLACK IN THE MIDDLE
+//SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
+var gridSize = 19
 
 iterator.forEach(iter => {
-    layer(orientation, how_many_squares_fit_in_the_window, is_main_grid_diagonal, concentric_grid_size)
+  layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gridSize, iter)
 
-    is_main_grid_diagonal = !is_main_grid_diagonal
-    //so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
-    //so in general think of diagonal as "a bit smaller than usual"
-    if (!is_main_grid_diagonal) how_many_squares_fit_in_the_window++
-    orientation = ORIENTATION_OF_STRIPES_CYCLE[orientation]
+  isMainGridDiagonal = !isMainGridDiagonal
+  //so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
+  //so in general think of diagonal as "a bit smaller than usual"
+  if (!isMainGridDiagonal) howManySquaresFitInTheWindow++
+  orientation = ORIENTATION_OF_STRIPES_CYCLE[orientation]
 })
+
