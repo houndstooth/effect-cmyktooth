@@ -22,8 +22,8 @@ UNIT = 1
 //AH HA, OK, SOMETHING IS WRONG BECAUSE THIS ONLY WORKS WHEN IT IS AN ODD ODD, THAT IS, 17 and 21 DONT WORK, THEY PUT A BLACK IN THE MIDDLE
 //SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
 var GRID_SIZE = 59
-ITERATIONS = 9
-MIN_ITERATION = 1
+ITERATIONS = 22
+MIN_ITERATION = 0
 var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
 var solidSquare = function(topLeftX, topLeftY, squareSize, isMainGridDiagonal) {
@@ -280,10 +280,10 @@ ORIENTATION_OF_STRIPES_CYCLE = {
 }
 
 ORIENTATION_TO_COLOR_MAPPING = {
-  'HORIZONTAL': 'rgba(0, 0, 0, 0.15)', //black
-  'PRINCIPAL_DIAGONAL': 'rgba(0, 255, 255, 0.15)', //cyan
-  'VERTICAL': 'rgba(255, 0, 255, 0.15)', //magenta
-  'MINOR_DIAGONAL': 'rgba(255, 255, 0, 0.15)' //yellow
+  'HORIZONTAL': 'rgba(0, 0, 0, ', //black
+  'PRINCIPAL_DIAGONAL': 'rgba(0, 255, 255, ', //cyan
+  'VERTICAL': 'rgba(255, 0, 255, ', //magenta
+  'MINOR_DIAGONAL': 'rgba(255, 255, 0, ' //yellow
 }
 
 ORIENTATION_TO_STRIPES_FUNCTION = {
@@ -342,7 +342,9 @@ function layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gr
     ]
   }
 
-  ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[orientation]
+  var transparency = 1 / (iter * 2)
+  console.log(transparency)
+  ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[orientation] + transparency + ')'
 
   for (var x = 0; x < gridSize; x++) {
     for (var y = 0; y < gridSize; y++) {
