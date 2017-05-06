@@ -21,9 +21,9 @@ UNIT = 1
 
 //AH HA, OK, SOMETHING IS WRONG BECAUSE THIS ONLY WORKS WHEN IT IS AN ODD ODD, THAT IS, 17 and 21 DONT WORK, THEY PUT A BLACK IN THE MIDDLE
 //SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
-var GRID_SIZE = 59
-ITERATIONS = 22
-MIN_ITERATION = 0
+var GRID_SIZE = 131
+ITERATIONS = 65
+MIN_ITERATION = 1
 var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
 var solidSquare = function(topLeftX, topLeftY, squareSize, isMainGridDiagonal) {
@@ -342,8 +342,8 @@ function layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gr
     ]
   }
 
-  var transparency = 1 / (iter * 2)
-  console.log(transparency)
+  // var transparency = 1 / (iter)
+  var transparency = 0.004 * iter
   ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[orientation] + transparency + ')'
 
   for (var x = 0; x < gridSize; x++) {
@@ -383,7 +383,7 @@ function drawSquare(topLeftX, topLeftY, squareSize, orientation, isMainGridDiago
 
 var isMainGridDiagonal = false
 var orientation = 'MINOR_DIAGONAL'
-var howManySquaresFitInTheWindow = 1
+var howManySquaresFitInTheWindow = 33
 //this is ugly but this is how i'm going to achieve continuity of rotation for now
 var flipGrain = false
 
@@ -393,7 +393,7 @@ iterator.forEach(iter => {
   isMainGridDiagonal = !isMainGridDiagonal
   //so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
   //so in general think of diagonal as "a bit smaller than usual"
-  if (!isMainGridDiagonal) howManySquaresFitInTheWindow++
+  if (!isMainGridDiagonal) howManySquaresFitInTheWindow--
   if (iter % 4 == 0) flipGrain = !flipGrain
   orientation = ORIENTATION_OF_STRIPES_CYCLE[orientation]
 })
