@@ -1,5 +1,6 @@
 import drawLayer from './drawLayer'
 import iterator from './iterator'
+import calculateSquareSize from './calculateSquareSize'
 import ctx from './ctx'
 import { END_ITERATION } from './customize'
 import { ORIENTATION_OF_STRIPES_CYCLE } from './constants'
@@ -12,7 +13,14 @@ let flipGrain = false
 
 export default () => {
 	iterator(END_ITERATION).forEach(layer => {
-		drawLayer(ctx, orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, layer, flipGrain)
+		drawLayer(
+			ctx,
+			orientation,
+			calculateSquareSize(isMainGridDiagonal, howManySquaresFitInTheWindow),
+			isMainGridDiagonal,
+			layer,
+			flipGrain
+		)
 
 		isMainGridDiagonal = !isMainGridDiagonal
 		//so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
