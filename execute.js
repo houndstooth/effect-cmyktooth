@@ -1,3 +1,6 @@
+import solidSquare from './solidSquare'
+import { SQRT } from './constants'
+
 const canvas = document.querySelector('canvas')
 const WIDTH = 1000
 const HEIGHT = WIDTH
@@ -5,7 +8,7 @@ canvas.width = WIDTH
 canvas.height = HEIGHT
 const CENTER = [ WIDTH / 2 , HEIGHT / 2 ]
 
-const SQRT = Math.sqrt(2)
+
 
 var ctx = canvas.getContext('2d')
 
@@ -29,24 +32,7 @@ const ITERATIONS = 22
 const MIN_ITERATION = 0
 var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
-var solidSquare = function(topLeftX, topLeftY, squareSize, isMainGridDiagonal) {
-  // console.log('solid')
-  ctx.beginPath()
-  ctx.moveTo(topLeftX, topLeftY)
 
-  if (isMainGridDiagonal) {
-    ctx.lineTo(topLeftX + squareSize / SQRT, topLeftY - squareSize / SQRT)
-    ctx.lineTo(topLeftX + squareSize * SQRT, topLeftY)
-    ctx.lineTo(topLeftX + squareSize / SQRT, topLeftY + squareSize / SQRT)
-  } else {
-    ctx.lineTo(topLeftX + squareSize, topLeftY)
-    ctx.lineTo(topLeftX + squareSize, topLeftY + squareSize)
-    ctx.lineTo(topLeftX, topLeftY + squareSize)
-  }
-  
-  ctx.closePath()
-  ctx.fill()
-}
 
 var principalDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
   // console.log('principal ', whichSolidOrStripe)
@@ -370,7 +356,7 @@ function drawSquare(topLeftX, topLeftY, squareSize, orientation, isMainGridDiago
   // console.log('draw a square', topLeftX, topLeftY)
 
   if (whichSolidOrStripe == 'SOLID_OPAQUE') {
-    solidSquare(topLeftX, topLeftY, squareSize, isMainGridDiagonal)
+    solidSquare(ctx, topLeftX, topLeftY, squareSize, isMainGridDiagonal)
   } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE' || whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
     var stripesFunction = ORIENTATION_TO_STRIPES_FUNCTION[orientation]
     if (flipGrain) {
