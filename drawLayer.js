@@ -10,9 +10,9 @@ export default ({ ctx, orientation, squareSize, isMainGridDiagonal, layer, flipG
 
 	iterator(GRID_SIZE).forEach(x => {
 		iterator(GRID_SIZE).forEach(y => {
-			const squareOrigin = calculateSquareOrigin(x, y, isMainGridDiagonal, squareSize)
+			const origin = calculateSquareOrigin(x, y, isMainGridDiagonal, squareSize)
 			const squareType = calculateSquareType(x, y)
-			drawSquare({ ctx, squareOrigin, squareSize, orientation, isMainGridDiagonal, squareType, layer, flipGrain })
+			drawSquare({ ctx, origin, size: squareSize, orientation, isMainGridDiagonal, squareType, layer, flipGrain })
 		})
 	})
 }

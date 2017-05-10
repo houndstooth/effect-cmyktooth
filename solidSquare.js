@@ -1,19 +1,19 @@
 import { SQRT } from './constants'
 
-export default (ctx, squareOrigin, squareSize, isMainGridDiagonal) => {
-    ctx.beginPath()
-    ctx.moveTo(squareOrigin[0], squareOrigin[1])
+export default ({ctx, origin, size, isMainGridDiagonal}) => {
+	ctx.beginPath()
+	ctx.moveTo(origin[ 0 ], origin[ 1 ])
 
-    if (isMainGridDiagonal) {
-        ctx.lineTo(squareOrigin[0] + squareSize / SQRT, squareOrigin[1] - squareSize / SQRT)
-        ctx.lineTo(squareOrigin[0] + squareSize * SQRT, squareOrigin[1])
-        ctx.lineTo(squareOrigin[0] + squareSize / SQRT, squareOrigin[1] + squareSize / SQRT)
-    } else {
-        ctx.lineTo(squareOrigin[0] + squareSize, squareOrigin[1])
-        ctx.lineTo(squareOrigin[0] + squareSize, squareOrigin[1] + squareSize)
-        ctx.lineTo(squareOrigin[0], squareOrigin[1] + squareSize)
-    }
+	if (isMainGridDiagonal) {
+		ctx.lineTo(origin[ 0 ] + size / SQRT, origin[ 1 ] - size / SQRT)
+		ctx.lineTo(origin[ 0 ] + size * SQRT, origin[ 1 ])
+		ctx.lineTo(origin[ 0 ] + size / SQRT, origin[ 1 ] + size / SQRT)
+	} else {
+		ctx.lineTo(origin[ 0 ] + size, origin[ 1 ])
+		ctx.lineTo(origin[ 0 ] + size, origin[ 1 ] + size)
+		ctx.lineTo(origin[ 0 ], origin[ 1 ] + size)
+	}
 
-    ctx.closePath()
-    ctx.fill()
+	ctx.closePath()
+	ctx.fill()
 }
