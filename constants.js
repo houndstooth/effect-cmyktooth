@@ -1,6 +1,8 @@
 import * as stripesFunctions from './stripesFunctions'
+import { CANVAS_SIZE } from './customize'
 
 const SQRT = Math.sqrt(2)
+
 const ORIENTATION_TO_STRIPES_FUNCTION = {
 	'HORIZONTAL': stripesFunctions.horizontalStripes,
 	'PRINCIPAL_DIAGONAL': stripesFunctions.principalDiagonalStripes,
@@ -8,7 +10,42 @@ const ORIENTATION_TO_STRIPES_FUNCTION = {
 	'MINOR_DIAGONAL': stripesFunctions.minorDiagonalStripes
 }
 
+const ORIENTATION_TO_COLOR_MAPPING = {
+	'HORIZONTAL': 'rgba(0, 0, 0, ', //black
+	'PRINCIPAL_DIAGONAL': 'rgba(0, 255, 255, ', //cyan
+	'VERTICAL': 'rgba(255, 0, 255, ', //magenta
+	'MINOR_DIAGONAL': 'rgba(255, 255, 0, ' //yellow
+}
+
+const WHICH_SOLID_OR_STRIPE = [
+	[
+		[
+			'SOLID_OPAQUE',
+			'STRIPED_TOP_CUSP_OPAQUE'
+		],
+		[
+			'STRIPED_TOP_CUSP_TRANSLUCENT',
+			'SOLID_TRANSLUCENT'
+		]
+	],
+	[
+		[
+			'SOLID_TRANSLUCENT',
+			'STRIPED_TOP_CUSP_TRANSLUCENT'
+		],
+		[
+			'STRIPED_TOP_CUSP_OPAQUE',
+			'SOLID_OPAQUE'
+		]
+	]
+]
+
+const CENTER = [ CANVAS_SIZE / 2, CANVAS_SIZE / 2 ]
+
 export {
 	SQRT,
-	ORIENTATION_TO_STRIPES_FUNCTION
+	ORIENTATION_TO_STRIPES_FUNCTION,
+	ORIENTATION_TO_COLOR_MAPPING,
+	WHICH_SOLID_OR_STRIPE,
+	CENTER
 }

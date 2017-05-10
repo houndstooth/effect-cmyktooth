@@ -1,12 +1,12 @@
-import drawSquare from './drawSquare'
-import { SQRT } from './constants'
+import layer from './layer'
+import { CANVAS_SIZE } from './customize'
 
 const canvas = document.querySelector('canvas')
-const WIDTH = 1000
+
+const WIDTH = CANVAS_SIZE
 const HEIGHT = WIDTH
 canvas.width = WIDTH
 canvas.height = HEIGHT
-const CENTER = [ WIDTH / 2, HEIGHT / 2 ]
 
 
 const ctx = canvas.getContext('2d')
@@ -39,81 +39,6 @@ const ORIENTATION_OF_STRIPES_CYCLE = {
 	'MINOR_DIAGONAL': 'HORIZONTAL'
 }
 
-const ORIENTATION_TO_COLOR_MAPPING = {
-	'HORIZONTAL': 'rgba(0, 0, 0, ', //black
-	'PRINCIPAL_DIAGONAL': 'rgba(0, 255, 255, ', //cyan
-	'VERTICAL': 'rgba(255, 0, 255, ', //magenta
-	'MINOR_DIAGONAL': 'rgba(255, 255, 0, ' //yellow
-}
-
-const WHICH_SOLID_OR_STRIPE = [
-	[
-		[
-			'SOLID_OPAQUE',
-			'STRIPED_TOP_CUSP_OPAQUE'
-		],
-		[
-			'STRIPED_TOP_CUSP_TRANSLUCENT',
-			'SOLID_TRANSLUCENT'
-		]
-	],
-	[
-		[
-			'SOLID_TRANSLUCENT',
-			'STRIPED_TOP_CUSP_TRANSLUCENT'
-		],
-		[
-			'STRIPED_TOP_CUSP_OPAQUE',
-			'SOLID_OPAQUE'
-		]
-	]
-]
-
-const layer = (orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gridSize, iter, flipGrain) => {
-	const topLeftType = (gridSize - 1) % 2
-
-	let squareSize
-	if (isMainGridDiagonal) {
-		squareSize = (WIDTH / howManySquaresFitInTheWindow) / SQRT
-	} else {
-		squareSize = WIDTH / howManySquaresFitInTheWindow
-	}
-
-	//top left position is the leftmost position when diagonal
-	//that is, it would be the top left position if you rotated things
-	//45 degrees clockwise back into "normal" orientation
-	let topLeftPosition
-	if (isMainGridDiagonal) {
-		topLeftPosition = [
-			CENTER[ 0 ] - (((gridSize / 2) * SQRT) * squareSize),
-			CENTER[ 1 ]
-		]
-	} else {
-		topLeftPosition = [
-			CENTER[ 0 ] - ((gridSize / 2) * squareSize),
-			CENTER[ 1 ] - ((gridSize / 2) * squareSize)
-		]
-	}
-
-	const transparency = 1 / (iter * 2)
-	ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[ orientation ] + transparency + ')'
-
-	for (let x = 0; x < gridSize; x++) {
-		for (let y = 0; y < gridSize; y++) {
-			let topLeftX, topLeftY
-			if (isMainGridDiagonal) {
-				topLeftX = topLeftPosition[ 0 ] + (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
-				topLeftY = topLeftPosition[ 1 ] - (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
-			} else {
-				topLeftX = topLeftPosition[ 0 ] + (x * squareSize)
-				topLeftY = topLeftPosition[ 1 ] + (y * squareSize)
-			}
-
-			drawSquare(ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, WHICH_SOLID_OR_STRIPE[ topLeftType ][ x % 2 ][ y % 2 ], iter, flipGrain)
-		}
-	}
-}
-
 let isMainGridDiagonal = false
 let orientation = 'MINOR_DIAGONAL'
 let howManySquaresFitInTheWindow = 1
@@ -123,7 +48,7 @@ let flipGrain = false
 
 const execute = () => {
 	iterator.forEach(iter => {
-		layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, GRID_SIZE, iter, flipGrain)
+		layer(ctx, orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, GRID_SIZE, iter, flipGrain)
 
 		isMainGridDiagonal = !isMainGridDiagonal
 		//so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
