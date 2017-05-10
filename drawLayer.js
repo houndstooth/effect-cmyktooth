@@ -1,10 +1,10 @@
 import drawSquare from './drawSquare'
-import { CANVAS_SIZE } from './customize'
+import iterator from './iterator'
+import { CANVAS_SIZE, GRID_SIZE } from './customize'
 import { SQRT, WHICH_SOLID_OR_STRIPE, ORIENTATION_TO_COLOR_MAPPING, CENTER } from './constants'
 
-
-export default (ctx, orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gridSize, iter, flipGrain) => {
-	const topLeftType = (gridSize - 1) % 2
+export default (ctx, orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, layer, flipGrain) => {
+	const topLeftType = (GRID_SIZE - 1) % 2
 
 	let squareSize
 	if (isMainGridDiagonal) {
@@ -19,21 +19,21 @@ export default (ctx, orientation, howManySquaresFitInTheWindow, isMainGridDiagon
 	let topLeftPosition
 	if (isMainGridDiagonal) {
 		topLeftPosition = [
-			CENTER[ 0 ] - (((gridSize / 2) * SQRT) * squareSize),
+			CENTER[ 0 ] - (((GRID_SIZE / 2) * SQRT) * squareSize),
 			CENTER[ 1 ]
 		]
 	} else {
 		topLeftPosition = [
-			CENTER[ 0 ] - ((gridSize / 2) * squareSize),
-			CENTER[ 1 ] - ((gridSize / 2) * squareSize)
+			CENTER[ 0 ] - ((GRID_SIZE / 2) * squareSize),
+			CENTER[ 1 ] - ((GRID_SIZE / 2) * squareSize)
 		]
 	}
 
-	const transparency = 1 / (iter * 2)
+	const transparency = 1 / (layer * 2)
 	ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[ orientation ] + transparency + ')'
 
-	for (let x = 0; x < gridSize; x++) {
-		for (let y = 0; y < gridSize; y++) {
+	iterator(GRID_SIZE).forEach(x => {
+		iterator(GRID_SIZE).forEach(y => {
 			let topLeftX, topLeftY
 			if (isMainGridDiagonal) {
 				topLeftX = topLeftPosition[ 0 ] + (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
@@ -43,7 +43,7 @@ export default (ctx, orientation, howManySquaresFitInTheWindow, isMainGridDiagon
 				topLeftY = topLeftPosition[ 1 ] + (y * squareSize)
 			}
 
-			drawSquare(ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, WHICH_SOLID_OR_STRIPE[ topLeftType ][ x % 2 ][ y % 2 ], iter, flipGrain)
-		}
-	}
+			drawSquare(ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, WHICH_SOLID_OR_STRIPE[ topLeftType ][ x % 2 ][ y % 2 ], layer, flipGrain)
+		})
+	})
 }

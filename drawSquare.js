@@ -1,9 +1,9 @@
-import { MIN_ITERATION } from './customize'
+import { START_ITERATION } from './customize'
 import { ORIENTATION_TO_STRIPES_FUNCTION } from './constants'
 import solidSquare from './solidSquare'
 
-export default (ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, iter, flipGrain) => {
-	if (iter < MIN_ITERATION) return
+export default (ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, layer, flipGrain) => {
+	if (layer < START_ITERATION) return
 
 	if (whichSolidOrStripe == 'SOLID_OPAQUE') {
 		solidSquare(ctx, topLeftX, topLeftY, squareSize, isMainGridDiagonal)
