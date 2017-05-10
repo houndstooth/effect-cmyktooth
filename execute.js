@@ -1,12 +1,15 @@
-var canvas = document.querySelector('canvas')
-WIDTH = HEIGHT = canvas.width = canvas.height = 1000
-CENTER = [ WIDTH / 2 , HEIGHT / 2 ]
+const canvas = document.querySelector('canvas')
+const WIDTH = 1000
+const HEIGHT = WIDTH
+canvas.width = WIDTH
+canvas.height = HEIGHT
+const CENTER = [ WIDTH / 2 , HEIGHT / 2 ]
 
-SQRT = Math.sqrt(2)
+const SQRT = Math.sqrt(2)
 
 var ctx = canvas.getContext('2d')
 
-UNIT = 1
+const UNIT = 1
 //for now just make sure it goes off the edge of the screen
 //later for speed worry about optimizing a formula for how many are actually needed
 //it does maybe need to be odd so that there is always one in the center
@@ -22,8 +25,8 @@ UNIT = 1
 //AH HA, OK, SOMETHING IS WRONG BECAUSE THIS ONLY WORKS WHEN IT IS AN ODD ODD, THAT IS, 17 and 21 DONT WORK, THEY PUT A BLACK IN THE MIDDLE
 //SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
 var GRID_SIZE = 59
-ITERATIONS = 22
-MIN_ITERATION = 0
+const ITERATIONS = 22
+const MIN_ITERATION = 0
 var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
 var solidSquare = function(topLeftX, topLeftY, squareSize, isMainGridDiagonal) {
@@ -272,28 +275,28 @@ var minorDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOr
 }
 
 //this is going clockwise ... although i don't think it actually is going clockwise
-ORIENTATION_OF_STRIPES_CYCLE = {
+const ORIENTATION_OF_STRIPES_CYCLE = {
   'HORIZONTAL': 'PRINCIPAL_DIAGONAL',
   'PRINCIPAL_DIAGONAL': 'VERTICAL',
   'VERTICAL': 'MINOR_DIAGONAL',
   'MINOR_DIAGONAL': 'HORIZONTAL'
 }
 
-ORIENTATION_TO_COLOR_MAPPING = {
+const ORIENTATION_TO_COLOR_MAPPING = {
   'HORIZONTAL': 'rgba(0, 0, 0, ', //black
   'PRINCIPAL_DIAGONAL': 'rgba(0, 255, 255, ', //cyan
   'VERTICAL': 'rgba(255, 0, 255, ', //magenta
   'MINOR_DIAGONAL': 'rgba(255, 255, 0, ' //yellow
 }
 
-ORIENTATION_TO_STRIPES_FUNCTION = {
+const ORIENTATION_TO_STRIPES_FUNCTION = {
   'HORIZONTAL': horizontalStripes,
   'PRINCIPAL_DIAGONAL': principalDiagonalStripes,
   'VERTICAL': verticalStripes,
   'MINOR_DIAGONAL': minorDiagonalStripes
 }
 
-WHICH_SOLID_OR_STRIPE = [
+const WHICH_SOLID_OR_STRIPE = [
   [
     [
       'SOLID_OPAQUE',
@@ -387,14 +390,19 @@ var howManySquaresFitInTheWindow = 1
 //this is ugly but this is how i'm going to achieve continuity of rotation for now
 var flipGrain = false
 
-iterator.forEach(iter => {
-  layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, GRID_SIZE, iter, flipGrain)
 
-  isMainGridDiagonal = !isMainGridDiagonal
-  //so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
-  //so in general think of diagonal as "a bit smaller than usual"
-  if (!isMainGridDiagonal) howManySquaresFitInTheWindow++
-  if (iter % 4 == 0) flipGrain = !flipGrain
-  orientation = ORIENTATION_OF_STRIPES_CYCLE[orientation]
-})
 
+const execute = () => {
+    iterator.forEach(iter => {
+        layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, GRID_SIZE, iter, flipGrain)
+
+        isMainGridDiagonal = !isMainGridDiagonal
+        //so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
+        //so in general think of diagonal as "a bit smaller than usual"
+        if (!isMainGridDiagonal) howManySquaresFitInTheWindow++
+        if (iter % 4 == 0) flipGrain = !flipGrain
+        orientation = ORIENTATION_OF_STRIPES_CYCLE[orientation]
+    })
+}
+
+export { execute }
