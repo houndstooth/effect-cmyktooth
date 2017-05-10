@@ -1,7 +1,7 @@
 import drawLayer from './drawLayer'
 import iterator from './iterator'
 import calculateSquareSize from './calculateSquareSize'
-import ctx from './ctx'
+import ctx from '../shared/ctx'
 import { END_ITERATION } from './customize'
 import { ORIENTATION_OF_STRIPES_CYCLE } from './constants'
 

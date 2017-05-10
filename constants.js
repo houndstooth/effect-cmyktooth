@@ -1,5 +1,4 @@
 import * as stripesFunctions from './stripesFunctions'
-import { CANVAS_SIZE } from './customize'
 
 const SQRT = Math.sqrt(2)
 
@@ -48,13 +47,10 @@ const WHICH_SOLID_OR_STRIPE = [
 	]
 ]
 
-const CENTER = [ CANVAS_SIZE / 2, CANVAS_SIZE / 2 ]
-
 export {
 	SQRT,
 	ORIENTATION_TO_STRIPES_FUNCTION,
 	ORIENTATION_TO_COLOR_MAPPING,
 	ORIENTATION_OF_STRIPES_CYCLE,
-	WHICH_SOLID_OR_STRIPE,
-	CENTER
+	WHICH_SOLID_OR_STRIPE
 }

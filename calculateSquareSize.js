@@ -1,5 +1,5 @@
 import { SQRT } from './constants'
-import { CANVAS_SIZE } from './customize'
+import { CANVAS_SIZE } from '../shared/customize'
 
 export default (isMainGridDiagonal, howManySquaresFitInTheWindow) => {
 	let squareSize

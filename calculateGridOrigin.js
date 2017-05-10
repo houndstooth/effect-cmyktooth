@@ -1,4 +1,5 @@
-import { CENTER, SQRT } from './constants'
+import { SQRT } from './constants'
+import { CENTER } from '../shared/constants'
 import { GRID_SIZE } from './customize'
 
 export default (isMainGridDiagonal, squareSize) => {
