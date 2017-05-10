@@ -13,14 +13,8 @@ let flipGrain = false
 
 export default () => {
 	iterator(END_ITERATION).forEach(layer => {
-		drawLayer(
-			ctx,
-			orientation,
-			calculateSquareSize(isMainGridDiagonal, howManySquaresFitInTheWindow),
-			isMainGridDiagonal,
-			layer,
-			flipGrain
-		)
+		const squareSize = calculateSquareSize(isMainGridDiagonal, howManySquaresFitInTheWindow)
+		drawLayer({ ctx, orientation, squareSize, isMainGridDiagonal, layer, flipGrain })
 
 		isMainGridDiagonal = !isMainGridDiagonal
 		//so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
