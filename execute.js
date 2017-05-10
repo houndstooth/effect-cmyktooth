@@ -1,4 +1,4 @@
-import solidSquare from './solidSquare'
+import drawSquare from './drawSquare'
 import { SQRT } from './constants'
 
 const canvas = document.querySelector('canvas')
@@ -29,234 +29,11 @@ const UNIT = 1
 //SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
 const GRID_SIZE = 59
 const ITERATIONS = 22
-const MIN_ITERATION = 0
 const iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
 
 
-const principalDiagonalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
-  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
-    ctx.beginPath()
 
-    //top right (move to)
-    ctx.moveTo( topLeftX + squareSize,     topLeftY                 )
-    //top middle
-    ctx.lineTo( topLeftX + squareSize / 2, topLeftY                 )
-    //middle right
-    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize / 2 )
-    //close and fill topRightColor
-    ctx.closePath()
-    ctx.fill()
-    ctx.beginPath()
-
-    //bottom right (move to)
-    ctx.moveTo( topLeftX + squareSize,     topLeftY + squareSize     )
-    //top left
-    ctx.lineTo( topLeftX,                 topLeftY                 )
-    //middle left
-    ctx.lineTo( topLeftX,                 topLeftY + squareSize / 2 )
-    //bottom middle
-    ctx.lineTo( topLeftX + squareSize / 2, topLeftY + squareSize     )
-    //close and fill topRightColor
-    ctx.closePath()
-    ctx.fill()
-  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-    ctx.beginPath()
-
-    //top middle (move to)
-    ctx.moveTo( topLeftX + squareSize / 2, topLeftY                 )
-    //top left
-    ctx.lineTo( topLeftX,                 topLeftY                 )
-    //bottom right
-    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize     )
-    //middle right
-    ctx.lineTo( topLeftX + squareSize,     topLeftY + squareSize / 2 )
-    //close and fill other color
-    ctx.closePath()
-    ctx.fill()
-    ctx.beginPath()
-
-    //bottom middle (move to)
-    ctx.moveTo( topLeftX + squareSize / 2, topLeftY + squareSize     )
-    //middle left
-    ctx.lineTo( topLeftX,                 topLeftY + squareSize / 2 )
-    //bottom left
-    ctx.lineTo( topLeftX,                 topLeftY + squareSize     )
-    //close and fill other color
-    ctx.closePath()
-    ctx.fill()
-  }
-}
-
-//basically like principal diagonal, just rotated counter-clockwise 45 degrees
-const horizontalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
-  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
-    ctx.beginPath()
-    //top right (move to)
-    ctx.moveTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY - ((squareSize * SQRT) / 2  )    )
-    //top middle
-    ctx.lineTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
-    //middle right
-    ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
-    //close and fill topRightColor
-    ctx.closePath()
-    ctx.fill()
-    ctx.beginPath()
-
-    //bottom right (move to)
-    ctx.moveTo(  topLeftX + squareSize * SQRT , topLeftY   )
-    //top left
-    ctx.lineTo(   topLeftX, topLeftY           )
-    //middle left
-    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
-    //bottom middle
-    ctx.lineTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
-    //close and fill topRightColor
-    ctx.closePath()
-    ctx.fill()
-  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-    ctx.beginPath()
-    //top middle (move to)
-    ctx.moveTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
-    //top left
-    ctx.lineTo(      topLeftX, topLeftY        )
-    //bottom right
-    ctx.lineTo(  topLeftX + squareSize * SQRT , topLeftY   )
-    //middle right
-    ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
-    //close and fill other color
-    ctx.closePath()
-    ctx.fill()
-    ctx.beginPath()
-
-    //bottom middle (move to)
-    ctx.moveTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
-    //middle left
-    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
-    //bottom left
-    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY + ((squareSize * SQRT) / 2  )    )
-    ctx.closePath()
-    ctx.fill()
-  }
-}
-
-//basically like minor diagonal, just rotated counter-clockwise 45 degrees
-const verticalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
-  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
-    ctx.beginPath()
-    //top left (move to)
-    ctx.moveTo(   topLeftX, topLeftY           )
-
-    //top middle 
-    ctx.lineTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
-
-    //middle left
-    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
-
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-    //top right (move to)
-    ctx.beginPath()
-        ctx.moveTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY - ((squareSize * SQRT) / 2  )    )
-
-
-    //bottom left
-    ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY + ((squareSize * SQRT) / 2  )    )
-
-    //bottom middle
-    ctx.lineTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
-
-    //middle right
-    ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
-
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-    ctx.beginPath()
-    //top middle
-        ctx.moveTo( topLeftX + ((squareSize * SQRT) / 4 ), topLeftY - ((squareSize * SQRT) / 4 )   )
-
-    //top right
-        ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY - ((squareSize * SQRT) / 2  )    )
-
-    //bottom left
-        ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 2 ), topLeftY + ((squareSize * SQRT) / 2  )    )
-
-    //middle left
-        ctx.lineTo(  topLeftX + ((squareSize * SQRT) / 4),  topLeftY + ((squareSize * SQRT) / 4 ))
-
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-
-    ctx.beginPath()
-    //bottom middle (move to)
-        ctx.moveTo(  topLeftX + ((3 * (squareSize * SQRT)) / 4),  topLeftY + (((squareSize * SQRT)) / 4    ))
-
-    //middle right
-        ctx.lineTo( topLeftX + ((3 * (squareSize * SQRT)) / 4), topLeftY - ((squareSize * SQRT) / 4 )  )
-
-    //bottom right
-        ctx.lineTo(  topLeftX + squareSize * SQRT , topLeftY   )
-
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-  }
-}
-
-const minorDiagonalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
-  if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
-    ctx.beginPath()
-    //top left (move to)
-    ctx.moveTo( topLeftX, topLeftY)
-    //top middle 
-    ctx.lineTo( topLeftX + squareSize / 2, topLeftY)
-    //middle left
-    ctx.lineTo( topLeftX, topLeftY + squareSize / 2)
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-    //top right (move to)
-    ctx.beginPath()
-    ctx.moveTo(topLeftX + squareSize, topLeftY)
-    //bottom left
-    ctx.lineTo(topLeftX, topLeftY + squareSize)
-    //bottom middle
-    ctx.lineTo(topLeftX + squareSize / 2, topLeftY + squareSize)
-    //middle right
-    ctx.lineTo(topLeftX + squareSize , topLeftY + squareSize / 2)
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-    ctx.beginPath()
-    //top middle (move to)
-    ctx.moveTo(topLeftX + squareSize / 2, topLeftY)
-    //top right
-    ctx.lineTo(topLeftX + squareSize, topLeftY)
-    //bottom left
-    ctx.lineTo(topLeftX, topLeftY + squareSize)
-    //middle left
-    ctx.lineTo( topLeftX, topLeftY + squareSize / 2)
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-
-    ctx.beginPath()
-    //bottom middle (move to)
-    ctx.moveTo(topLeftX + squareSize / 2, topLeftY + squareSize)
-    //middle right
-    ctx.lineTo(topLeftX + squareSize , topLeftY + squareSize / 2)
-    //bottom right
-    ctx.lineTo(topLeftX + squareSize , topLeftY + squareSize)
-    //close and fill
-    ctx.closePath()
-    ctx.fill()
-  }
-}
 
 //this is going clockwise ... although i don't think it actually is going clockwise
 const ORIENTATION_OF_STRIPES_CYCLE = {
@@ -271,13 +48,6 @@ const ORIENTATION_TO_COLOR_MAPPING = {
   'PRINCIPAL_DIAGONAL': 'rgba(0, 255, 255, ', //cyan
   'VERTICAL': 'rgba(255, 0, 255, ', //magenta
   'MINOR_DIAGONAL': 'rgba(255, 255, 0, ' //yellow
-}
-
-const ORIENTATION_TO_STRIPES_FUNCTION = {
-  'HORIZONTAL': horizontalStripes,
-  'PRINCIPAL_DIAGONAL': principalDiagonalStripes,
-  'VERTICAL': verticalStripes,
-  'MINOR_DIAGONAL': minorDiagonalStripes
 }
 
 const WHICH_SOLID_OR_STRIPE = [
@@ -343,26 +113,8 @@ const layer = (orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gr
         topLeftY = topLeftPosition[1] + (y * squareSize)
       }
 
-      drawSquare(topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, WHICH_SOLID_OR_STRIPE[topLeftType][x % 2][y % 2], iter, flipGrain)
+      drawSquare(ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, WHICH_SOLID_OR_STRIPE[topLeftType][x % 2][y % 2], iter, flipGrain)
     }
-  }
-}
-
-const drawSquare = (topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, iter, flipGrain) => {
-  if (iter < MIN_ITERATION) return
-
-  if (whichSolidOrStripe == 'SOLID_OPAQUE') {
-    solidSquare(ctx, topLeftX, topLeftY, squareSize, isMainGridDiagonal)
-  } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE' || whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-    const stripesFunction = ORIENTATION_TO_STRIPES_FUNCTION[orientation]
-    if (flipGrain) {
-      if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-        whichSolidOrStripe = 'STRIPED_TOP_CUSP_OPAQUE'
-      } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
-        whichSolidOrStripe = 'STRIPED_TOP_CUSP_TRANSLUCENT'
-      }
-    }
-    stripesFunction(topLeftX, topLeftY, squareSize, whichSolidOrStripe)
   }
 }
 
