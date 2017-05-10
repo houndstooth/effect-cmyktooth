@@ -10,7 +10,7 @@ const CENTER = [ WIDTH / 2 , HEIGHT / 2 ]
 
 
 
-var ctx = canvas.getContext('2d')
+const ctx = canvas.getContext('2d')
 
 const UNIT = 1
 //for now just make sure it goes off the edge of the screen
@@ -27,15 +27,14 @@ const UNIT = 1
 
 //AH HA, OK, SOMETHING IS WRONG BECAUSE THIS ONLY WORKS WHEN IT IS AN ODD ODD, THAT IS, 17 and 21 DONT WORK, THEY PUT A BLACK IN THE MIDDLE
 //SO I GUESS MY WHOLE MODULO TRICK ONLY WORKS RELATIVE TO THE EVEN/ODD NESS OF THE ODD THAT IS THE CONCENTRIC GRID SIZE
-var GRID_SIZE = 59
+const GRID_SIZE = 59
 const ITERATIONS = 22
 const MIN_ITERATION = 0
-var iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
+const iterator = [...Array(ITERATIONS).keys()].map(k => k + 1)
 
 
 
-var principalDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
-  // console.log('principal ', whichSolidOrStripe)
+const principalDiagonalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
   if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
     ctx.beginPath()
 
@@ -90,7 +89,7 @@ var principalDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSol
 }
 
 //basically like principal diagonal, just rotated counter-clockwise 45 degrees
-var horizontalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
+const horizontalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
   if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
     ctx.beginPath()
     //top right (move to)
@@ -142,7 +141,7 @@ var horizontalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStr
 }
 
 //basically like minor diagonal, just rotated counter-clockwise 45 degrees
-var verticalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
+const verticalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
   if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
     ctx.beginPath()
     //top left (move to)
@@ -208,8 +207,7 @@ var verticalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStrip
   }
 }
 
-var minorDiagonalStripes = function(topLeftX, topLeftY, squareSize, whichSolidOrStripe) {
-  // console.log('minor ', whichSolidOrStripe)
+const minorDiagonalStripes = (topLeftX, topLeftY, squareSize, whichSolidOrStripe) => {
   if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE') {
     ctx.beginPath()
     //top left (move to)
@@ -305,10 +303,10 @@ const WHICH_SOLID_OR_STRIPE = [
   ]
 ]
 
-function layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gridSize, iter, flipGrain) {
-  var topLeftType = (gridSize - 1) % 2
+const layer = (orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gridSize, iter, flipGrain) => {
+  const topLeftType = (gridSize - 1) % 2
 
-  var squareSize
+  let squareSize
   if (isMainGridDiagonal) {
     squareSize = (WIDTH / howManySquaresFitInTheWindow) / SQRT
   } else {
@@ -318,7 +316,7 @@ function layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gr
   //top left position is the leftmost position when diagonal
   //that is, it would be the top left position if you rotated things
   //45 degrees clockwise back into "normal" orientation
-  var topLeftPosition
+  let topLeftPosition
   if (isMainGridDiagonal) {
     topLeftPosition = [
       CENTER[0] - (((gridSize / 2) * SQRT) * squareSize),
@@ -331,13 +329,12 @@ function layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gr
     ]
   }
 
-  var transparency = 1 / (iter * 2)
-  console.log(transparency)
+  const transparency = 1 / (iter * 2)
   ctx.fillStyle = ORIENTATION_TO_COLOR_MAPPING[orientation] + transparency + ')'
 
-  for (var x = 0; x < gridSize; x++) {
-    for (var y = 0; y < gridSize; y++) {
-      var topLeftX, topLeftY
+  for (let x = 0; x < gridSize; x++) {
+    for (let y = 0; y < gridSize; y++) {
+      let topLeftX, topLeftY
       if (isMainGridDiagonal) {
         topLeftX = topLeftPosition[0] + (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
         topLeftY = topLeftPosition[1] - (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
@@ -351,14 +348,13 @@ function layer(orientation, howManySquaresFitInTheWindow, isMainGridDiagonal, gr
   }
 }
 
-function drawSquare(topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, iter, flipGrain) {
+const drawSquare = (topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, iter, flipGrain) => {
   if (iter < MIN_ITERATION) return
-  // console.log('draw a square', topLeftX, topLeftY)
 
   if (whichSolidOrStripe == 'SOLID_OPAQUE') {
     solidSquare(ctx, topLeftX, topLeftY, squareSize, isMainGridDiagonal)
   } else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE' || whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-    var stripesFunction = ORIENTATION_TO_STRIPES_FUNCTION[orientation]
+    const stripesFunction = ORIENTATION_TO_STRIPES_FUNCTION[orientation]
     if (flipGrain) {
       if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
         whichSolidOrStripe = 'STRIPED_TOP_CUSP_OPAQUE'
@@ -370,11 +366,11 @@ function drawSquare(topLeftX, topLeftY, squareSize, orientation, isMainGridDiago
   }
 }
 
-var isMainGridDiagonal = false
-var orientation = 'MINOR_DIAGONAL'
-var howManySquaresFitInTheWindow = 1
+let isMainGridDiagonal = false
+let orientation = 'MINOR_DIAGONAL'
+let howManySquaresFitInTheWindow = 1
 //this is ugly but this is how i'm going to achieve continuity of rotation for now
-var flipGrain = false
+let flipGrain = false
 
 
 
