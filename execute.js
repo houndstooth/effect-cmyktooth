@@ -1,8 +1,8 @@
 import drawLayer from './drawLayer'
-import iterator from './iterator'
+import iterator from '../shared/iterator'
 import calculateSquareSize from './calculateSquareSize'
 import ctx from '../shared/ctx'
-import { END_ITERATION } from './customize'
+import { END_ITERATION } from '../shared/customize'
 import { ORIENTATION_OF_STRIPES_CYCLE } from './constants'
 
 let isMainGridDiagonal = false

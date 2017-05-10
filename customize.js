@@ -1,5 +1,4 @@
 const START_ITERATION = 0
-const END_ITERATION = 22
 
 //for now just make sure it goes off the edge of the screen
 //later for speed worry about optimizing a formula for how many are actually needed
@@ -18,6 +17,5 @@ const GRID_SIZE = 59
 
 export {
 	GRID_SIZE,
-	START_ITERATION,
-	END_ITERATION
+	START_ITERATION
 }

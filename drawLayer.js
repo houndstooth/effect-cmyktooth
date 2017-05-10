@@ -1,6 +1,6 @@
 import drawSquare from './drawSquare'
 import colorAndTransparency from './colorAndTransparency'
-import iterator from './iterator'
+import iterator from '../shared/iterator'
 import calculateSquareOrigin from './calculateSquareOrigin'
 import calculateSquareType from './calculateSquareType'
 import { GRID_SIZE } from './customize'
