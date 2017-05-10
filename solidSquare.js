@@ -1,17 +1,17 @@
 import { SQRT } from './constants'
 
-export default (ctx, topLeftX, topLeftY, squareSize, isMainGridDiagonal) => {
+export default (ctx, squareOrigin, squareSize, isMainGridDiagonal) => {
     ctx.beginPath()
-    ctx.moveTo(topLeftX, topLeftY)
+    ctx.moveTo(squareOrigin[0], squareOrigin[1])
 
     if (isMainGridDiagonal) {
-        ctx.lineTo(topLeftX + squareSize / SQRT, topLeftY - squareSize / SQRT)
-        ctx.lineTo(topLeftX + squareSize * SQRT, topLeftY)
-        ctx.lineTo(topLeftX + squareSize / SQRT, topLeftY + squareSize / SQRT)
+        ctx.lineTo(squareOrigin[0] + squareSize / SQRT, squareOrigin[1] - squareSize / SQRT)
+        ctx.lineTo(squareOrigin[0] + squareSize * SQRT, squareOrigin[1])
+        ctx.lineTo(squareOrigin[0] + squareSize / SQRT, squareOrigin[1] + squareSize / SQRT)
     } else {
-        ctx.lineTo(topLeftX + squareSize, topLeftY)
-        ctx.lineTo(topLeftX + squareSize, topLeftY + squareSize)
-        ctx.lineTo(topLeftX, topLeftY + squareSize)
+        ctx.lineTo(squareOrigin[0] + squareSize, squareOrigin[1])
+        ctx.lineTo(squareOrigin[0] + squareSize, squareOrigin[1] + squareSize)
+        ctx.lineTo(squareOrigin[0], squareOrigin[1] + squareSize)
     }
 
     ctx.closePath()

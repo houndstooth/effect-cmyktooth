@@ -2,11 +2,11 @@ import { START_ITERATION } from './customize'
 import { ORIENTATION_TO_STRIPES_FUNCTION } from './constants'
 import solidSquare from './solidSquare'
 
-export default (ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, layer, flipGrain) => {
+export default (ctx, squareOrigin, squareSize, orientation, isMainGridDiagonal, whichSolidOrStripe, layer, flipGrain) => {
 	if (layer < START_ITERATION) return
 
 	if (whichSolidOrStripe == 'SOLID_OPAQUE') {
-		solidSquare(ctx, topLeftX, topLeftY, squareSize, isMainGridDiagonal)
+		solidSquare(ctx, squareOrigin, squareSize, isMainGridDiagonal)
 	} else if (whichSolidOrStripe == 'STRIPED_TOP_CUSP_OPAQUE' || whichSolidOrStripe == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
 		const stripesFunction = ORIENTATION_TO_STRIPES_FUNCTION[ orientation ]
 		if (flipGrain) {
@@ -16,6 +16,6 @@ export default (ctx, topLeftX, topLeftY, squareSize, orientation, isMainGridDiag
 				whichSolidOrStripe = 'STRIPED_TOP_CUSP_TRANSLUCENT'
 			}
 		}
-		stripesFunction(ctx, topLeftX, topLeftY, squareSize, whichSolidOrStripe)
+		stripesFunction(ctx, squareOrigin, squareSize, whichSolidOrStripe)
 	}
 }
