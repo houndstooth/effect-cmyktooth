@@ -8,16 +8,14 @@ import { GRID_SIZE } from '../common/customize'
 import { ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING } from '../common/constants'
 
 export default ({ orientation, squareSize, iteration }) => {
-	const color = calculateColorAndTransparency(iteration, orientation)
+	const color = calculateColorAndTransparency({ iteration, orientation })
 	const isGridDiagonal = ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING[ orientation ]
-	//the grid origin is the leftmost corner when the grid is diagonal
-	//and the top left corner when the grid is axial
-	let gridOrigin = calculateGridOrigin(isGridDiagonal, squareSize)
+	const gridOrigin = calculateGridOrigin({ isGridDiagonal, squareSize })
 
 	iterator(GRID_SIZE).forEach(x => {
 		iterator(GRID_SIZE).forEach(y => {
-			const origin = calculateSquareOrigin({x, y, isGridDiagonal, squareSize, gridOrigin})
-			const squareType = calculateSquareType(x, y)
+			const origin = calculateSquareOrigin({ x, y, isGridDiagonal, squareSize, gridOrigin })
+			const squareType = calculateSquareType({ x, y })
 			square({ origin, size: squareSize, orientation, squareType, iteration, color })
 		})
 	})

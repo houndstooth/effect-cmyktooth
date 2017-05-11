@@ -23,7 +23,7 @@ const WHICH_SOLID_OR_STRIPE = [
 	]
 ]
 
-export default (x, y) => {
+export default ({ x, y }) => {
 	const whatTypeOfSquareIsTheOneAtTheGridOrigin = ((GRID_SIZE + 1) / 2) % 2
 
 	return WHICH_SOLID_OR_STRIPE[ whatTypeOfSquareIsTheOneAtTheGridOrigin ][ x % 2 ][ y % 2 ]

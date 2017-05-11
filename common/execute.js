@@ -7,7 +7,7 @@ import { ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING } from '../common/co
 let orientation = 'TOP_RIGHT'
 let howManySquaresFitInTheWindowWhenUnitIsOne = 1
 
-const ORIENTATION_OF_STRIPES_CYCLE = {
+const NEXT_ORIENTATION_OF_STRIPES_IN_THE_CYCLE = {
 	'RIGHT': 'BOTTOM_RIGHT',
 	'BOTTOM_RIGHT': 'BOTTOM',
 	'BOTTOM': 'BOTTOM_LEFT',
@@ -25,9 +25,7 @@ export default () => {
 
 		layer({ orientation, squareSize, iteration })
 
-		//so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
-		//so in general think of diagonal as "a bit smaller than usual"
 		if (isGridDiagonal) howManySquaresFitInTheWindowWhenUnitIsOne++
-		orientation = ORIENTATION_OF_STRIPES_CYCLE[ orientation ]
+		orientation = NEXT_ORIENTATION_OF_STRIPES_IN_THE_CYCLE[ orientation ]
 	})
 }

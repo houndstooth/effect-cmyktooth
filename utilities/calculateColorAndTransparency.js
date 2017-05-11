@@ -7,8 +7,8 @@ const ORIENTATION_TO_COLOR_MAPPING = {
 	'MINOR_DIAGONAL': 'rgba(255, 255, 0, ' //yellow
 }
 
-export default (layer, orientation) => {
-	const transparency = 1 / (layer * 2)
+export default ({iteration, orientation}) => {
+	const transparency = 1 / (iteration * 2)
 	const orientation_without_directionality = ORIENTATION_TO_ORIENTATION_WITHOUT_DIRECTIONALITY_MAPPING[ orientation ]
 	return ORIENTATION_TO_COLOR_MAPPING[ orientation_without_directionality ] + transparency + ')'
 }

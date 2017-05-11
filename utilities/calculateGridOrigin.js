@@ -3,7 +3,7 @@ import { CENTER } from '../../shared/common/constants'
 import { GRID_SIZE } from '../common/customize'
 import { UNIT } from '../../shared/common/customize'
 
-export default (isGridDiagonal, squareSize) => {
+export default ({ isGridDiagonal, squareSize }) => {
 	let gridOrigin
 	if (isGridDiagonal) {
 		gridOrigin = [
