@@ -3,6 +3,7 @@ import drawSolidSquare from '../../shared/render/drawSolidSquare'
 import drawSolidSquareDiagonal from '../render/drawSolidSquareDiagonal'
 import maybeFlipSquareType from '../utilities/maybeFlipSquareType'
 import calculateStripesFunction from '../utilities/calculateStripesFunction'
+import calculateStripeColors from '../utilities/calculateStripeColors'
 
 export default ({ origin, size, orientation, isMainGridDiagonal, squareType, iteration, flipGrain, color }) => {
 	if (iteration < START_ITERATION) return
@@ -13,6 +14,7 @@ export default ({ origin, size, orientation, isMainGridDiagonal, squareType, ite
 	} else if (squareType == 'STRIPED_TOP_CUSP_OPAQUE' || squareType == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
 		const stripesFunction = calculateStripesFunction(orientation)
 		squareType = maybeFlipSquareType(squareType, flipGrain)
-		stripesFunction({origin, size, squareType})
+		const {originColor, otherColor} = calculateStripeColors({color, squareType})
+		stripesFunction({origin, size, originColor, otherColor})
 	}
 }
