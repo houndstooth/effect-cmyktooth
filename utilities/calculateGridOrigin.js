@@ -1,7 +1,7 @@
-import { SQRT } from './constants'
-import { CENTER } from '../shared/constants'
-import { GRID_SIZE } from './customize'
-import { UNIT } from '../shared/customize'
+import { SQRT } from '../common/constants'
+import { CENTER } from '../../shared/constants'
+import { GRID_SIZE } from '../common/customize'
+import { UNIT } from '../../shared/customize'
 
 export default (isMainGridDiagonal, squareSize) => {
 	let gridOrigin

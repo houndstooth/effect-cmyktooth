@@ -1,4 +1,4 @@
-import * as stripesFunctions from './stripesFunctions'
+import * as stripesFunctions from '../render/stripesFunctions'
 
 const ORIENTATION_TO_STRIPES_FUNCTION = {
 	'HORIZONTAL': stripesFunctions.horizontalStripes,

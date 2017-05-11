@@ -1,5 +1,5 @@
-import { SQRT } from './constants'
-import { UNIT } from '../shared/customize'
+import { SQRT } from '../common/constants'
+import { UNIT } from '../../shared/customize'
 
 const principalDiagonalStripes = ({ctx, origin, size, squareType}) => {
 	ctx.beginPath()

@@ -1,4 +1,4 @@
-import { GRID_SIZE } from './customize'
+import { GRID_SIZE } from '../common/customize'
 
 const WHICH_SOLID_OR_STRIPE = [
 	[
