@@ -1,12 +1,12 @@
 import { SQRT } from './constants'
 import { CANVAS_SIZE } from '../shared/customize'
 
-export default (isMainGridDiagonal, howManySquaresFitInTheWindow) => {
+export default (isMainGridDiagonal, howManySquaresFitInTheWindowWhenUnitIsOne) => {
 	let squareSize
 	if (isMainGridDiagonal) {
-		squareSize = (CANVAS_SIZE / howManySquaresFitInTheWindow) / SQRT
+		squareSize = (CANVAS_SIZE / howManySquaresFitInTheWindowWhenUnitIsOne) / SQRT
 	} else {
-		squareSize = CANVAS_SIZE / howManySquaresFitInTheWindow
+		squareSize = CANVAS_SIZE / howManySquaresFitInTheWindowWhenUnitIsOne
 	}
 	return squareSize
 }

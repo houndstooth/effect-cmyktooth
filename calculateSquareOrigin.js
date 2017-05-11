@@ -1,18 +1,14 @@
 import { SQRT } from './constants'
-import calculateGridOrigin from './calculateGridOrigin'
+import { UNIT } from '../shared/customize'
 
-export default (x, y, isMainGridDiagonal, squareSize) => {
-	//the grid origin is the leftmost corner when the grid is diagonal
-	//and the top left corner when the grid is axial
-	let gridOrigin = calculateGridOrigin(isMainGridDiagonal, squareSize)
-
+export default ({x, y, isMainGridDiagonal, squareSize, gridOrigin}) => {
 	let originX, originY
 	if (isMainGridDiagonal) {
-		originX = gridOrigin[ 0 ] + (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
-		originY = gridOrigin[ 1 ] - (x * (squareSize / SQRT)) + (y * (squareSize / SQRT))
+		originX = gridOrigin[ 0 ] + (x * (squareSize / SQRT) * UNIT) + (y * (squareSize / SQRT) * UNIT)
+		originY = gridOrigin[ 1 ] - (x * (squareSize / SQRT) * UNIT) + (y * (squareSize / SQRT) * UNIT)
 	} else {
-		originX = gridOrigin[ 0 ] + (x * squareSize)
-		originY = gridOrigin[ 1 ] + (y * squareSize)
+		originX = gridOrigin[ 0 ] + (x * squareSize * UNIT)
+		originY = gridOrigin[ 1 ] + (y * squareSize * UNIT)
 	}
 	return [ originX, originY ]
 }
