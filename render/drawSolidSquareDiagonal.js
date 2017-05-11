@@ -1,7 +1,8 @@
+import ctx from '../../shared/render/ctx'
 import { SQRT } from '../common/constants'
 import { UNIT } from '../../shared/common/customize'
 
-export default ({ctx, origin, size}) => {
+export default ({ origin, size }) => {
 	ctx.beginPath()
 
 	ctx.moveTo(

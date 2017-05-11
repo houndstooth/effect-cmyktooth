@@ -1,7 +1,8 @@
+import ctx from '../../shared/render/ctx'
 import { SQRT } from '../common/constants'
 import { UNIT } from '../../shared/common/customize'
 
-const principalDiagonalStripes = ({ctx, origin, size, squareType}) => {
+const principalDiagonalStripes = ({origin, size, squareType}) => {
 	ctx.beginPath()
 
 	if (squareType == 'STRIPED_TOP_CUSP_OPAQUE') {
@@ -54,7 +55,7 @@ const principalDiagonalStripes = ({ctx, origin, size, squareType}) => {
 }
 
 //basically like principal diagonal, just rotated counter-clockwise 45 degrees
-const horizontalStripes = ({ctx, origin, size, squareType}) => {
+const horizontalStripes = ({origin, size, squareType}) => {
 	ctx.beginPath()
 
 	if (squareType == 'STRIPED_TOP_CUSP_OPAQUE') {
@@ -107,7 +108,7 @@ const horizontalStripes = ({ctx, origin, size, squareType}) => {
 }
 
 //basically like minor diagonal, just rotated counter-clockwise 45 degrees
-const verticalStripes = ({ctx, origin, size, squareType}) => {
+const verticalStripes = ({origin, size, squareType}) => {
 	ctx.beginPath()
 
 	if (squareType == 'STRIPED_TOP_CUSP_OPAQUE') {
@@ -160,7 +161,7 @@ const verticalStripes = ({ctx, origin, size, squareType}) => {
 	ctx.fill()
 }
 
-const minorDiagonalStripes = ({ctx, origin, size, squareType}) => {
+const minorDiagonalStripes = ({origin, size, squareType}) => {
 	ctx.beginPath()
 
 	if (squareType == 'STRIPED_TOP_CUSP_OPAQUE') {

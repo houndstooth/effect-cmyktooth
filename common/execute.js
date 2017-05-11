@@ -1,7 +1,6 @@
 import layer from '../components/layer'
 import iterator from '../../shared/utilities/iterator'
 import calculateSquareSize from '../utilities/calculateSquareSize'
-import ctx from '../../shared/render/ctx'
 import { END_ITERATION } from '../../shared/common/customize'
 
 let isMainGridDiagonal = false
@@ -21,7 +20,7 @@ const ORIENTATION_OF_STRIPES_CYCLE = {
 export default () => {
 	iterator(END_ITERATION).forEach(iteration => {
 		const squareSize = calculateSquareSize(isMainGridDiagonal, howManySquaresFitInTheWindowWhenUnitIsOne)
-		layer({ ctx, orientation, squareSize, isMainGridDiagonal, iteration, flipGrain })
+		layer({ orientation, squareSize, isMainGridDiagonal, iteration, flipGrain })
 
 		isMainGridDiagonal = !isMainGridDiagonal
 		//so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
