@@ -1,6 +1,6 @@
 import square from './square'
 import calculateColorAndTransparency from '../utilities/calculateColorAndTransparency'
-import iterator from '../../shared/iterator'
+import iterator from '../../shared/utilities/iterator'
 import calculateSquareOrigin from '../utilities/calculateSquareOrigin'
 import calculateSquareType from '../utilities/calculateSquareType'
 import calculateGridOrigin from '../utilities/calculateGridOrigin'

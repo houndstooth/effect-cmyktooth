@@ -1,8 +1,8 @@
 import layer from '../components/layer'
-import iterator from '../../shared/iterator'
+import iterator from '../../shared/utilities/iterator'
 import calculateSquareSize from '../utilities/calculateSquareSize'
-import ctx from '../../shared/ctx'
-import { END_ITERATION } from '../../shared/customize'
+import ctx from '../../shared/render/ctx'
+import { END_ITERATION } from '../../shared/common/customize'
 
 let isMainGridDiagonal = false
 let orientation = 'MINOR_DIAGONAL'

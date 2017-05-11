@@ -1,5 +1,5 @@
 import { START_ITERATION } from '../common/customize'
-import drawSolidSquare from '../../shared/drawSolidSquare'
+import drawSolidSquare from '../../shared/render/drawSolidSquare'
 import drawSolidSquareDiagonal from '../render/drawSolidSquareDiagonal'
 import maybeFlipSquareType from '../utilities/maybeFlipSquareType'
 import calculateStripesFunction from '../utilities/calculateStripesFunction'

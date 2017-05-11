@@ -1,5 +1,5 @@
 import { SQRT } from '../common/constants'
-import { UNIT } from '../../shared/customize'
+import { UNIT } from '../../shared/common/customize'
 
 export default ({x, y, isMainGridDiagonal, squareSize, gridOrigin}) => {
 	let originX, originY
