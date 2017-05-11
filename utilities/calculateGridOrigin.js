@@ -3,9 +3,9 @@ import { CENTER } from '../../shared/common/constants'
 import { GRID_SIZE } from '../common/customize'
 import { UNIT } from '../../shared/common/customize'
 
-export default (isMainGridDiagonal, squareSize) => {
+export default (isGridDiagonal, squareSize) => {
 	let gridOrigin
-	if (isMainGridDiagonal) {
+	if (isGridDiagonal) {
 		gridOrigin = [
 			CENTER[ 0 ] - ((((GRID_SIZE / 2) * SQRT) * squareSize) * UNIT),
 			CENTER[ 1 ]

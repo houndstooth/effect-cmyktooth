@@ -2,8 +2,8 @@ import layer from '../components/layer'
 import iterator from '../../shared/utilities/iterator'
 import calculateSquareSize from '../utilities/calculateSquareSize'
 import { END_ITERATION } from '../../shared/common/customize'
+import { ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING } from '../common/constants'
 
-let isMainGridDiagonal = false
 let orientation = 'TOP_RIGHT'
 let howManySquaresFitInTheWindowWhenUnitIsOne = 1
 
@@ -20,13 +20,14 @@ const ORIENTATION_OF_STRIPES_CYCLE = {
 
 export default () => {
 	iterator(END_ITERATION).forEach(iteration => {
-		const squareSize = calculateSquareSize(isMainGridDiagonal, howManySquaresFitInTheWindowWhenUnitIsOne)
+		const isGridDiagonal = ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING[ orientation ]
+		const squareSize = calculateSquareSize({ howManySquaresFitInTheWindowWhenUnitIsOne, isGridDiagonal })
 
-		layer({ orientation, squareSize, isMainGridDiagonal, iteration })
-		isMainGridDiagonal = !isMainGridDiagonal
+		layer({ orientation, squareSize, iteration })
+
 		//so, we have hereby decided that each diagonal layer is paired with its BIGGER non-diagonal layer
 		//so in general think of diagonal as "a bit smaller than usual"
-		if (!isMainGridDiagonal) howManySquaresFitInTheWindowWhenUnitIsOne++
+		if (isGridDiagonal) howManySquaresFitInTheWindowWhenUnitIsOne++
 		orientation = ORIENTATION_OF_STRIPES_CYCLE[ orientation ]
 	})
 }
