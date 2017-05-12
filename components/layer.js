@@ -4,7 +4,7 @@ import iterator from '../../shared/utilities/iterator'
 import calculateSquareOrigin from '../utilities/calculateSquareOrigin'
 import calculateSquareType from '../utilities/calculateSquareType'
 import calculateGridOrigin from '../utilities/calculateGridOrigin'
-import { GRID_SIZE } from '../common/customize'
+import { GRID_SIZE } from '../../shared/common/customize'
 import { ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING } from '../common/constants'
 
 export default ({ orientation, squareSize, iteration }) => {

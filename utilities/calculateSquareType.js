@@ -1,4 +1,4 @@
-import { GRID_SIZE } from '../common/customize'
+import { GRID_SIZE } from '../../shared/common/customize'
 
 const WHICH_SOLID_OR_STRIPE = [
 	[
@@ -24,7 +24,7 @@ const WHICH_SOLID_OR_STRIPE = [
 ]
 
 export default ({ x, y }) => {
-	const whatTypeOfSquareIsTheOneAtTheGridOrigin = ((GRID_SIZE + 1) / 2) % 2
+	const whatTypeOfSquareIsTheOneAtTheGridOrigin = GRID_SIZE % 2 == 0 ? (GRID_SIZE / 2) % 2 : ((GRID_SIZE + 1) / 2) % 2
 
 	return WHICH_SOLID_OR_STRIPE[ whatTypeOfSquareIsTheOneAtTheGridOrigin ][ x % 2 ][ y % 2 ]
 }
