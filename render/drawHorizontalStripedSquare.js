@@ -1,59 +1,80 @@
-import ctx from '../../shared/render/ctx'
 import { SQRT } from '../common/constants'
 import { UNIT } from '../../shared/common/customize'
+import render from '../../shared/render/render'
 
 export default ({ origin, size, originColor, otherColor }) => {
 	const diagonalSizedUnit = size * UNIT * SQRT / 4
 
-	ctx.beginPath()
-	//top right (move to)
-	ctx.moveTo(origin[ 0 ] + 2 * diagonalSizedUnit, origin[ 1 ] - 2 * diagonalSizedUnit)
-	//top middle
-	ctx.lineTo(origin[ 0 ] + diagonalSizedUnit, origin[ 1 ] - diagonalSizedUnit)
-	//middle right
-	ctx.lineTo(origin[ 0 ] + 3 * diagonalSizedUnit, origin[ 1 ] - diagonalSizedUnit)
-	//close and fill origin color
-	ctx.closePath()
-	ctx.fillStyle = originColor
-	ctx.fill()
+	const topTriangleCoordinates = [
+		[
+			origin[ 0 ] + 2 * diagonalSizedUnit,
+			origin[ 1 ] - 2 * diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + diagonalSizedUnit,
+			origin[ 1 ] - diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + 3 * diagonalSizedUnit,
+			origin[ 1 ] - diagonalSizedUnit
+		]
+	]
 
-	ctx.beginPath()
-	//top middle (move to)
-	ctx.moveTo(origin[ 0 ] + diagonalSizedUnit, origin[ 1 ] - diagonalSizedUnit)
-	//top left
-	ctx.lineTo(origin[ 0 ], origin[ 1 ])
-	//bottom right
-	ctx.lineTo(origin[ 0 ] + 4 * diagonalSizedUnit, origin[ 1 ])
-	//middle right
-	ctx.lineTo(origin[ 0 ] + 3 * diagonalSizedUnit, origin[ 1 ] - diagonalSizedUnit)
-	//close and fill other color
-	ctx.closePath()
-	ctx.fillStyle = otherColor
-	ctx.fill()
+	const topTrapezoidCoordinates = [
+		[
+			origin[ 0 ],
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + diagonalSizedUnit,
+			origin[ 1 ] - diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + 3 * diagonalSizedUnit,
+			origin[ 1 ] - diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + 4 * diagonalSizedUnit,
+			origin[ 1 ]
+		]
+	]
 
-	ctx.beginPath()
-	//bottom right (move to)
-	ctx.moveTo(origin[ 0 ] + 4 * diagonalSizedUnit, origin[ 1 ])
-	//top left
-	ctx.lineTo(origin[ 0 ], origin[ 1 ])
-	//middle left
-	ctx.lineTo(origin[ 0 ] + diagonalSizedUnit, origin[ 1 ] + diagonalSizedUnit)
-	//bottom middle
-	ctx.lineTo(origin[ 0 ] + 3 * diagonalSizedUnit, origin[ 1 ] + diagonalSizedUnit)
-	//close and fill origin color
-	ctx.closePath()
-	ctx.fillStyle = originColor
-	ctx.fill()
+	const bottomTrapezoidCoordinates = [
+		[
+			origin[ 0 ],
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + diagonalSizedUnit,
+			origin[ 1 ] + diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + 3 * diagonalSizedUnit,
+			origin[ 1 ] + diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + 4 * diagonalSizedUnit,
+			origin[ 1 ]
+		]
+	]
 
-	ctx.beginPath()
-	//bottom middle (move to)
-	ctx.moveTo(origin[ 0 ] + 3 * diagonalSizedUnit, origin[ 1 ] + diagonalSizedUnit)
-	//middle left
-	ctx.lineTo(origin[ 0 ] + diagonalSizedUnit, origin[ 1 ] + diagonalSizedUnit)
-	//bottom left
-	ctx.lineTo(origin[ 0 ] + 2 * diagonalSizedUnit, origin[ 1 ] + 2 * diagonalSizedUnit)
-	//close and fill other color
-	ctx.closePath()
-	ctx.fillStyle = otherColor
-	ctx.fill()
+	const bottomTriangleCoordinates = [
+		[
+			origin[ 0 ] + 2 * diagonalSizedUnit,
+			origin[ 1 ] + 2 * diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + diagonalSizedUnit,
+			origin[ 1 ] + diagonalSizedUnit
+		],
+		[
+			origin[ 0 ] + 3 * diagonalSizedUnit,
+			origin[ 1 ] + diagonalSizedUnit
+		]
+	]
+
+	render({ color: originColor, coordinates: topTriangleCoordinates })
+	render({ color: otherColor, coordinates: topTrapezoidCoordinates })
+	render({ color: originColor, coordinates: bottomTrapezoidCoordinates })
+	render({ color: otherColor, coordinates: bottomTriangleCoordinates })
 }
