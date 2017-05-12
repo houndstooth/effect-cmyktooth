@@ -1,3 +1,5 @@
 import execute from './common/execute'
 
-export { execute }
+const cmyktooth = execute
+
+export { cmyktooth }
