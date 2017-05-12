@@ -1,8 +1,10 @@
 import { SQRT } from '../common/constants'
 import { UNIT } from '../../shared/common/customize'
 import render from '../../shared/render/render'
+import scaleOrigin from '../../shared/utilities/scaleOrigin'
 
-export default ({ origin, size, originColor, otherColor }) => {
+export default ({ origin, size, originColor, otherColor, scaleFromCenter }) => {
+	origin = scaleOrigin({ origin, scaleFromCenter })
 	const diagonalSizedUnit = size * UNIT * SQRT / 4
 
 	const leftTriangleCoordinates = [

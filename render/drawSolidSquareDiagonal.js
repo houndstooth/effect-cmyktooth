@@ -1,9 +1,11 @@
 import { SQRT } from '../common/constants'
 import { UNIT } from '../../shared/common/customize'
 import render from '../../shared/render/render'
+import scaleOrigin from '../../shared/utilities/scaleOrigin'
 
-export default ({ origin, size, color }) => {
-	const diagonalSizedUnit = UNIT * size / SQRT
+export default ({ origin, size, color, scaleFromCenter }) => {
+	origin = scaleOrigin({ origin, scaleFromCenter })
+	const diagonalSizedUnit = size * UNIT / SQRT
 
 	const coordinates = [
 		[
