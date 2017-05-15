@@ -1,26 +1,28 @@
 import { GRID_SIZE } from '../../shared/common/customize'
 
-const WHICH_SOLID_OR_STRIPE = [
+const CMYKTOOTH_SUPERTILE = [
 	[
-		[
-			'SOLID_OPAQUE',
-			'STRIPED_TOP_CUSP_OPAQUE'
-		],
-		[
-			'STRIPED_TOP_CUSP_TRANSLUCENT',
-			'SOLID_TRANSLUCENT'
-		]
+		'SOLID_OPAQUE',
+		'STRIPED_A'
 	],
 	[
-		[
-			'SOLID_TRANSLUCENT',
-			'STRIPED_TOP_CUSP_TRANSLUCENT'
-		],
-		[
-			'STRIPED_TOP_CUSP_OPAQUE',
-			'SOLID_OPAQUE'
-		]
+		'STRIPED_B',
+		'SOLID_TRANSLUCENT'
 	]
+]
+const OFFSET_CMYKTOOTH_SUPERTILE = [
+	[
+		'SOLID_TRANSLUCENT',
+		'STRIPED_B'
+	],
+	[
+		'STRIPED_A',
+		'SOLID_OPAQUE'
+	]
+]
+const WHICH_SOLID_OR_STRIPE = [
+	CMYKTOOTH_SUPERTILE,
+	OFFSET_CMYKTOOTH_SUPERTILE
 ]
 
 export default ({ x, y }) => {

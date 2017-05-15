@@ -1,6 +1,7 @@
 import { SQRT } from '../common/constants'
 import { CENTER } from '../../shared/common/constants'
 import { GRID_SIZE } from '../../shared/common/customize'
+import render from '../../shared/render/render'
 
 export default ({ isGridDiagonal, squareSize }) => {
 	let gridOrigin
@@ -25,6 +26,8 @@ export default ({ isGridDiagonal, squareSize }) => {
 			gridOrigin[1] += squareSize / 2
 		}
 	}
+
+	render({coordinates: [gridOrigin,[gridOrigin[0] + 5, gridOrigin[1]],[gridOrigin[0] + 5, gridOrigin[1]+5],[gridOrigin[0],gridOrigin[1]+5]], color: "BLUE"})
 
 	return gridOrigin
 }

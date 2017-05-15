@@ -1,19 +1,17 @@
 import { START_ITERATION } from '../common/customize'
 import drawSolidSquare from '../../shared/render/drawSolidSquare'
-import calculateStripesFunction from '../utilities/calculateStripesFunction'
+import drawMinorDiagonalStripedSquare from '../../shared/render/drawMinorDiagonalStripedSquare'
+import calculateRotation from '../utilities/calculateRotation'
 import calculateStripeColors from '../utilities/calculateStripeColors'
-import { ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING } from '../common/constants'
 
 export default ({ origin, size, orientation, squareType, iteration, color }) => {
 	if (iteration < START_ITERATION) return
+	const rotation = calculateRotation(orientation)
 
 	if (squareType == 'SOLID_OPAQUE') {
-		let rotation
-		if (ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING[ orientation ]) rotation = -Math.PI / 4
 		drawSolidSquare({origin, size, color, scaleFromCenter: true, rotation })
-	} else if (squareType == 'STRIPED_TOP_CUSP_OPAQUE' || squareType == 'STRIPED_TOP_CUSP_TRANSLUCENT') {
-		const stripesFunction = calculateStripesFunction(orientation)
+	} else if (squareType == 'STRIPED_B' || squareType == 'STRIPED_A') {
 		const {originColor, otherColor} = calculateStripeColors({color, squareType, orientation})
-		stripesFunction({origin, size, originColor, otherColor, scaleFromCenter: true})
+		drawMinorDiagonalStripedSquare({origin, size, originColor, otherColor, scaleFromCenter: true, rotation})
 	}
 }
