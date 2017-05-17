@@ -1,4 +1,4 @@
-const START_ITERATION = 2
+const START_ITERATION = 0
 
 export {
 	START_ITERATION

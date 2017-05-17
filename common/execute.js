@@ -17,15 +17,9 @@ const ORIENTATION = [
 	'TOP'
 ]
 
-import render from '../../shared/render/render'
-import { CENTER } from '../../shared/common/constants'
-
-
 export default () => {
 	iterator(END_ITERATION, {oneIndexed: true}).forEach(iteration => {
 		const orientation = ORIENTATION[ iteration % 8 ]
-
-		console.log(iteration, orientation)
 		const isGridDiagonal = ORIENTATION_OF_STRIPES_TO_GRID_DIAGONALITY_MAPPING[ orientation ]
 		const squareSize = calculateSquareSize({ howManySquaresFitInTheWindowWhenUnitIsOne, isGridDiagonal })
 
@@ -33,6 +27,4 @@ export default () => {
 
 		if (isGridDiagonal) howManySquaresFitInTheWindowWhenUnitIsOne++
 	})
-
-	render({coordinates: [CENTER,[CENTER[0] + 5, CENTER[1]],[CENTER[0] + 5, CENTER[1]+5],[CENTER[0],CENTER[1]+5]], color: "RED"})
 }

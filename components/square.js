@@ -4,14 +4,27 @@ import drawMinorDiagonalStripedSquare from '../../shared/render/drawMinorDiagona
 import calculateRotation from '../utilities/calculateRotation'
 import calculateStripeColors from '../utilities/calculateStripeColors'
 
-export default ({ origin, size, orientation, squareType, iteration, color }) => {
+export default ({ center, size, orientation, squareType, iteration, color }) => {
 	if (iteration < START_ITERATION) return
-	const rotation = calculateRotation(orientation)
+	const rotationAboutCenter = calculateRotation({ orientation })
 
 	if (squareType == 'SOLID_OPAQUE') {
-		drawSolidSquare({origin, size, color, scaleFromCenter: true, rotation })
+		drawSolidSquare({
+			center,
+			size,
+			color,
+			scaleFromGridCenter: true,
+			rotationAboutCenter
+		})
 	} else if (squareType == 'STRIPED_B' || squareType == 'STRIPED_A') {
-		const {originColor, otherColor} = calculateStripeColors({color, squareType, orientation})
-		drawMinorDiagonalStripedSquare({origin, size, originColor, otherColor, scaleFromCenter: true, rotation})
+		const { originColor, otherColor } = calculateStripeColors({ color, squareType, orientation })
+		drawMinorDiagonalStripedSquare({
+			center,
+			size,
+			originColor,
+			otherColor,
+			scaleFromGridCenter: true,
+			rotationAboutCenter
+		})
 	}
 }
