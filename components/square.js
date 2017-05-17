@@ -1,6 +1,6 @@
 import { START_ITERATION } from '../common/customize'
 import drawSolidSquare from '../../shared/render/drawSolidSquare'
-import drawMinorDiagonalStripedSquare from '../../shared/render/drawMinorDiagonalStripedSquare'
+import drawStripedSquare from '../../shared/render/drawStripedSquare'
 import calculateRotation from '../utilities/calculateRotation'
 import calculateStripeColors from '../utilities/calculateStripeColors'
 
@@ -18,7 +18,7 @@ export default ({ center, size, orientation, squareType, iteration, color }) => 
 		})
 	} else if (squareType == 'STRIPED_B' || squareType == 'STRIPED_A') {
 		const { originColor, otherColor } = calculateStripeColors({ color, squareType, orientation })
-		drawMinorDiagonalStripedSquare({
+		drawStripedSquare({
 			center,
 			size,
 			originColor,
