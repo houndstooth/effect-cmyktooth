@@ -1,5 +1,4 @@
 import { START_ITERATION } from '../common/customize'
-import drawSolidSquare from '../../shared/render/drawSolidSquare'
 import drawStripedSquare from '../../shared/render/drawStripedSquare'
 import calculateRotation from '../utilities/calculateRotation'
 import calculateStripeColors from '../utilities/calculateStripeColors'
@@ -9,10 +8,11 @@ export default ({ center, size, orientation, squareType, iteration, color }) => 
 	const rotationAboutCenter = calculateRotation({ orientation })
 
 	if (squareType == 'SOLID_OPAQUE') {
-		drawSolidSquare({
+		drawStripedSquare({
 			center,
 			size,
-			color,
+			originColor: color,
+			otherColor: color,
 			scaleFromGridCenter: true,
 			rotationAboutCenter
 		})
