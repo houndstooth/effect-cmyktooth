@@ -1,5 +1,5 @@
 import { START_ITERATION } from '../common/customize'
-import drawStripedSquare from '../../shared/render/drawStripedSquare'
+import tile from '../../shared/components/tile'
 import calculateRotation from '../utilities/calculateRotation'
 import calculateStripeColors from '../utilities/calculateStripeColors'
 
@@ -8,7 +8,7 @@ export default ({ center, size, orientation, squareType, iteration, color }) => 
 	const rotationAboutCenter = calculateRotation({ orientation })
 
 	if (squareType == 'SOLID_OPAQUE') {
-		drawStripedSquare({
+		tile({
 			center,
 			size,
 			originColor: color,
@@ -18,7 +18,7 @@ export default ({ center, size, orientation, squareType, iteration, color }) => 
 		})
 	} else if (squareType == 'STRIPED_B' || squareType == 'STRIPED_A') {
 		const { originColor, otherColor } = calculateStripeColors({ color, squareType, orientation })
-		drawStripedSquare({
+		tile({
 			center,
 			size,
 			originColor,
