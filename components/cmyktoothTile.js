@@ -6,11 +6,8 @@ import calculateCmyktoothColors from '../utilities/calculateCmyktoothColors'
 
 export default ({ x, y, options }) => {
 	const { cmyktooth: { color, squareSize, orientation } } = options
-	const { originColor, otherColor } = calculateCmyktoothColors({
-		color,
-		squareType: calculateSquareType({ x, y }),
-		orientation
-	})
+	const squareType = calculateSquareType({ x, y })
+	const { originColor, otherColor } = calculateCmyktoothColors({ color, squareType })
 	const center = calculateSquareCenter({ x, y, orientation, squareSize })
 	const rotationAboutCenter = calculateRotation({ orientation })
 	const scaleFromGridCenter = true

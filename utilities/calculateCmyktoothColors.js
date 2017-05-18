@@ -7,7 +7,7 @@ const calculateStripeColors = ({ color, squareType }) => {
 	return { originColor, otherColor }
 }
 
-export default ({ color, squareType, orientation }) => {
+export default ({ color, squareType }) => {
 	let originColor, otherColor
 	if (squareType === 'SOLID_OPAQUE') {
 		originColor = color
@@ -15,11 +15,13 @@ export default ({ color, squareType, orientation }) => {
 	} else if (squareType === 'STRIPED_B' || squareType === 'STRIPED_A') {
 		const { originColor: dummyOriginColor, otherColor: dummyOtherColor } = calculateStripeColors({
 			color,
-			squareType,
-			orientation
+			squareType
 		})
 		originColor = dummyOriginColor
 		otherColor = dummyOtherColor
+	} else if (squareType === 'SOLID_TRANSLUCENT') {
+		originColor = TRANSPARENT
+		otherColor = TRANSPARENT
 	}
 	return { originColor, otherColor }
 }
