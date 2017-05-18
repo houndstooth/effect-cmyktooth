@@ -7,7 +7,7 @@ export default ({ center, size, orientation, squareType, iteration, color }) => 
 	if (iteration < START_ITERATION) return
 	const rotationAboutCenter = calculateRotation({ orientation })
 
-	if (squareType == 'SOLID_OPAQUE') {
+	if (squareType === 'SOLID_OPAQUE') {
 		tile({
 			center,
 			size,
@@ -16,7 +16,7 @@ export default ({ center, size, orientation, squareType, iteration, color }) => 
 			scaleFromGridCenter: true,
 			rotationAboutCenter
 		})
-	} else if (squareType == 'STRIPED_B' || squareType == 'STRIPED_A') {
+	} else if (squareType === 'STRIPED_B' || squareType === 'STRIPED_A') {
 		const { originColor, otherColor } = calculateStripeColors({ color, squareType, orientation })
 		tile({
 			center,
