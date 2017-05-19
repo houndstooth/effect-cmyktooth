@@ -1,22 +1,24 @@
-export default ({ layerColor, squareType }) => {
+import calculateTileType from './calculateTileType'
+
+export default ({ layerColor, origin }) => {
+	const tileType = calculateTileType({ origin })
 	let colors = []
 	const transparentVersionOfLayerColor = Object.assign({}, layerColor)
 	transparentVersionOfLayerColor.a = 0
 
-	if (squareType === 'SOLID_OPAQUE') {
+	if (tileType === 'SOLID_OPAQUE') {
 		colors[ 0 ] = layerColor
 		colors[ 1 ] = layerColor
-	} else if (squareType === 'STRIPED_B') {
+	} else if (tileType === 'STRIPED_B') {
 		colors[ 0 ] = transparentVersionOfLayerColor
 		colors[ 1 ] = layerColor
-	} else if (squareType === 'STRIPED_A') {
+	} else if (tileType === 'STRIPED_A') {
 		colors[ 0 ] = layerColor
 		colors[ 1 ] = transparentVersionOfLayerColor
-	} else if (squareType === 'SOLID_TRANSLUCENT') {
+	} else if (tileType === 'SOLID_TRANSLUCENT') {
 		colors[ 0 ] = transparentVersionOfLayerColor
 		colors[ 1 ] = transparentVersionOfLayerColor
 	}
 
 	return colors
 }
-

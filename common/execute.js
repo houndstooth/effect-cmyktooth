@@ -14,10 +14,10 @@ const ORIENTATION = [
 ]
 
 export default () => {
-	let squareSize = CANVAS_SIZE
+	let tileSize = CANVAS_SIZE
 	iterator(END_ITERATION, { oneIndexed: true }).forEach(iteration => {
 		const orientation = ORIENTATION[ iteration % 8 ]
-		squareSize /= Math.sqrt(2)
-		layer({ orientation, squareSize, iteration })
+		tileSize /= Math.sqrt(2)
+		layer({ orientation, tileSize, iteration })
 	})
 }

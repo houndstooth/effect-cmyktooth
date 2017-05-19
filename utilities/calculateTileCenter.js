@@ -3,8 +3,8 @@ import rotateCoordinateAboutPoint from '../../shared/utilities/rotateCoordinateA
 import calculateCoordinateRelativeToGridCenter from './calculateCoordinateRelativeToGridCenter'
 import calculateRotation from '../utilities/calculateRotation'
 
-export default ({ origin, orientation, squareSize }) => rotateCoordinateAboutPoint({
+export default ({ origin, orientation, tileSize }) => rotateCoordinateAboutPoint({
 	point: CENTER,
-	coordinate: calculateCoordinateRelativeToGridCenter({ origin, squareSize }),
+	coordinate: calculateCoordinateRelativeToGridCenter({ origin, tileSize }),
 	rotation: calculateRotation({ orientation })
 })

@@ -3,12 +3,12 @@ import grid from '../../shared/components/grid'
 import cmyktoothTile from '../components/cmyktoothTile'
 import { START_ITERATION } from '../common/customize'
 
-export default ({ orientation, squareSize, iteration }) => {
+export default ({ orientation, tileSize, iteration }) => {
 	if (iteration < START_ITERATION) return
 
 	const layerColor = calculateLayerColorAndTransparency({ iteration })
 
-	const options = { cmyktooth: { layerColor, orientation, squareSize }}
+	const options = { cmyktooth: { layerColor, orientation, tileSize }}
 
 	grid({ tile: cmyktoothTile, options })
 }
