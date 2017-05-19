@@ -1,4 +1,6 @@
-const LAYER_COLORS = [
+import { CMYK_MODE } from '../common/customize'
+
+const CMYK_COLORS = [
 	'rgba(255, 255, 0, ', // yellow
 	'rgba(0, 0, 0, ',     // black
 	'rgba(0, 255, 255, ', // cyan
@@ -6,7 +8,7 @@ const LAYER_COLORS = [
 ]
 
 export default ({ iteration }) => {
-	const color = LAYER_COLORS[ iteration % 4 ]
+	const color = CMYK_MODE ? CMYK_COLORS[ iteration % 4 ] : 'rgba(0, 0, 0, '
 	const transparency = 1 / (iteration * 2)
 	return color + transparency + ')'
 }
