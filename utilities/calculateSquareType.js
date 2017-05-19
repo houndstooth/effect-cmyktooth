@@ -25,8 +25,8 @@ const WHICH_SOLID_OR_STRIPE = [
 	OFFSET_CMYKTOOTH_SUPERTILE
 ]
 
-export default ({ x, y }) => {
+export default ({ origin }) => {
 	const whatTypeOfSquareIsTheOneAtTheGridOrigin = GRID_SIZE % 2 === 0 ? (GRID_SIZE / 2) % 2 : ((GRID_SIZE + 1) / 2) % 2
 
-	return WHICH_SOLID_OR_STRIPE[ whatTypeOfSquareIsTheOneAtTheGridOrigin ][ x % 2 ][ y % 2 ]
+	return WHICH_SOLID_OR_STRIPE[ whatTypeOfSquareIsTheOneAtTheGridOrigin ][ origin[ 0 ] % 2 ][ origin[ 1 ] % 2 ]
 }

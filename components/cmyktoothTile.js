@@ -4,11 +4,11 @@ import tile from '../../shared/components/tile'
 import calculateRotation from '../utilities/calculateRotation'
 import calculateCmyktoothColors from '../utilities/calculateCmyktoothColors'
 
-export default ({ x, y, options }) => {
+export default ({ origin, options }) => {
 	const { cmyktooth: { color, squareSize, orientation } } = options
-	const squareType = calculateSquareType({ x, y })
+	const squareType = calculateSquareType({ origin })
 	const colors = calculateCmyktoothColors({ color, squareType })
-	const center = calculateSquareCenter({ x, y, orientation, squareSize })
+	const center = calculateSquareCenter({ origin, orientation, squareSize })
 	const rotationAboutCenter = calculateRotation({ orientation })
 	const scaleFromGridCenter = true
 	const size = squareSize
