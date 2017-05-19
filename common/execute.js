@@ -1,9 +1,6 @@
 import layer from '../components/layer'
 import iterator from '../../shared/utilities/iterator'
-import calculateSquareSize from '../utilities/calculateSquareSize'
-import { END_ITERATION } from '../../shared/common/customize'
-
-let howManySquaresFitInTheWindowWhenUnitIsOne = 1
+import { CANVAS_SIZE, END_ITERATION } from '../../shared/common/customize'
 
 const ORIENTATION = [
 	'TOP_RIGHT',
@@ -17,13 +14,10 @@ const ORIENTATION = [
 ]
 
 export default () => {
-	iterator(END_ITERATION, {oneIndexed: true}).forEach(iteration => {
+	let squareSize = CANVAS_SIZE
+	iterator(END_ITERATION, { oneIndexed: true }).forEach(iteration => {
 		const orientation = ORIENTATION[ iteration % 8 ]
-		const isGridDiagonal = iteration % 2 === 1
-		const squareSize = calculateSquareSize({ howManySquaresFitInTheWindowWhenUnitIsOne, isGridDiagonal })
-
+		squareSize /= Math.sqrt(2)
 		layer({ orientation, squareSize, iteration })
-
-		if (isGridDiagonal) howManySquaresFitInTheWindowWhenUnitIsOne++
 	})
 }

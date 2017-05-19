@@ -6,7 +6,7 @@ import { START_ITERATION } from '../common/customize'
 export default ({ orientation, squareSize, iteration }) => {
 	if (iteration < START_ITERATION) return
 
-	const color = calculateColorAndTransparency({ iteration, orientation })
+	const color = calculateColorAndTransparency({ iteration })
 
 	const options = { cmyktooth: { color, orientation, squareSize }}
 
