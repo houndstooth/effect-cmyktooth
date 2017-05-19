@@ -5,9 +5,9 @@ import calculateRotation from '../utilities/calculateRotation'
 import calculateCmyktoothColors from '../utilities/calculateCmyktoothColors'
 
 export default ({ origin, options }) => {
-	const { cmyktooth: { color, squareSize, orientation } } = options
+	const { cmyktooth: { layerColor, squareSize, orientation } } = options
 	const squareType = calculateSquareType({ origin })
-	const colors = calculateCmyktoothColors({ color, squareType })
+	const colors = calculateCmyktoothColors({ layerColor, squareType })
 	const center = calculateSquareCenter({ origin, orientation, squareSize })
 	const rotationAboutCenter = calculateRotation({ orientation })
 	const scaleFromGridCenter = true
