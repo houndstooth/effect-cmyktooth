@@ -6,7 +6,7 @@ import state from '../../state'
 export default ({ origin }) => {
 	const colors = calculateCmyktoothTileColors({ origin })
 	const center = calculateTileCenter({ origin })
-	const rotationAboutCenter = state.cmyktooth.orientation
+	const rotationAboutCenter = state.cmyktooth.layerRotation
 	const scaleFromGridCenter = true
     const size = state.shared.tileSize
 

@@ -6,5 +6,5 @@ import state from '../../state'
 export default ({ origin }) => rotateCoordinateAboutPoint({
 	point: CENTER,
 	coordinate: calculateCoordinateRelativeToGridCenter({ origin }),
-	rotation: state.cmyktooth.orientation
+	rotation: state.cmyktooth.layerRotation
 })
