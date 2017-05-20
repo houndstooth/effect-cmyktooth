@@ -1,10 +1,10 @@
 import { CENTER } from '../../shared/constants'
 import rotateCoordinateAboutPoint from '../../shared/utilities/rotateCoordinateAboutPoint'
 import calculateCoordinateRelativeToGridCenter from './calculateCoordinateRelativeToGridCenter'
-import calculateRotation from '../utilities/calculateRotation'
+import state from '../../state'
 
-export default ({ origin, orientation, tileSize }) => rotateCoordinateAboutPoint({
+export default ({ origin }) => rotateCoordinateAboutPoint({
 	point: CENTER,
-	coordinate: calculateCoordinateRelativeToGridCenter({ origin, tileSize }),
-	rotation: calculateRotation({ orientation })
+	coordinate: calculateCoordinateRelativeToGridCenter({ origin }),
+	rotation: state.cmyktooth.orientation
 })

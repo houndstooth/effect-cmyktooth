@@ -1,6 +1,8 @@
 import calculateTileType from './calculateTileType'
+import state from '../../state'
 
-export default ({ layerColor, origin }) => {
+export default ({ origin }) => {
+	const { layerColor } = state.cmyktooth
 	const tileType = calculateTileType({ origin })
 	let colors = []
 	const transparentVersionOfLayerColor = Object.assign({}, layerColor)
