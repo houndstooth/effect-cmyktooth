@@ -1,4 +1,4 @@
-import { CENTER } from '../../shared/common/constants'
+import { CENTER } from '../../shared/constants'
 import state from '../../state'
 
 export default ({ origin }) => {

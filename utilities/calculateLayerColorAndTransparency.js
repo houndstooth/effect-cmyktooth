@@ -1,5 +1,5 @@
 import state from '../../state'
-import { CYAN, MAGENTA, YELLOW, BLACK } from '../../shared/common/colors'
+import { CYAN, MAGENTA, YELLOW, BLACK } from '../../shared/render/colors'
 
 const CMYK_COLORS = [ YELLOW, BLACK, CYAN, MAGENTA ]
 

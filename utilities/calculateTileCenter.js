@@ -1,4 +1,4 @@
-import { CENTER } from '../../shared/common/constants'
+import { CENTER } from '../../shared/constants'
 import rotateCoordinateAboutPoint from '../../shared/utilities/rotateCoordinateAboutPoint'
 import calculateCoordinateRelativeToGridCenter from './calculateCoordinateRelativeToGridCenter'
 import calculateRotation from '../utilities/calculateRotation'
