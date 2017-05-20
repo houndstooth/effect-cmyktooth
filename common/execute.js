@@ -1,6 +1,8 @@
-import layer from '../components/layer'
 import iterator from '../../shared/utilities/iterator'
-import { CANVAS_SIZE, END_ITERATION } from '../../shared/common/customize'
+import state from '../../state'
+import grid from '../../shared/components/grid'
+import calculateLayerColorAndTransparency from '../utilities/calculateLayerColorAndTransparency'
+import cmyktoothTile from '../components/cmyktoothTile'
 
 const ORIENTATION = [
 	'TOP_RIGHT',
@@ -14,10 +16,15 @@ const ORIENTATION = [
 ]
 
 export default () => {
-	let tileSize = CANVAS_SIZE
-	iterator(END_ITERATION, { oneIndexed: true }).forEach(iteration => {
-		const orientation = ORIENTATION[ iteration % 8 ]
-		tileSize /= Math.sqrt(2)
-		layer({ orientation, tileSize, iteration })
+	state.shared.tileSize = state.shared.canvasSize
+	iterator(state.shared.endIteration, { oneIndexed: true }).forEach(iteration => {
+		//stuff you have to do, even if not rendering this layer
+		state.cmyktooth.orientation = ORIENTATION[ iteration % 8 ]
+		state.shared.tileSize /= Math.sqrt(2)
+
+		if (iteration < state.cmyktooth.startIteration) return
+		state.cmyktooth.layerColor = calculateLayerColorAndTransparency({ iteration })
+
+		grid({ tile: cmyktoothTile })
 	})
 }
