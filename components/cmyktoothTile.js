@@ -10,5 +10,5 @@ export default ({ origin }) => {
 	const scaleFromGridCenter = true
     const size = state.shared.tileSize
 
-	tile({ center, size, colors, scaleFromGridCenter, rotationAboutCenter })
+	tile({ origin, center, size, colors, scaleFromGridCenter, rotationAboutCenter })
 }
