@@ -8,7 +8,7 @@ import cmyktoothTile from './components/cmyktoothTile'
 export default () => {
     state.shared.tileSize = state.shared.canvasSize
     state.cmyktooth.layerRotation = 0
-    iterator(state.shared.endIteration, { oneIndexed: true }).forEach(iteration => {
+    iterator(state.cmyktooth.endIteration, { oneIndexed: true }).forEach(iteration => {
         state.cmyktooth.layerRotation += Math.PI / 4
         state.shared.tileSize /= Math.sqrt(2)
 
