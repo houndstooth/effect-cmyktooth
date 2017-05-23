@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../../shared/application/state'
 
 const CMYKTOOTH_SUPERTILE = [
 	[
@@ -27,7 +27,7 @@ const WHICH_SOLID_OR_STRIPE = [
 
 export default ({ origin }) => {
 	const { gridSize } = state.shared
-	
+
 	const whatTypeOfSquareIsTheOneAtTheGridOrigin = gridSize % 2 === 0 ? (gridSize / 2) % 2 : ((gridSize + 1) / 2) % 2
 
 	return WHICH_SOLID_OR_STRIPE[ whatTypeOfSquareIsTheOneAtTheGridOrigin ][ origin[ 0 ] % 2 ][ origin[ 1 ] % 2 ]

@@ -1,5 +1,5 @@
 import calculateTileType from './calculateTileType'
-import state from '../../state'
+import state from '../../shared/application/state'
 
 export default ({ origin }) => {
 	const { layerColor } = state.cmyktooth
