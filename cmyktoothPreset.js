@@ -25,15 +25,12 @@ export default {
 	iterations: {
 		shared: {
 			tileSize: p => p / Math.sqrt(2),
-			colorA: () => {
-				currentIteration.currentIteration++
-				return CMYKTOOTH_COLORS[ currentIteration.currentIteration % 4 ]
-			},
+			colorA: () => CMYKTOOTH_COLORS[ currentIteration.i % 4 ],
 			gridRotationAboutCenter: p => p + (Math.PI / 4),
-			opacity: () => 1 / (currentIteration.currentIteration + 1),
+			opacity: () => 1 / (currentIteration.i + 2),
 			offsetOrigin: () => {
-				const tileSize = CMYKTOOTH_SIZE / Math.pow(2, 1 + currentIteration.currentIteration / 2)
-				return [ (CMYKTOOTH_SIZE / 2) - tileSize, (CMYKTOOTH_SIZE / 2) - tileSize ]
+				const offset = CMYKTOOTH_SIZE / 2 - CMYKTOOTH_SIZE / Math.pow(2, 1 + (currentIteration.i + 1) / 2)
+				return [ offset, offset ]
 			}
 		}
 	},
