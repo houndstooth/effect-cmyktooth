@@ -12,12 +12,15 @@ export default {
 			tileSize: CMYKTOOTH_SIZE,
 			canvasSize: CMYKTOOTH_SIZE,
 			gridSize: GRID_SIZE,
-			opacity: .5,
-			supertileOffset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ],
+			colors: {
+				opacity: .5,
+				colorAssignment: {
+					supertileOffset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
+				}
+			},
 			negativeGridToo: true
 		},
 		iteration: {
-			iterating: true,
 			startIteration: 0,
 			endIteration: 16
 		}
@@ -25,9 +28,11 @@ export default {
 	iterations: {
 		shared: {
 			tileSize: p => p / Math.sqrt(2),
-			colorA: () => CMYKTOOTH_COLORS[ currentIteration.i % 4 ],
+			colors: {
+				colorA: () => CMYKTOOTH_COLORS[ currentIteration.i % 4 ],
+				opacity: () => 1 / (currentIteration.i + 2),
+			},
 			gridRotationAboutCenter: p => p + (Math.PI / 4),
-			opacity: () => 1 / (currentIteration.i + 2),
 			offsetOrigin: () => {
 				const offset = CMYKTOOTH_SIZE / 2 - CMYKTOOTH_SIZE / Math.pow(2, 1 + (currentIteration.i + 1) / 2)
 				return [ offset, offset ]
