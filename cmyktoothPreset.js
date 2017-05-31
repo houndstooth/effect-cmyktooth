@@ -1,5 +1,5 @@
 import currentIteration from '../shared/state/currentIteration'
-import { BLACK, CYAN, MAGENTA, YELLOW } from '../shared/render/colors'
+import { BLACK, CYAN, MAGENTA, YELLOW } from '../shared/application/constants'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 const CMYKTOOTH_SIZE = 1000
