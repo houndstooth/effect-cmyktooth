@@ -14,7 +14,7 @@ export default {
 			gridSize: GRID_SIZE,
 			color: {
 				opacity: .5,
-				colorAssignment: {
+				assignment: {
 					offset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
 				}
 			},
@@ -29,7 +29,7 @@ export default {
 		shared: {
 			tileSize: p => p / Math.sqrt(2),
 			color: {
-				colors: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
+				set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 				opacity: () => 1 / (currentIteration.i + 2),
 			},
 			gridRotationAboutCenter: p => p + (Math.PI / 4),
