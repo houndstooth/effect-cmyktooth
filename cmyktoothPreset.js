@@ -1,5 +1,5 @@
 import currentIteration from '../shared/state/currentIteration'
-import { BLACK, CYAN, MAGENTA, YELLOW } from '../shared/application/constants'
+import { BLACK, CYAN, MAGENTA, YELLOW, TRANSPARENT } from '../shared/application/constants'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 const CMYKTOOTH_SIZE = 1000
@@ -29,7 +29,7 @@ export default {
 		shared: {
 			tileSize: p => p / Math.sqrt(2),
 			color: {
-				colorA: () => CMYKTOOTH_COLORS[ currentIteration.i % 4 ],
+				colors: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 				opacity: () => 1 / (currentIteration.i + 2),
 			},
 			gridRotationAboutCenter: p => p + (Math.PI / 4),
