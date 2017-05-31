@@ -12,7 +12,7 @@ export default {
 			tileSize: CMYKTOOTH_SIZE,
 			canvasSize: CMYKTOOTH_SIZE,
 			gridSize: GRID_SIZE,
-			colors: {
+			color: {
 				opacity: .5,
 				colorAssignment: {
 					supertileOffset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
@@ -28,7 +28,7 @@ export default {
 	iterations: {
 		shared: {
 			tileSize: p => p / Math.sqrt(2),
-			colors: {
+			color: {
 				colorA: () => CMYKTOOTH_COLORS[ currentIteration.i % 4 ],
 				opacity: () => 1 / (currentIteration.i + 2),
 			},
