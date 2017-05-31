@@ -15,9 +15,7 @@ export default {
 			color: {
 				opacity: .5,
 				colorAssignment: {
-					supertile: {
-						offset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
-					}
+					offset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
 				}
 			},
 			negativeGridToo: true
