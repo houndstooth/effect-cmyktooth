@@ -12,7 +12,7 @@ export default {
 			tileSize: CMYKTOOTH_SIZE,
 			canvasSize: CMYKTOOTH_SIZE,
 			gridSize: GRID_SIZE,
-			color: {
+			colorConfig: {
 				set: [ CMYKTOOTH_COLORS[ (currentIteration.i + 3) % 4 ], TRANSPARENT ],
 				opacity: .5,
 				assignment: {
@@ -29,7 +29,7 @@ export default {
 	iterations: {
 		shared: {
 			tileSize: p => p / Math.sqrt(2),
-			color: {
+			colorConfig: {
 				set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 				opacity: () => 1 / (currentIteration.i + 2)
 			},
