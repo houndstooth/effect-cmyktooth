@@ -21,15 +21,7 @@ export default {
 				houndazzle: {
 					color: {
 						set: [ TRANSPARENT, CMYKTOOTH_COLORS[ (currentIteration.i + 3) % 4 ] ],
-						opacity: .5,
-						assignment: {
-							offset: [ OFFSET_GRID, OFFSET_GRID === 1 ? 0 : 1 ]
-						}
-					},
-					orientation: {
-						assignment: {
-							offset: [ OFFSET_GRID, OFFSET_GRID === 1 ? 0 : 1 ]
-						}
+						opacity: .5
 					}
 				}
 			},
