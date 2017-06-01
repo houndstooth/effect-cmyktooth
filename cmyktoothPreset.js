@@ -17,12 +17,6 @@ export default {
 				opacity: .5,
 				assignment: {
 					offset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
-				},
-				houndazzle: {
-					color: {
-						set: [ TRANSPARENT, CMYKTOOTH_COLORS[ (currentIteration.i + 3) % 4 ] ],
-						opacity: .5
-					}
 				}
 			},
 			negativeGridToo: true
@@ -37,13 +31,7 @@ export default {
 			tileSize: p => p / Math.sqrt(2),
 			color: {
 				set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
-				opacity: () => 1 / (currentIteration.i + 2),
-				houndazzle: {
-					color: {
-						set: () => [ TRANSPARENT, CMYKTOOTH_COLORS[ currentIteration.i % 4 ] ],
-						opacity: () => 1 / (currentIteration.i + 2)
-					}
-				}
+				opacity: () => 1 / (currentIteration.i + 2)
 			},
 			gridRotationAboutCenter: p => p + (Math.PI / 4),
 			offsetOrigin: () => {
