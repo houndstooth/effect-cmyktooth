@@ -1,5 +1,6 @@
 import currentIteration from '../shared/state/currentIteration'
 import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../shared/application/constants'
+import state from '../shared/state/state'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 const CMYKTOOTH_SIZE = 1000
@@ -32,6 +33,7 @@ export default {
 		},
 		gridRotationAboutCenter: p => p + (Math.PI / 4),
 		offsetOrigin: () => {
+			if (state.houndsmorphosisMode) return [ CMYKTOOTH_SIZE / 2, CMYKTOOTH_SIZE / 2 ]
 			const offset = CMYKTOOTH_SIZE / 2 - CMYKTOOTH_SIZE / Math.pow(2, 1 + (currentIteration.i + 1) / 2)
 			return [ offset, offset ]
 		}
