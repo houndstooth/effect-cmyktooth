@@ -8,7 +8,7 @@ const OFFSET_GRID = GRID_SIZE % 2 === 0 ? (GRID_SIZE / 2) % 2 : ((GRID_SIZE + 1)
 
 export default {
 	state: {
-		vector: [ CMYKTOOTH_SIZE, CMYKTOOTH_SIZE ],
+		tileSize: CMYKTOOTH_SIZE,
 		canvasSize: CMYKTOOTH_SIZE,
 		gridSize: GRID_SIZE,
 		colorConfig: {
@@ -25,7 +25,7 @@ export default {
 		}
 	},
 	iterations: {
-		vector: p => [ p[ 0 ] / Math.sqrt(2), p[ 1 ] / Math.sqrt(2) ],
+		tileSize: p => p / Math.sqrt(2),
 		colorConfig: {
 			set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 			opacity: () => 1 / (currentIteration.i + 2)
