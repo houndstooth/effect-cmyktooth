@@ -35,6 +35,5 @@ export default {
 			const offset = CMYKTOOTH_SIZE / 2 - CMYKTOOTH_SIZE / Math.pow(2, 1 + (currentIteration.i + 1) / 2)
 			return [ offset, offset ]
 		}
-	},
-	animations: {}
+	}
 }
