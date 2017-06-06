@@ -9,14 +9,14 @@ const ADDRESS_OFFSET_X = ADDRESS_OFFSET_Y === 1 ? 0 : 1
 
 export default {
 	state: {
-		tile: {
+		tileConfig: {
 			tileSize: CMYKTOOTH_SIZE
 		},
-		view: {
+		viewConfig: {
 			canvasSize: CMYKTOOTH_SIZE,
 			centerViewOnCenterOfTileAtZeroZeroAddress: true
 		},
-		grid: {
+		gridConfig: {
 			gridSize: GRID_SIZE,
 			includeNegativeQuadrants: true,
 		},
@@ -33,14 +33,14 @@ export default {
 		}
 	},
 	iterations: {
-		tile: {
+		tileConfig: {
 			tileSize: p => p / Math.sqrt(2),
 		},
 		colorConfig: {
 			set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 			opacity: () => 1 / (currentIteration.i + 2)
 		},
-		grid: {
+		gridConfig: {
 			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION
 		}
 	}
