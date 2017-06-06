@@ -32,7 +32,7 @@ export default {
 			set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 			opacity: () => 1 / (currentIteration.i + 2)
 		},
-		gridRotationAboutCenter: p => p + (Math.PI / 4),
+		gridRotationAboutGridCenter: p => p + (Math.PI / 4),
 		gridOriginOffset: () => {
 			if (state.houndsmorphosisMode) return [ CMYKTOOTH_SIZE / 2, CMYKTOOTH_SIZE / 2 ]
 			const offset = CMYKTOOTH_SIZE / 2 - CMYKTOOTH_SIZE / Math.pow(2, 1 + (currentIteration.i + 1) / 2)
