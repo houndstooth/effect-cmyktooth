@@ -10,7 +10,10 @@ const ADDRESS_OFFSET_X = ADDRESS_OFFSET_Y === 1 ? 0 : 1
 export default {
 	state: {
 		tileSize: CMYKTOOTH_SIZE,
-		canvasSize: CMYKTOOTH_SIZE,
+		view: {
+			canvasSize: CMYKTOOTH_SIZE,
+			centerViewOnCenterOfTileAtZeroZeroAddress: true
+		},
 		gridSize: GRID_SIZE,
 		colorConfig: {
 			set: [ CMYKTOOTH_COLORS[ (currentIteration.i + 3) % 4 ], TRANSPARENT ],
@@ -23,8 +26,7 @@ export default {
 		iteration: {
 			startIteration: 0,
 			endIteration: 16
-		},
-		centerViewOnCenterOfTileAtZeroZeroAddress: true
+		}
 	},
 	iterations: {
 		tileSize: p => p / Math.sqrt(2),
