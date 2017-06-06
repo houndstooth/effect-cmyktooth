@@ -1,5 +1,5 @@
 import currentIteration from '../../state/currentIteration'
-import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../application/constants'
+import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW, EIGHTH_OF_CIRCLE_ROTATION } from '../../application/constants'
 import state from '../../state/state'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
@@ -32,7 +32,7 @@ export default {
 			set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 			opacity: () => 1 / (currentIteration.i + 2)
 		},
-		gridRotationAboutGridCenter: p => p + (Math.PI / 4),
+		gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION,
 		gridOriginOffset: () => {
 			if (state.houndsmorphosisMode) return [ CMYKTOOTH_SIZE / 2, CMYKTOOTH_SIZE / 2 ]
 			const offset = CMYKTOOTH_SIZE / 2 - CMYKTOOTH_SIZE / Math.pow(2, 1 + (currentIteration.i + 1) / 2)
