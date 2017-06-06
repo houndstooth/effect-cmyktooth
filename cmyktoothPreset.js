@@ -16,7 +16,7 @@ export default {
 			set: [ CMYKTOOTH_COLORS[ (currentIteration.i + 3) % 4 ], TRANSPARENT ],
 			opacity: .5,
 			assignment: {
-				addressOffsetFunction: () => [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
+				offsetAddress: () => [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
 			}
 		},
 		negativeGridToo: true,
