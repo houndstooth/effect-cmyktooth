@@ -5,7 +5,8 @@ import state from '../../state/state'
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 const CMYKTOOTH_SIZE = 1000
 const GRID_SIZE = 31
-const OFFSET_GRID = GRID_SIZE % 2 === 0 ? (GRID_SIZE / 2) % 2 : ((GRID_SIZE + 1) / 2) % 2
+const ADDRESS_OFFSET_Y = GRID_SIZE % 2 === 0 ? (GRID_SIZE / 2) % 2 : ((GRID_SIZE + 1) / 2) % 2
+const ADDRESS_OFFSET_X = ADDRESS_OFFSET_Y === 1 ? 0 : 1
 
 export default {
 	state: {
@@ -16,7 +17,7 @@ export default {
 			set: [ CMYKTOOTH_COLORS[ (currentIteration.i + 3) % 4 ], TRANSPARENT ],
 			opacity: .5,
 			assignment: {
-				offsetAddress: () => [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ]
+				offsetAddress: () => [ ADDRESS_OFFSET_X, ADDRESS_OFFSET_Y ]
 			}
 		},
 		negativeGridToo: true,
