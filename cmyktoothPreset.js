@@ -14,7 +14,10 @@ export default {
 			canvasSize: CMYKTOOTH_SIZE,
 			centerViewOnCenterOfTileAtZeroZeroAddress: true
 		},
-		gridSize: GRID_SIZE,
+		grid: {
+			gridSize: GRID_SIZE,
+			includeNegativeQuadrants: true,
+		},
 		colorConfig: {
 			set: [ CMYKTOOTH_COLORS[ (currentIteration.i + 3) % 4 ], TRANSPARENT ],
 			opacity: .5,
@@ -22,7 +25,6 @@ export default {
 				offsetAddress: () => [ ADDRESS_OFFSET_X, ADDRESS_OFFSET_Y ]
 			}
 		},
-		negativeGridToo: true,
 		iteration: {
 			startIteration: 0,
 			endIteration: 16
@@ -34,6 +36,8 @@ export default {
 			set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 			opacity: () => 1 / (currentIteration.i + 2)
 		},
-		gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION
+		grid: {
+			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION
+		}
 	}
 }
