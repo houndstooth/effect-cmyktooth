@@ -1,6 +1,4 @@
 import currentIteration from '../../state/currentIteration'
-import currentAnimation from '../../state/currentAnimation'
-import state from '../../state/state'
 import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW, EIGHTH_OF_CIRCLE_ROTATION } from '../../application/constants'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
@@ -36,18 +34,14 @@ export default {
 	},
 	iterations: {
 		tileConfig: {
-			tileSize: () => {
-				const thing = currentIteration.i * Math.sqrt(2)
-				console.log(currentIteration.i, thing)
-				return state.tileConfig.tileSize / thing
-			}
+			tileSize: p => p / Math.sqrt(2),
 		},
 		colorConfig: {
 			set: () => [ CMYKTOOTH_COLORS[ currentIteration.i % 4 ], TRANSPARENT ],
 			opacity: () => 1 / (currentIteration.i + 2)
 		},
 		gridConfig: {
-			gridRotationAboutGridCenter: () => currentIteration.i * EIGHTH_OF_CIRCLE_ROTATION
+			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION
 		}
 	}
 }
