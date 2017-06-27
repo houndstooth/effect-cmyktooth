@@ -18,6 +18,7 @@ export default {
 		gridConfig: {
 			gridSize: GRID_SIZE,
 			includeNegativeQuadrants: true,
+			gridRotationAboutGridCenter: 0
 		},
 		colorConfig: {
 			set: [ CMYKTOOTH_COLORS[ (current.iteration + 3) % 4 ], TRANSPARENT ],
