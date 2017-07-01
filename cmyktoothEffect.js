@@ -9,28 +9,28 @@ const ADDRESS_OFFSET_X = ADDRESS_OFFSET_Y === 1 ? 0 : 1
 export default {
 	initial: {
 		tileConfig: {
-			tileSize: CMYKTOOTH_SIZE
+			tileSize: CMYKTOOTH_SIZE,
 		},
 		viewConfig: {
 			canvasSize: CMYKTOOTH_SIZE,
-			centerViewOnCenterOfTileAtZeroZeroAddress: true
+			centerViewOnCenterOfTileAtZeroZeroAddress: true,
 		},
 		gridConfig: {
 			gridSize: GRID_SIZE,
 			includeNegativeQuadrants: true,
-			gridRotationAboutGridCenter: 0
+			gridRotationAboutGridCenter: 0,
 		},
 		colorConfig: {
 			set: [ CMYKTOOTH_COLORS[ (current.iterationFrame + 3) % 4 ], TRANSPARENT ],
 			opacity: .5,
 			assignment: {
-				offsetAddress: () => [ ADDRESS_OFFSET_X, ADDRESS_OFFSET_Y ]
-			}
+				offsetAddress: () => [ ADDRESS_OFFSET_X, ADDRESS_OFFSET_Y ],
+			},
 		},
 		iteration: {
 			startIteration: 0,
-			endIteration: 16
-		}
+			endIteration: 16,
+		},
 	},
 	iterations: {
 		tileConfig: {
@@ -38,10 +38,10 @@ export default {
 		},
 		colorConfig: {
 			set: () => [ CMYKTOOTH_COLORS[ current.iterationFrame % 4 ], TRANSPARENT ],
-			opacity: () => 1 / (current.iterationFrame + 2)
+			opacity: () => 1 / (current.iterationFrame + 2),
 		},
 		gridConfig: {
-			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION
-		}
-	}
+			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION,
+		},
+	},
 }
