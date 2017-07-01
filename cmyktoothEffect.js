@@ -21,7 +21,7 @@ export default {
 			gridRotationAboutGridCenter: 0
 		},
 		colorConfig: {
-			set: [ CMYKTOOTH_COLORS[ (current.iteration + 3) % 4 ], TRANSPARENT ],
+			set: [ CMYKTOOTH_COLORS[ (current.iterationFrame + 3) % 4 ], TRANSPARENT ],
 			opacity: .5,
 			assignment: {
 				offsetAddress: () => [ ADDRESS_OFFSET_X, ADDRESS_OFFSET_Y ]
@@ -37,8 +37,8 @@ export default {
 			tileSize: p => p / Math.sqrt(2),
 		},
 		colorConfig: {
-			set: () => [ CMYKTOOTH_COLORS[ current.iteration % 4 ], TRANSPARENT ],
-			opacity: () => 1 / (current.iteration + 2)
+			set: () => [ CMYKTOOTH_COLORS[ current.iterationFrame % 4 ], TRANSPARENT ],
+			opacity: () => 1 / (current.iterationFrame + 2)
 		},
 		gridConfig: {
 			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION
