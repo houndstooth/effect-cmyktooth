@@ -1,10 +1,9 @@
-import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW, EIGHTH_OF_CIRCLE_ROTATION } from '../../src/constants'
+import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW, EIGHTH_OF_CIRCLE_ROTATION } from '../../../src/constants'
+import cmyktoothOffsetAddress from '../src/utilities/cmyktoothOffsetAddress'
+import { GRID_SIZE } from '../src/constants'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 const CMYKTOOTH_SIZE = 1000
-const GRID_SIZE = 31
-const ADDRESS_OFFSET_Y = GRID_SIZE % 2 === 0 ? (GRID_SIZE / 2) % 2 : ((GRID_SIZE + 1) / 2) % 2
-const ADDRESS_OFFSET_X = ADDRESS_OFFSET_Y === 1 ? 0 : 1
 
 export default {
 	initial: {
@@ -24,7 +23,7 @@ export default {
 			set: [ CMYKTOOTH_COLORS[ (current.iterationFrame + 3) % 4 ], TRANSPARENT ],
 			opacity: .5,
 			assignment: {
-				offsetAddress: () => [ ADDRESS_OFFSET_X, ADDRESS_OFFSET_Y ],
+				offsetAddress: cmyktoothOffsetAddress,
 			},
 		},
 		iteration: {
