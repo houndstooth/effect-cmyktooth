@@ -7,19 +7,19 @@ const CMYKTOOTH_SIZE = 1000
 
 export default {
 	initial: {
-		tileConfig: {
+		tileSettings: {
 			tileSize: CMYKTOOTH_SIZE,
 		},
-		viewConfig: {
+		viewSettings: {
 			canvasSize: CMYKTOOTH_SIZE,
 			centerViewOnCenterOfTileAtZeroZeroAddress: true,
 		},
-		gridConfig: {
+		gridSettings: {
 			gridSize: GRID_SIZE,
 			includeNegativeQuadrants: true,
 			gridRotationAboutGridCenter: 0,
 		},
-		colorConfig: {
+		colorSettings: {
 			set: [ CMYKTOOTH_COLORS[ (current.iterationFrame + 3) % 4 ], TRANSPARENT ],
 			opacity: .5,
 			assignment: {
@@ -32,14 +32,14 @@ export default {
 		},
 	},
 	iterations: {
-		tileConfig: {
+		tileSettings: {
 			tileSize: p => p / Math.sqrt(2),
 		},
-		colorConfig: {
+		colorSettings: {
 			set: () => [ CMYKTOOTH_COLORS[ current.iterationFrame % 4 ], TRANSPARENT ],
 			opacity: () => 1 / (current.iterationFrame + 2),
 		},
-		gridConfig: {
+		gridSettings: {
 			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION,
 		},
 	},
