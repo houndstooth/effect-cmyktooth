@@ -4,16 +4,17 @@ import cmyktoothOffsetAddress from '../src/utilities/cmyktoothOffsetAddress'
 import cmyktoothOpacity from '../src/utilities/cmyktoothOpacity'
 import cmyktoothTileSize from '../src/utilities/cmyktoothTileSize'
 import { GRID_SIZE } from '../src/constants'
+import { CANVAS_SIZE } from '../src/defaults'
 
 const CMYKTOOTH_SIZE = 1000
 
 export default {
 	initial: {
 		tileSettings: {
-			tileSize: CMYKTOOTH_SIZE,
+			tileSize: CANVAS_SIZE,
 		},
 		viewSettings: {
-			canvasSize: CMYKTOOTH_SIZE,
+			canvasSize: CANVAS_SIZE,
 			centerViewOnCenterOfTileAtZeroZeroAddress: true,
 		},
 		gridSettings: {
