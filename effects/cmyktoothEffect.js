@@ -1,8 +1,10 @@
-import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW, EIGHTH_OF_CIRCLE_ROTATION } from '../../../src/constants'
+import cmyktoothColorSet from '../src/utilities/cmyktoothColorSet'
+import cmyktoothGridRotationAboutGridCenter from '../src/utilities/cmyktoothGridRotationAboutGridCenter'
 import cmyktoothOffsetAddress from '../src/utilities/cmyktoothOffsetAddress'
+import cmyktoothOpacity from '../src/utilities/cmyktoothOpacity'
+import cmyktoothTileSize from '../src/utilities/cmyktoothTileSize'
 import { GRID_SIZE } from '../src/constants'
 
-const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 const CMYKTOOTH_SIZE = 1000
 
 export default {
@@ -20,7 +22,7 @@ export default {
 			gridRotationAboutGridCenter: 0,
 		},
 		colorSettings: {
-			set: [ CMYKTOOTH_COLORS[ (current.iterationFrame + 3) % 4 ], TRANSPARENT ],
+			set: cmyktoothColorSet(-1),
 			opacity: .5,
 			assignment: {
 				offsetAddress: cmyktoothOffsetAddress,
@@ -33,14 +35,14 @@ export default {
 	},
 	iterations: {
 		tileSettings: {
-			tileSize: p => p / Math.sqrt(2),
+			tileSize: cmyktoothTileSize,
 		},
 		colorSettings: {
-			set: () => [ CMYKTOOTH_COLORS[ current.iterationFrame % 4 ], TRANSPARENT ],
-			opacity: () => 1 / (current.iterationFrame + 2),
+			set: cmyktoothColorSet,
+			opacity: cmyktoothOpacity,
 		},
 		gridSettings: {
-			gridRotationAboutGridCenter: p => p + EIGHTH_OF_CIRCLE_ROTATION,
+			gridRotationAboutGridCenter: cmyktoothGridRotationAboutGridCenter,
 		},
 	},
 }
