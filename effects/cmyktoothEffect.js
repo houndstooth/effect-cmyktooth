@@ -1,5 +1,5 @@
 import cmyktoothColorSet from '../src/utilities/cmyktoothColorSet'
-import cmyktoothGridRotationAboutCanvasCenter from '../src/utilities/cmyktoothGridRotationAboutCanvasCenter'
+import cmyktoothViewRotationAboutCanvasCenter from '../src/utilities/cmyktoothViewRotationAboutCanvasCenter'
 import cmyktoothOffsetAddress from '../src/utilities/cmyktoothOffsetAddress'
 import cmyktoothOpacity from '../src/utilities/cmyktoothOpacity'
 import cmyktoothTileSize from '../src/utilities/cmyktoothTileSize'
@@ -14,11 +14,11 @@ export default {
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtZeroZeroAddress: true,
+			rotateViewAboutCanvasCenter: 0,
 		},
 		gridSettings: {
 			gridSize: constants.CMYKTOOTH_GRID_SIZE,
 			includeNegativeQuadrants: true,
-			gridRotationAboutCanvasCenter: 0,
 		},
 		colorSettings: {
 			set: cmyktoothColorSet(-1),
@@ -41,7 +41,7 @@ export default {
 			opacity: cmyktoothOpacity,
 		},
 		gridSettings: {
-			gridRotationAboutCanvasCenter: cmyktoothGridRotationAboutCanvasCenter,
+			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter,
 		},
 	},
 }
