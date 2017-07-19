@@ -1,5 +1,5 @@
-const GRID_SIZE = 31
+const CMYKTOOTH_GRID_SIZE = 31
 
 export default {
-	GRID_SIZE,
+	CMYKTOOTH_GRID_SIZE,
 }
