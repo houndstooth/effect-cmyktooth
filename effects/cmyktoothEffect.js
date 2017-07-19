@@ -28,8 +28,8 @@ export default {
 			},
 		},
 		iteration: {
-			startIteration: 0,
-			endIteration: 16,
+			startIterationFrame: 0,
+			endIterationFrame: 16,
 		},
 	},
 	iterations: {
