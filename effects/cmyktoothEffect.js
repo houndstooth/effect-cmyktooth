@@ -8,7 +8,7 @@ import settingsUtilities from '../../../src/utilities/settingsUtilities'
 import settingsPaths from '../../../src/settings/settingsPaths'
 
 export default {
-	initial: {
+	base: {
 		tileSettings: {
 			tileSize: settingsUtilities.getFromSettingsOrDefault(settingsPaths.CANVAS_SIZE),
 		},
