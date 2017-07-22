@@ -5,7 +5,7 @@ import cmyktoothOpacity from '../src/utilities/cmyktoothOpacity'
 import cmyktoothTileSize from '../src/utilities/cmyktoothTileSize'
 import constants from '../src/constants'
 import settingsUtilities from '../../../src/utilities/settingsUtilities'
-import settingsPaths from '../../../src/settings/settingsPaths'
+import settingsPaths from '../../../src/state/settingsPaths'
 
 export default {
 	base: {
