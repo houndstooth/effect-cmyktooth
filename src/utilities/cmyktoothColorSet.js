@@ -1,5 +1,6 @@
 import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
+import store from '../../../../store'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 
-export default () => [ CMYKTOOTH_COLORS[ currentState.iterationFrame % 4 ], TRANSPARENT ]
+export default () => [ CMYKTOOTH_COLORS[ store.currentState.iterationFrame % 4 ], TRANSPARENT ]

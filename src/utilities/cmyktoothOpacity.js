@@ -1,1 +1,3 @@
-export default () => 1 / (currentState.iterationFrame + 2)
+import store from '../../../../store'
+
+export default () => 1 / (store.currentState.iterationFrame + 2)
