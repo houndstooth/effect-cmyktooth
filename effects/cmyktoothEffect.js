@@ -10,7 +10,7 @@ import settingsPaths from '../../../src/state/settingsPaths'
 export default {
 	base: {
 		tileSettings: {
-			tileSize: settingsUtilities.getFromSettingsOrDefault(settingsPaths.CANVAS_SIZE),
+			tileSize: settingsUtilities.getFromBuiltPatternOrDefault(settingsPaths.CANVAS_SIZE),
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtZeroZeroAddress: true,
