@@ -40,7 +40,7 @@ export default {
 			set: cmyktoothColorSet,
 			opacity: cmyktoothOpacity,
 		},
-		gridSettings: {
+		viewSettings: {
 			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter,
 		},
 	},
