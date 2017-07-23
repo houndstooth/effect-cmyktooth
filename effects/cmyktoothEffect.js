@@ -3,21 +3,20 @@ import cmyktoothViewRotationAboutCanvasCenter from '../src/utilities/cmyktoothVi
 import cmyktoothOffsetAddress from '../src/utilities/cmyktoothOffsetAddress'
 import cmyktoothOpacity from '../src/utilities/cmyktoothOpacity'
 import cmyktoothTileSize from '../src/utilities/cmyktoothTileSize'
-import constants from '../src/constants'
-import stateUtilities from '../../../src/utilities/stateUtilities'
-import settingsPaths from '../../../src/state/settingsPaths'
+import cmyktoothConstants from '../src/cmyktoothConstants'
 
 export default {
 	basePattern: {
 		tileSettings: {
-			tileSize: stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.CANVAS_SIZE),
+			tileSize: cmyktoothConstants.CMYKTOOTH_CANVAS_AND_INITIAL_TILE_SIZE,
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtZeroZeroAddress: true,
 			rotateViewAboutCanvasCenter: 0,
+			canvasSize: cmyktoothConstants.CMYKTOOTH_CANVAS_AND_INITIAL_TILE_SIZE,
 		},
 		gridSettings: {
-			gridSize: constants.CMYKTOOTH_GRID_SIZE,
+			gridSize: cmyktoothConstants.CMYKTOOTH_GRID_SIZE,
 			includeNegativeQuadrants: true,
 		},
 		colorSettings: {
