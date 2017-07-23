@@ -8,9 +8,9 @@ import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../../src/state/settingsPaths'
 
 export default {
-	base: {
+	basePattern: {
 		tileSettings: {
-			tileSize: stateUtilities.getFromBuiltPatternOrDefault(settingsPaths.CANVAS_SIZE),
+			tileSize: stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.CANVAS_SIZE),
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtZeroZeroAddress: true,
@@ -27,12 +27,12 @@ export default {
 				offsetAddress: cmyktoothOffsetAddress,
 			},
 		},
-		iteration: {
+		iterationSettings: {
 			startIterationFrame: 0,
 			endIterationFrame: 16,
 		},
 	},
-	iterations: {
+	iterationsPattern: {
 		tileSettings: {
 			tileSize: cmyktoothTileSize,
 		},
