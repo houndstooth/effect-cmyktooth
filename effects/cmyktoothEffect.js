@@ -8,7 +8,7 @@ import cmyktoothConstants from '../src/cmyktoothConstants'
 export default {
 	basePattern: {
 		tileSettings: {
-			tileSize: cmyktoothConstants.CMYKTOOTH_CANVAS_AND_INITIAL_TILE_SIZE,
+			tileSizeSetting: cmyktoothConstants.CMYKTOOTH_CANVAS_AND_INITIAL_TILE_SIZE,
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtZeroZeroAddress: true,
@@ -33,7 +33,7 @@ export default {
 	},
 	iterationsPattern: {
 		tileSettings: {
-			tileSize: cmyktoothTileSize,
+			tileSizeSetting: cmyktoothTileSize,
 		},
 		colorSettings: {
 			set: cmyktoothColorSet,
