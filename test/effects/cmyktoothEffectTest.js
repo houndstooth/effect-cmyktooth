@@ -16,7 +16,7 @@ const thisIterationFrameOnly = frame => ({
 })
 
 describe('cmyktooth effect test', () => {
-	xit('the absolute center is always blank', () => {
+	it('the absolute center is always blank', () => {
 		composeMainHoundstooth({ houndstoothEffects: [ cmyktoothEffect ] })
 		activateTestMarkerCanvas()
 
@@ -220,26 +220,69 @@ describe('cmyktooth effect test', () => {
 
 		expectedSectorRows.forEach((expectedSectorRow, row) => {
 			expectedSectorRow.forEach((expectedSector, col) => {
-				const address = [ col, row ]
-				let method, color, colors
-				if (expectedSector[ 0 ] === 'solid') {
-					if (expectedSector[ 1 ] === 'trans') color = TRANSPARENT
-					if (expectedSector[ 1 ] === 'color') color = SEMI_MAGENTA
+				expectSector({ expectedSector, address: [ col, row ], tileSizeInPixels, solidColor: SEMI_MAGENTA })
+			})
+		})
+	})
 
-					solid({ address, tileSizeInPixels, color })
-				}
-				else if (expectedSector[ 0 ] === 'sldls') {
-					principal({ address, tileSizeInPixels, colors: [ SEMI_MAGENTA, SEMI_MAGENTA ] })
-				}
-				else {
-					if (expectedSector[ 0 ] === 'minor') method = minor
-					if (expectedSector[ 0 ] === 'princ') method = principal
+	it('iteration 4 is yellow, grain going to the bottom left', () => {
+		composeMainHoundstooth({
+			houndstoothEffects: [ cmyktoothEffect ],
+			houndstoothOverrides: thisIterationFrameOnly(4),
+		})
+		activateTestMarkerCanvas()
 
-					if (expectedSector[ 1 ] === 'trans') colors = [ TRANSPARENT, SEMI_MAGENTA ]
-					if (expectedSector[ 1 ] === 'color') colors = [ SEMI_MAGENTA, TRANSPARENT ]
+		execute({ iterating: true })
 
-					method({ address, tileSizeInPixels, colors })
-				}
+		const SEMI_YELLOW = { r: 255, g: 255, b: 0, a: 0.2 }
+		const tileSizeInPixels = 800 / 8
+
+		const expectedSectorRows = [
+			[
+				[ 'solid', 'trans' ],
+				[ 'minor', 'trans' ],
+				[ 'minor', 'color' ],
+				[ 'solid', 'trans' ],
+				[ 'solid', 'trans' ],
+				[ 'minor', 'trans' ],
+				[ 'minor', 'color' ],
+				[ 'solid', 'trans' ],
+			],
+			[
+				[ 'minor', 'color' ],
+				[ 'solid', 'color' ],
+				[ 'solid', 'color' ],
+				[ 'minor', 'trans' ],
+				[ 'minor', 'color' ],
+				[ 'solid', 'color' ],
+				[ 'solid', 'color' ],
+				[ 'minor', 'trans' ],
+			],
+			[
+				[ 'minor', 'trans' ],
+				[ 'solid', 'color' ],
+				[ 'solid', 'color' ],
+				[ 'minor', 'color' ],
+				[ 'minor', 'trans' ],
+				[ 'solid', 'color' ],
+				[ 'solid', 'color' ],
+				[ 'minor', 'color' ],
+			],
+			[
+				[ 'solid', 'trans' ],
+				[ 'minor', 'color' ],
+				[ 'minor', 'trans' ],
+				[ 'solid', 'trans' ],
+				[ 'solid', 'trans' ],
+				[ 'minor', 'color' ],
+				[ 'minor', 'trans' ],
+				[ 'solid', 'trans' ],
+			],
+		]
+
+		expectedSectorRows.concat(expectedSectorRows).forEach((expectedSectorRow, row) => {
+			expectedSectorRow.forEach((expectedSector, col) => {
+				expectSector({ expectedSector, address: [ col, row ], tileSizeInPixels, solidColor: SEMI_YELLOW })
 			})
 		})
 	})
@@ -292,4 +335,26 @@ const minor = ({ address, tileSizeInPixels, colors, baseId }) => {
 const solid = ({ address, tileSizeInPixels, color, baseId }) => {
 	const originInPixels = [ address[ 0 ] * tileSizeInPixels, address[ 1 ] * tileSizeInPixels ]
 	expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, n: 1, x: 0, y: 0, color, id: baseId }))
+}
+
+const expectSector = ({ expectedSector, address, tileSizeInPixels, solidColor }) => {
+	let method, color, colors
+	if (expectedSector[ 0 ] === 'solid') {
+		if (expectedSector[ 1 ] === 'trans') color = TRANSPARENT
+		if (expectedSector[ 1 ] === 'color') color = solidColor
+
+		solid({ address, tileSizeInPixels, color })
+	}
+	else if (expectedSector[ 0 ] === 'sldls') {
+		principal({ address, tileSizeInPixels, colors: [ solidColor, solidColor ] })
+	}
+	else {
+		if (expectedSector[ 0 ] === 'minor') method = minor
+		if (expectedSector[ 0 ] === 'princ') method = principal
+
+		if (expectedSector[ 1 ] === 'trans') colors = [ TRANSPARENT, solidColor ]
+		if (expectedSector[ 1 ] === 'color') colors = [ solidColor, TRANSPARENT ]
+
+		method({ address, tileSizeInPixels, colors })
+	}
 }
