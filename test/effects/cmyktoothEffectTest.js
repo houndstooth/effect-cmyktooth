@@ -17,7 +17,10 @@ const thisIterationFrameOnly = frame => ({
 
 describe('cmyktooth effect test', () => {
 	it('the absolute center is always blank', () => {
-		composeMainHoundstooth({ houndstoothEffects: [ cmyktoothEffect ] })
+		composeMainHoundstooth({
+			houndstoothEffects: [ cmyktoothEffect ],
+			houndstoothOverrides: thisIterationFrameOnly(32),
+		})
 		activateTestMarkerCanvas()
 
 		execute({ iterating: true })
