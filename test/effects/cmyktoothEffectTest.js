@@ -296,7 +296,7 @@ const principal = ({ address, tileSizeInPixels, colors, baseId }) => {
 		y: 0,
 		color: colors[ 0 ],
 		id: baseId,
-	}))
+	})).toBe(true)
 	expect(tileSectorCenterIsColor({
 		originInPixels,
 		tileSizeInPixels,
@@ -305,7 +305,7 @@ const principal = ({ address, tileSizeInPixels, colors, baseId }) => {
 		y: 1,
 		color: colors[ 1 ],
 		id: baseId + 1,
-	}))
+	})).toBe(true)
 }
 
 const minor = ({ address, tileSizeInPixels, colors, baseId }) => {
@@ -318,7 +318,7 @@ const minor = ({ address, tileSizeInPixels, colors, baseId }) => {
 		y: 0,
 		color: colors[ 0 ],
 		id: baseId,
-	}))
+	})).toBe(true)
 	expect(tileSectorCenterIsColor({
 		originInPixels,
 		tileSizeInPixels,
@@ -327,12 +327,20 @@ const minor = ({ address, tileSizeInPixels, colors, baseId }) => {
 		y: 1,
 		color: colors[ 1 ],
 		id: baseId + 1,
-	}))
+	})).toBe(true)
 }
 
 const solid = ({ address, tileSizeInPixels, color, baseId }) => {
 	const originInPixels = [ address[ 0 ] * tileSizeInPixels, address[ 1 ] * tileSizeInPixels ]
-	expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, n: 1, x: 0, y: 0, color, id: baseId }))
+	expect(tileSectorCenterIsColor({
+		originInPixels,
+		tileSizeInPixels,
+		n: 1,
+		x: 0,
+		y: 0,
+		color,
+		id: baseId,
+	})).toBe(true)
 }
 
 const expectSector = ({ expectedSector, address, tileSizeInPixels, solidColor }) => {
