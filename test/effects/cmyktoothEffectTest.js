@@ -5,21 +5,16 @@ import composeMainHoundstooth from '../../../../src/store/composeMainHoundstooth
 import activateTestMarkerCanvas from '../../../../test/integration/helpers/activateTestMarkerCanvas'
 import { TRANSPARENT } from '../../../../src/constants'
 import codeUtilities from '../../../../src/utilities/codeUtilities'
-
-const thisIterationFrameOnly = frame => ({
-	basePattern: {
-		iterationSettings: {
-			startIterationFrame: frame,
-			endIterationFrame: frame,
-		},
-	},
-})
+import thisFrameOnly from '../../../../test/integration/helpers/thisFrameOnly'
 
 describe('cmyktooth effect test', () => {
+	let thisIterationFrameOnly
+	beforeEach(() => thisIterationFrameOnly = thisFrameOnly.thisIterationFrameOnly)
+
 	it('the absolute center is always blank', () => {
 		composeMainHoundstooth({
 			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: thisIterationFrameOnly(32),
+			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(32) } },
 		})
 		activateTestMarkerCanvas()
 
@@ -38,7 +33,7 @@ describe('cmyktooth effect test', () => {
 	it('iteration 0 is totally blank', () => {
 		composeMainHoundstooth({
 			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: thisIterationFrameOnly(0),
+			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(0) } },
 		})
 		activateTestMarkerCanvas()
 
@@ -63,7 +58,7 @@ describe('cmyktooth effect test', () => {
 	it('iteration 1 is black, grain going to the right', () => {
 		composeMainHoundstooth({
 			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: thisIterationFrameOnly(1),
+			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(1) } },
 		})
 		activateTestMarkerCanvas()
 
@@ -96,7 +91,7 @@ describe('cmyktooth effect test', () => {
 	it('iteration 2 is cyan, grain going to the right bottom', () => {
 		composeMainHoundstooth({
 			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: thisIterationFrameOnly(2),
+			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(2) } },
 		})
 		activateTestMarkerCanvas()
 
@@ -129,7 +124,7 @@ describe('cmyktooth effect test', () => {
 	it('iteration 3 is magenta, grain going to the bottom', () => {
 		composeMainHoundstooth({
 			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: thisIterationFrameOnly(3),
+			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(3) } },
 		})
 		activateTestMarkerCanvas()
 
@@ -231,7 +226,7 @@ describe('cmyktooth effect test', () => {
 	it('iteration 4 is yellow, grain going to the bottom left', () => {
 		composeMainHoundstooth({
 			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: thisIterationFrameOnly(4),
+			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(4) } },
 		})
 		activateTestMarkerCanvas()
 
