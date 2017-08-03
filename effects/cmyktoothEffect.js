@@ -6,6 +6,7 @@ import cmyktoothTileSize from '../src/utilities/cmyktoothTileSize'
 import cmyktoothConstants from '../src/cmyktoothConstants'
 
 export default {
+	name: 'cmyktooth',
 	basePattern: {
 		tileSettings: {
 			tileSizeSetting: cmyktoothConstants.CMYKTOOTH_CANVAS_AND_INITIAL_TILE_SIZE,
