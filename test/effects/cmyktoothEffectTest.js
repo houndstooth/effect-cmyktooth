@@ -18,7 +18,7 @@ describe('cmyktooth effect test', () => {
 		})
 		activateTestMarkerCanvas()
 
-		execute({ iterating: true })
+		execute()
 
 		const color = TRANSPARENT
 		const tileSizeInPixels = 800
@@ -37,7 +37,7 @@ describe('cmyktooth effect test', () => {
 		})
 		activateTestMarkerCanvas()
 
-		execute({ iterating: true })
+		execute()
 
 		const basicallyCheckWholeCanvasPoints = codeUtilities.iterator(8).map(x => {
 			return codeUtilities.iterator(8).map(y => {
@@ -62,7 +62,7 @@ describe('cmyktooth effect test', () => {
 		})
 		activateTestMarkerCanvas()
 
-		execute({ iterating: true })
+		execute()
 
 		const SEMI_BLACK = { r: 0, g: 0, b: 0, a: 0.5 }
 		const tileSizeInPixels = 800 / 4
@@ -95,7 +95,7 @@ describe('cmyktooth effect test', () => {
 		})
 		activateTestMarkerCanvas()
 
-		execute({ iterating: true })
+		execute()
 
 		const SEMI_CYAN = { r: 0, g: 255, b: 255, a: 0.3333 }
 		const tileSizeInPixels = 800 / 4
@@ -128,7 +128,7 @@ describe('cmyktooth effect test', () => {
 		})
 		activateTestMarkerCanvas()
 
-		execute({ iterating: true })
+		execute()
 
 		const SEMI_MAGENTA = { r: 255, g: 0, b: 255, a: 0.25 }
 		const tileSizeInPixels = 800 / 8
@@ -230,7 +230,7 @@ describe('cmyktooth effect test', () => {
 		})
 		activateTestMarkerCanvas()
 
-		execute({ iterating: true })
+		execute()
 
 		const SEMI_YELLOW = { r: 255, g: 255, b: 0, a: 0.2 }
 		const tileSizeInPixels = 800 / 8
