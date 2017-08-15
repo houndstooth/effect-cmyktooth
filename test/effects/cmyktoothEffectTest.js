@@ -6,8 +6,9 @@ import activateTestMarkerCanvas from '../../../../test/integration/helpers/activ
 import { TRANSPARENT } from '../../../../src/constants'
 import codeUtilities from '../../../../src/utilities/codeUtilities'
 import thisFrameOnly from '../../../../test/integration/helpers/thisFrameOnly'
+import setupCanvases from '../../../../src/application/setupCanvases'
 
-describe('cmyktooth effect test', () => {
+describe('cmyktooth effect', () => {
 	let thisIterationFrameOnly
 	beforeEach(() => thisIterationFrameOnly = thisFrameOnly.thisIterationFrameOnly)
 
@@ -16,6 +17,7 @@ describe('cmyktooth effect test', () => {
 			houndstoothEffects: [ cmyktoothEffect ],
 			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(32) } },
 		})
+		setupCanvases()
 		activateTestMarkerCanvas()
 
 		execute()
@@ -35,6 +37,7 @@ describe('cmyktooth effect test', () => {
 			houndstoothEffects: [ cmyktoothEffect ],
 			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(0) } },
 		})
+		setupCanvases()
 		activateTestMarkerCanvas()
 
 		execute()
@@ -60,6 +63,7 @@ describe('cmyktooth effect test', () => {
 			houndstoothEffects: [ cmyktoothEffect ],
 			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(1) } },
 		})
+		setupCanvases()
 		activateTestMarkerCanvas()
 
 		execute()
@@ -93,6 +97,7 @@ describe('cmyktooth effect test', () => {
 			houndstoothEffects: [ cmyktoothEffect ],
 			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(2) } },
 		})
+		setupCanvases()
 		activateTestMarkerCanvas()
 
 		execute()
@@ -126,6 +131,7 @@ describe('cmyktooth effect test', () => {
 			houndstoothEffects: [ cmyktoothEffect ],
 			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(3) } },
 		})
+		setupCanvases()
 		activateTestMarkerCanvas()
 
 		execute()
@@ -228,6 +234,7 @@ describe('cmyktooth effect test', () => {
 			houndstoothEffects: [ cmyktoothEffect ],
 			houndstoothOverrides: { basePattern: { iterationSettings: thisIterationFrameOnly(4) } },
 		})
+		setupCanvases()
 		activateTestMarkerCanvas()
 
 		execute()

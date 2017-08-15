@@ -1,7 +1,7 @@
 import cmyktoothColorSet from '../../../src/utilities/cmyktoothColorSet'
 import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../src/constants'
 import store from '../../../../../store'
-import resetStore from '../../../../../test/helpers/resetStore'
+import resetStore from '../../../../../src/store/resetStore'
 
 describe('cmyktooth color set', () => {
 	beforeEach(() => resetStore(store))

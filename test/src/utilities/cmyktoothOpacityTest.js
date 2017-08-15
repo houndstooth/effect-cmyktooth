@@ -1,6 +1,6 @@
 import cmyktoothOpacity from '../../../src/utilities/cmyktoothOpacity'
 import store from '../../../../../store'
-import resetStore from '../../../../../test/helpers/resetStore'
+import resetStore from '../../../../../src/store/resetStore'
 
 describe('cmyktooth opacity', () => {
 	beforeEach(() => resetStore(store))
