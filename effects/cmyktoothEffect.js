@@ -29,7 +29,7 @@ export default {
 		},
 		iterationSettings: {
 			startIterationFrame: 0,
-			endIterationFrame: 16,
+			endIterationFrame: cmyktoothConstants.CMYKTOOTH_ITERATION_COUNT,
 		},
 	},
 	iterationsPattern: {
