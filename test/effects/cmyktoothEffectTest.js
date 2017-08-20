@@ -1,24 +1,23 @@
 import cmyktoothEffect from '../../effects/cmyktoothEffect'
 import tileSectorCenterIsColor from '../../../../test/integration/helpers/tileSectorCenterIsColor'
-import execute from '../../../../src/application/execute'
-import composeMainHoundstooth from '../../../../src/store/composeMainHoundstooth'
+import executeSelectedHoundstoothEffects from '../../../../src/interface/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from '../../../../test/integration/helpers/activateTestMarkerCanvas'
 import { TRANSPARENT } from '../../../../src/constants'
 import codeUtilities from '../../../../src/utilities/codeUtilities'
 import thisFrameOnly from '../../../../test/integration/helpers/thisFrameOnly'
+import store from '../../../../store'
 
 describe('cmyktooth effect', () => {
 	let thisLayerOnly
 	beforeEach(() => thisLayerOnly = thisFrameOnly.thisLayerOnly)
 
 	it('the absolute center is always blank', () => {
-		composeMainHoundstooth({
-			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: { basePattern: { layerSettings: thisLayerOnly(32) } },
-		})
+		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(32) } }
+
 		activateTestMarkerCanvas()
 
-		execute()
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const color = TRANSPARENT
 		const tileSizeInPixels = 800
@@ -31,13 +30,11 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 0 is totally blank', () => {
-		composeMainHoundstooth({
-			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: { basePattern: { layerSettings: thisLayerOnly(0) } },
-		})
+		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(0) } }
 		activateTestMarkerCanvas()
 
-		execute()
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const basicallyCheckWholeCanvasPoints = codeUtilities.iterator(8).map(x => {
 			return codeUtilities.iterator(8).map(y => {
@@ -56,13 +53,11 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 1 is black, grain going to the right', () => {
-		composeMainHoundstooth({
-			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: { basePattern: { layerSettings: thisLayerOnly(1) } },
-		})
+		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(1) } }
 		activateTestMarkerCanvas()
 
-		execute()
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_BLACK = { r: 0, g: 0, b: 0, a: 0.5 }
 		const tileSizeInPixels = 800 / 4
@@ -89,13 +84,11 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 2 is cyan, grain going to the right bottom', () => {
-		composeMainHoundstooth({
-			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: { basePattern: { layerSettings: thisLayerOnly(2) } },
-		})
+		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(2) } }
 		activateTestMarkerCanvas()
 
-		execute()
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_CYAN = { r: 0, g: 255, b: 255, a: 0.3333 }
 		const tileSizeInPixels = 800 / 4
@@ -122,13 +115,11 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 3 is magenta, grain going to the bottom', () => {
-		composeMainHoundstooth({
-			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: { basePattern: { layerSettings: thisLayerOnly(3) } },
-		})
+		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(3) } }
 		activateTestMarkerCanvas()
 
-		execute()
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_MAGENTA = { r: 255, g: 0, b: 255, a: 0.25 }
 		const tileSizeInPixels = 800 / 8
@@ -224,13 +215,11 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 4 is yellow, grain going to the bottom left', () => {
-		composeMainHoundstooth({
-			houndstoothEffects: [ cmyktoothEffect ],
-			houndstoothOverrides: { basePattern: { layerSettings: thisLayerOnly(4) } },
-		})
+		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(4) } }
 		activateTestMarkerCanvas()
 
-		execute()
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_YELLOW = { r: 255, g: 255, b: 0, a: 0.2 }
 		const tileSizeInPixels = 800 / 8
