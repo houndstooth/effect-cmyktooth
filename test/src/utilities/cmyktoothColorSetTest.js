@@ -7,21 +7,21 @@ describe('cmyktooth color set', () => {
 	beforeEach(() => resetStore(store))
 
 	it('cycles through Cyan, Magenta, Yellow, and blacK, with the other color always transparent', () => {
-		store.iterationFrame = 0
+		store.currentLayer = 0
 		expect(cmyktoothColorSet()).toEqual([ BLACK, TRANSPARENT ])
-		store.iterationFrame = 1
+		store.currentLayer = 1
 		expect(cmyktoothColorSet()).toEqual([ CYAN, TRANSPARENT ])
-		store.iterationFrame = 2
+		store.currentLayer = 2
 		expect(cmyktoothColorSet()).toEqual([ MAGENTA, TRANSPARENT ])
-		store.iterationFrame = 3
+		store.currentLayer = 3
 		expect(cmyktoothColorSet()).toEqual([ YELLOW, TRANSPARENT ])
-		store.iterationFrame = 4
+		store.currentLayer = 4
 		expect(cmyktoothColorSet()).toEqual([ BLACK, TRANSPARENT ])
-		store.iterationFrame = 5
+		store.currentLayer = 5
 		expect(cmyktoothColorSet()).toEqual([ CYAN, TRANSPARENT ])
-		store.iterationFrame = 6
+		store.currentLayer = 6
 		expect(cmyktoothColorSet()).toEqual([ MAGENTA, TRANSPARENT ])
-		store.iterationFrame = 7
+		store.currentLayer = 7
 		expect(cmyktoothColorSet()).toEqual([ YELLOW, TRANSPARENT ])
 	})
 })

@@ -27,12 +27,12 @@ export default {
 				offsetAddress: cmyktoothOffsetAddress,
 			},
 		},
-		iterationSettings: {
-			startIterationFrame: 0,
-			endIterationFrame: cmyktoothConstants.CMYKTOOTH_ITERATION_COUNT,
+		layerSettings: {
+			startLayer: 0,
+			endLayer: cmyktoothConstants.CMYKTOOTH_LAYER_COUNT,
 		},
 	},
-	iterationsPattern: {
+	layersPattern: {
 		tileSettings: {
 			tileSizeSetting: cmyktoothTileSize,
 		},

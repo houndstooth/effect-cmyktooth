@@ -6,21 +6,21 @@ describe('cmyktooth opacity', () => {
 	beforeEach(() => resetStore(store))
 
 	it('decreases harmonically, starting with half', () => {
-		store.iterationFrame = 0
+		store.currentLayer = 0
 		expect(cmyktoothOpacity()).toBe(1/2)
-		store.iterationFrame = 1
+		store.currentLayer = 1
 		expect(cmyktoothOpacity()).toBe(1/3)
-		store.iterationFrame = 2
+		store.currentLayer = 2
 		expect(cmyktoothOpacity()).toBe(1/4)
-		store.iterationFrame = 3
+		store.currentLayer = 3
 		expect(cmyktoothOpacity()).toBe(1/5)
-		store.iterationFrame = 4
+		store.currentLayer = 4
 		expect(cmyktoothOpacity()).toBe(1/6)
-		store.iterationFrame = 5
+		store.currentLayer = 5
 		expect(cmyktoothOpacity()).toBe(1/7)
-		store.iterationFrame = 6
+		store.currentLayer = 6
 		expect(cmyktoothOpacity()).toBe(1/8)
-		store.iterationFrame = 7
+		store.currentLayer = 7
 		expect(cmyktoothOpacity()).toBe(1/9)
 	})
 })
