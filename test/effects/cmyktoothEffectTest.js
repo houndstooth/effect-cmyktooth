@@ -1,6 +1,6 @@
 import cmyktoothEffect from '../../effects/cmyktoothEffect'
 import tileSectorCenterIsColor from '../../../../test/integration/helpers/tileSectorCenterIsColor'
-import executeSelectedHoundstoothEffects from '../../../../src/interface/executeSelectedHoundstoothEffects'
+import executeSelectedHoundstoothEffects from '../../../../src/controls/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from '../../../../test/integration/helpers/activateTestMarkerCanvas'
 import { TRANSPARENT } from '../../../../src/constants'
 import codeUtilities from '../../../../src/utilities/codeUtilities'
