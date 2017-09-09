@@ -5,14 +5,14 @@ import activateTestMarkerCanvas from '../../../../test/integration/helpers/activ
 import { TRANSPARENT } from '../../../../src/constants'
 import codeUtilities from '../../../../src/utilities/codeUtilities'
 import thisFrameOnly from '../../../../test/integration/helpers/thisFrameOnly'
-import store from '../../../../store'
+import state from '../../../../state'
 
 describe('cmyktooth effect', () => {
 	let thisLayerOnly
 	beforeEach(() => thisLayerOnly = thisFrameOnly.thisLayerOnly)
 
 	it('the absolute center is always blank', () => {
-		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(32) } }
 
 		activateTestMarkerCanvas()
@@ -30,7 +30,7 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 0 is totally blank', () => {
-		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(0) } }
 		activateTestMarkerCanvas()
 
@@ -53,7 +53,7 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 1 is black, grain going to the right', () => {
-		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(1) } }
 		activateTestMarkerCanvas()
 
@@ -84,7 +84,7 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 2 is cyan, grain going to the right bottom', () => {
-		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(2) } }
 		activateTestMarkerCanvas()
 
@@ -115,7 +115,7 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 3 is magenta, grain going to the bottom', () => {
-		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(3) } }
 		activateTestMarkerCanvas()
 
@@ -215,7 +215,7 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 4 is yellow, grain going to the bottom left', () => {
-		store.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(4) } }
 		activateTestMarkerCanvas()
 

@@ -1,3 +1,3 @@
-import store from '../../../../store'
+import state from '../../../../state'
 
-export default () => 1 / (store.currentLayer + 2)
+export default () => 1 / (state.currentLayer + 2)
