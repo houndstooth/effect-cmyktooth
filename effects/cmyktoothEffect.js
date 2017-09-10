@@ -1,8 +1,4 @@
-import cmyktoothColorSet from '../src/utilities/cmyktoothColorSet'
-import cmyktoothViewRotationAboutCanvasCenter from '../src/utilities/cmyktoothViewRotationAboutCanvasCenter'
-import cmyktoothOffsetAddress from '../src/utilities/cmyktoothOffsetAddress'
-import cmyktoothOpacity from '../src/utilities/cmyktoothOpacity'
-import cmyktoothTileSize from '../src/utilities/cmyktoothTileSize'
+import cmyktoothSrc from '../src'
 import src from '../../../src'
 
 export default {
@@ -21,10 +17,10 @@ export default {
 			includeNegativeQuadrants: true,
 		},
 		colorSettings: {
-			set: cmyktoothColorSet(-1),
+			set: cmyktoothSrc.cmyktoothColorSet(-1),
 			opacity: .5,
 			assignment: {
-				offsetAddress: cmyktoothOffsetAddress,
+				offsetAddress: cmyktoothSrc.cmyktoothOffsetAddress,
 			},
 		},
 		layerSettings: {
@@ -34,14 +30,14 @@ export default {
 	},
 	layersPattern: {
 		tileSettings: {
-			tileSizeSetting: cmyktoothTileSize,
+			tileSizeSetting: cmyktoothSrc.cmyktoothTileSize,
 		},
 		colorSettings: {
-			set: cmyktoothColorSet,
-			opacity: cmyktoothOpacity,
+			set: cmyktoothSrc.cmyktoothColorSet,
+			opacity: cmyktoothSrc.cmyktoothOpacity,
 		},
 		viewSettings: {
-			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter,
+			rotateViewAboutCanvasCenter: cmyktoothSrc.cmyktoothViewRotationAboutCanvasCenter,
 		},
 	},
 }

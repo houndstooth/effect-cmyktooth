@@ -1,4 +1,4 @@
-import cmyktoothColorSet from '../../../src/utilities/cmyktoothColorSet'
+import cmyktoothColorSet from '../../../src/components/cmyktoothColorSet'
 import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../src/constants'
 import state from '../../../../../state'
 import resetState from '../../../../../src/store/resetState'

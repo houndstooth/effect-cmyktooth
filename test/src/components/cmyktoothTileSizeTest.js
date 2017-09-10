@@ -1,4 +1,4 @@
-import cmyktoothTileSize from '../../../src/utilities/cmyktoothTileSize'
+import cmyktoothTileSize from '../../../src/components/cmyktoothTileSize'
 import isCloseTo from '../../../../../test/helpers/isCloseTo'
 
 describe('cmyktooth tile size', () => {
