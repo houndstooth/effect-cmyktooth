@@ -17,7 +17,7 @@ export default {
 			includeNegativeQuadrants: true,
 		},
 		colorSettings: {
-			set: cmyktoothSrc.cmyktoothColorSet(-1),
+			colorSet: cmyktoothSrc.cmyktoothColorSet(-1),
 			opacity: .5,
 			assignment: {
 				offsetAddress: cmyktoothSrc.cmyktoothOffsetAddress,
@@ -33,7 +33,7 @@ export default {
 			tileSizeSetting: cmyktoothSrc.cmyktoothTileSize,
 		},
 		colorSettings: {
-			set: cmyktoothSrc.cmyktoothColorSet,
+			colorSet: cmyktoothSrc.cmyktoothColorSet,
 			opacity: cmyktoothSrc.cmyktoothOpacity,
 		},
 		viewSettings: {
