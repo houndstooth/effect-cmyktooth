@@ -1,10 +1,8 @@
 import components from './components'
-import outlines from './outlines'
-import render from './render'
+import view from './view'
 
 const { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize } = components
-const { cmyktoothViewRotationAboutCanvasCenter } = outlines
-const { cmyktoothOpacity } = render
+const { cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } = view
 
 export default {
 	cmyktoothColorSet,

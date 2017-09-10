@@ -1,4 +1,4 @@
-import cmyktoothOpacity from '../../../src/render/cmyktoothOpacity'
+import cmyktoothOpacity from '../../../src/view/cmyktoothOpacity'
 import state from '../../../../../state'
 import resetState from '../../../../../src/store/resetState'
 
