@@ -8,7 +8,7 @@ export default {
 			tileSizeSetting: src.houndstoothDefaults.CANVAS_SIZE,
 		},
 		viewSettings: {
-			centerViewOnCenterOfTileAtZeroZeroAddress: true,
+			centerViewOnCenterOfTileAtHomeAddress: true,
 			rotateViewAboutCanvasCenter: 0,
 			canvasSize: src.houndstoothDefaults.CANVAS_SIZE,
 		},
