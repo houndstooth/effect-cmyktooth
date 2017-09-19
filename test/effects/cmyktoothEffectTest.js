@@ -3,7 +3,7 @@ import tileSectorCenterIsColor from '../../../../test/integration/helpers/tileSe
 import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from '../../../../test/integration/helpers/activateTestMarkerCanvas'
 import { TRANSPARENT } from '../../../../src/constants'
-import codeUtilities from '../../../../src/utilities/codeUtilities'
+import { iterator } from '../../../../src/utilities/codeUtilities'
 import thisFrameOnly from '../../../../test/integration/helpers/thisFrameOnly'
 import state from '../../../../state'
 
@@ -36,8 +36,8 @@ describe('cmyktooth effect', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const basicallyCheckWholeCanvasPoints = codeUtilities.iterator(8).map(x => {
-			return codeUtilities.iterator(8).map(y => {
+		const basicallyCheckWholeCanvasPoints = iterator(8).map(x => {
+			return iterator(8).map(y => {
 				return [ x * 100, y * 100 ]
 			})
 		}).reduce((a, b) => a.concat(b))
