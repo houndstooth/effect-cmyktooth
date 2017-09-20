@@ -1,16 +1,16 @@
 import cmyktoothSrc from '../src'
-import src from '../../../src'
+import { houndstoothDefaults } from '../../../src'
 
 export default {
 	name: 'cmyktooth',
 	basePattern: {
 		tileSettings: {
-			tileSizeSetting: src.houndstoothDefaults.CANVAS_SIZE,
+			tileSizeSetting: houndstoothDefaults.CANVAS_SIZE,
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtHomeAddress: true,
 			rotateViewAboutCanvasCenter: 0,
-			canvasSize: src.houndstoothDefaults.CANVAS_SIZE,
+			canvasSize: houndstoothDefaults.CANVAS_SIZE,
 		},
 		gridSettings: {
 			gridSize: 31,
