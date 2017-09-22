@@ -1,10 +1,7 @@
-import components from './components'
-import view from './view'
+import { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize } from './components'
+import { cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } from './view'
 
-const { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize } = components
-const { cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } = view
-
-export default {
+export {
 	cmyktoothColorSet,
 	cmyktoothOffsetAddress,
 	cmyktoothOpacity,

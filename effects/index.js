@@ -1,5 +1,3 @@
 import cmyktoothEffect from './cmyktoothEffect'
 
-export default {
-	cmyktoothEffect,
-}
+export { cmyktoothEffect }

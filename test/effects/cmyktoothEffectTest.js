@@ -4,13 +4,10 @@ import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSe
 import activateTestMarkerCanvas from '../../../../test/integration/helpers/activateTestMarkerCanvas'
 import { TRANSPARENT } from '../../../../src/constants'
 import { iterator } from '../../../../src/utilities/codeUtilities'
-import thisFrameOnly from '../../../../test/integration/helpers/thisFrameOnly'
+import { thisLayerOnly } from '../../../../test/integration/helpers/thisFrameOnly'
 import state from '../../../../state'
 
 describe('cmyktooth effect', () => {
-	let thisLayerOnly
-	beforeEach(() => thisLayerOnly = thisFrameOnly.thisLayerOnly)
-
 	it('the absolute center is always blank', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(32) } }

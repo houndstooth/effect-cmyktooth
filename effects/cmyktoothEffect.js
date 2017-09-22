@@ -1,4 +1,4 @@
-import cmyktoothSrc from '../src'
+import { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize, cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } from '../src'
 import { houndstoothDefaults } from '../../../src'
 
 export default {
@@ -17,10 +17,10 @@ export default {
 			includeNegativeQuadrants: true,
 		},
 		colorSettings: {
-			colorSet: cmyktoothSrc.cmyktoothColorSet(-1),
+			colorSet: cmyktoothColorSet(-1),
 			opacity: .5,
 			assignment: {
-				offsetAddress: cmyktoothSrc.cmyktoothOffsetAddress,
+				offsetAddress: cmyktoothOffsetAddress,
 			},
 		},
 		layerSettings: {
@@ -30,14 +30,14 @@ export default {
 	},
 	layersPattern: {
 		tileSettings: {
-			tileSizeSetting: cmyktoothSrc.cmyktoothTileSize,
+			tileSizeSetting: cmyktoothTileSize,
 		},
 		colorSettings: {
-			colorSet: cmyktoothSrc.cmyktoothColorSet,
-			opacity: cmyktoothSrc.cmyktoothOpacity,
+			colorSet: cmyktoothColorSet,
+			opacity: cmyktoothOpacity,
 		},
 		viewSettings: {
-			rotateViewAboutCanvasCenter: cmyktoothSrc.cmyktoothViewRotationAboutCanvasCenter,
+			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter,
 		},
 	},
 }

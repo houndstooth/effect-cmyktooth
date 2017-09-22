@@ -1,7 +1,3 @@
-import effects from './effects'
+import { cmyktoothEffect } from './effects'
 
-const { cmyktoothEffect } = effects
-
-export default {
-	cmyktoothEffect,
-}
+export { cmyktoothEffect }

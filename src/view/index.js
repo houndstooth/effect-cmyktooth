@@ -1,7 +1,7 @@
 import cmyktoothOpacity from './cmyktoothOpacity'
 import cmyktoothViewRotationAboutCanvasCenter from './cmyktoothViewRotationAboutCanvasCenter'
 
-export default {
+export {
 	cmyktoothOpacity,
 	cmyktoothViewRotationAboutCanvasCenter,
 }
