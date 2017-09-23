@@ -1,3 +1,5 @@
 import state from '../../../../state'
 
-export default () => 1 / (state.currentLayer + 2)
+const cmyktoothOpacity = () => 1 / (state.currentLayer + 2)
+
+export default cmyktoothOpacity

@@ -3,4 +3,6 @@ import state from '../../../../state'
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 
-export default () => [ CMYKTOOTH_COLORS[ state.currentLayer % 4 ], TRANSPARENT ]
+const cmyktoothColorSet = () => [ CMYKTOOTH_COLORS[ state.currentLayer % 4 ], TRANSPARENT ]
+
+export default cmyktoothColorSet

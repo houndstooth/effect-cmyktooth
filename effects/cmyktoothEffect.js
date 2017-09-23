@@ -1,7 +1,7 @@
 import { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize, cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } from '../src'
 import { houndstoothDefaults } from '../../../src'
 
-export default {
+const cmyktoothEffect = {
 	name: 'cmyktooth',
 	basePattern: {
 		tileSettings: {
@@ -41,3 +41,5 @@ export default {
 		},
 	},
 }
+
+export default cmyktoothEffect

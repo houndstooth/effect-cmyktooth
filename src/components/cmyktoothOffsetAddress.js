@@ -1,1 +1,3 @@
-export default () => [ 1, 0 ]
+const cmyktoothOffsetAddress = () => [ 1, 0 ]
+
+export default cmyktoothOffsetAddress
