@@ -1,5 +1,6 @@
-import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
-import state from '../../../../state'
+import { constants, state } from '../../../../src'
+
+const { BLACK, CYAN, MAGENTA, YELLOW, TRANSPARENT } = constants
 
 const CMYKTOOTH_COLORS = [ BLACK, CYAN, MAGENTA, YELLOW ]
 

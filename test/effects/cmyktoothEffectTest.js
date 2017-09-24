@@ -5,7 +5,7 @@ import activateTestMarkerCanvas from '../../../../test/integration/helpers/activ
 import { TRANSPARENT } from '../../../../src/constants'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 import { thisLayerOnly } from '../../../../test/integration/helpers/thisFrameOnly'
-import state from '../../../../state'
+import state from '../../../../src/state'
 
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', () => {

@@ -1,5 +1,5 @@
-import { EIGHTH_OF_CIRCLE_ROTATION } from '../../../../src/constants'
+import { constants } from '../../../../src'
 
-const cmyktoothViewRotationAboutCanvasCenter = p => p + EIGHTH_OF_CIRCLE_ROTATION
+const cmyktoothViewRotationAboutCanvasCenter = p => p + constants.EIGHTH_OF_CIRCLE_ROTATION
 
 export default cmyktoothViewRotationAboutCanvasCenter
