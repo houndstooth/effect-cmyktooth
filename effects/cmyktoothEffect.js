@@ -1,16 +1,16 @@
 import { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize, cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } from '../src'
-import { houndstoothDefaults } from '../../../src'
+import { defaults } from '../../../src'
 
 const cmyktoothEffect = {
 	name: 'cmyktooth',
 	basePattern: {
 		tileSettings: {
-			tileSizeSetting: houndstoothDefaults.CANVAS_SIZE,
+			tileSizeSetting: defaults.DEFAULT_CANVAS_SIZE,
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtHomeAddress: true,
 			rotateViewAboutCanvasCenter: 0,
-			canvasSize: houndstoothDefaults.CANVAS_SIZE,
+			canvasSize: defaults.DEFAULT_CANVAS_SIZE,
 		},
 		gridSettings: {
 			gridSize: 31,
