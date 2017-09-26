@@ -1,6 +1,6 @@
-import cmyktoothOpacity from '../../../src/view/cmyktoothOpacity'
-import state from '../../../../../src/state'
-import resetState from '../../../../../src/store/resetState'
+import cmyktoothOpacity from '../../../../src/view/cmyktoothOpacity'
+import state from '../../../../../../src/state'
+import resetState from '../../../../../../src/store/resetState'
 
 describe('cmyktooth opacity', () => {
 	beforeEach(() => resetState(state))

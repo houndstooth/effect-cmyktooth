@@ -1,7 +1,7 @@
-import cmyktoothColorSet from '../../../src/components/cmyktoothColorSet'
-import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../src/constants'
-import state from '../../../../../src/state'
-import resetState from '../../../../../src/store/resetState'
+import cmyktoothColorSet from '../../../../src/components/cmyktoothColorSet'
+import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../../src/constants'
+import state from '../../../../../../src/state'
+import resetState from '../../../../../../src/store/resetState'
 
 describe('cmyktooth color set', () => {
 	beforeEach(() => resetState(state))
