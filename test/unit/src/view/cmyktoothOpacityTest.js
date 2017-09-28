@@ -1,10 +1,7 @@
 import cmyktoothOpacity from '../../../../src/view/cmyktoothOpacity'
 import state from '../../../../../../src/state'
-import resetState from '../../../../../../src/store/resetState'
 
 describe('cmyktooth opacity', () => {
-	beforeEach(() => resetState(state))
-
 	it('decreases harmonically, starting with half', () => {
 		state.currentLayer = 0
 		expect(cmyktoothOpacity()).toBe(1/2)
