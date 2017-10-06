@@ -17,7 +17,7 @@ const cmyktoothEffect = {
 			includeNegativeQuadrants: true,
 		},
 		colorSettings: {
-			colorSet: cmyktoothColorSet(-1),
+			colorSet: cmyktoothColorSet(),
 			opacity: .5,
 			assignment: {
 				offsetAddress: cmyktoothOffsetAddress,
