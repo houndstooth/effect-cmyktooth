@@ -330,7 +330,9 @@ const solid = ({ address, tileSizeInPixels, color, baseId } : { address, tileSiz
 }
 
 const expectSector = ({ expectedSector, address, tileSizeInPixels, solidColor }) => {
-	let method, color, colors
+	let method
+	let color
+	let colors
 	if (expectedSector[ 0 ] === 'solid') {
 		if (expectedSector[ 1 ] === 'trans') color = TRANSPARENT
 		if (expectedSector[ 1 ] === 'color') color = solidColor
