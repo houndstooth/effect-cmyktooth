@@ -334,8 +334,12 @@ const expectSector = ({ expectedSector, address, tileSizeInPixels, solidColor })
 	let color
 	let colors
 	if (expectedSector[ 0 ] === 'solid') {
-		if (expectedSector[ 1 ] === 'trans') color = TRANSPARENT
-		if (expectedSector[ 1 ] === 'color') color = solidColor
+		if (expectedSector[ 1 ] === 'trans') {
+			color = TRANSPARENT
+		}
+		if (expectedSector[ 1 ] === 'color') {
+			color = solidColor
+		}
 
 		solid({ address, tileSizeInPixels, color })
 	}
@@ -343,11 +347,19 @@ const expectSector = ({ expectedSector, address, tileSizeInPixels, solidColor })
 		principal({ address, tileSizeInPixels, colors: [ solidColor, solidColor ] })
 	}
 	else {
-		if (expectedSector[ 0 ] === 'minor') method = minor
-		if (expectedSector[ 0 ] === 'princ') method = principal
+		if (expectedSector[ 0 ] === 'minor') {
+			method = minor
+		}
+		if (expectedSector[ 0 ] === 'princ') {
+			method = principal
+		}
 
-		if (expectedSector[ 1 ] === 'trans') colors = [ TRANSPARENT, solidColor ]
-		if (expectedSector[ 1 ] === 'color') colors = [ solidColor, TRANSPARENT ]
+		if (expectedSector[ 1 ] === 'trans') {
+			colors = [ TRANSPARENT, solidColor ]
+		}
+		if (expectedSector[ 1 ] === 'color') {
+			colors = [ solidColor, TRANSPARENT ]
+		}
 
 		method({ address, tileSizeInPixels, colors })
 	}
