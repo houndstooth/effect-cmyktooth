@@ -1,4 +1,10 @@
-import { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize, cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } from '../src'
+import {
+	cmyktoothColorSet,
+	cmyktoothOffsetAddress,
+	cmyktoothTileSize,
+	cmyktoothOpacity,
+	cmyktoothViewRotationAboutCanvasCenter,
+} from '../src'
 import { defaults } from '../../../src'
 
 const cmyktoothEffect = {
