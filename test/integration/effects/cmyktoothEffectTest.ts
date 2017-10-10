@@ -33,9 +33,9 @@ describe('cmyktooth effect', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const basicallyCheckWholeCanvasPoints = iterator(8).map(x => {
-			return iterator(8).map(y => {
-				return [ x * 100, y * 100 ]
+		const basicallyCheckWholeCanvasPoints = iterator(8).map(canvasX => {
+			return iterator(8).map(canvasY => {
+				return [ canvasX * 100, canvasY * 100 ]
 			})
 		}).reduce((a, b) => a.concat(b))
 
@@ -272,7 +272,7 @@ describe('cmyktooth effect', () => {
 	})
 })
 
-const principal = ({ address, tileSizeInPixels, colors, baseId } : { address, tileSizeInPixels, colors, baseId? }) => {
+const principal = ({ address, tileSizeInPixels, colors, baseId }: { address, tileSizeInPixels, colors, baseId? }) => {
 	const originInPixels = [ address[ 0 ] * tileSizeInPixels, address[ 1 ] * tileSizeInPixels ]
 	expect(tileSectorCenterIsColor({
 		originInPixels,
@@ -316,7 +316,7 @@ const minor = ({ address, tileSizeInPixels, colors, baseId }) => {
 	})).toBe(true)
 }
 
-const solid = ({ address, tileSizeInPixels, color, baseId } : { address, tileSizeInPixels, color, baseId? }) => {
+const solid = ({ address, tileSizeInPixels, color, baseId }: { address, tileSizeInPixels, color, baseId? }) => {
 	const originInPixels = [ address[ 0 ] * tileSizeInPixels, address[ 1 ] * tileSizeInPixels ]
 	expect(tileSectorCenterIsColor({
 		originInPixels,
