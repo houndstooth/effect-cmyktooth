@@ -9,7 +9,7 @@ import state from '../../../../../src/state'
 import * as sectionExpections from '../helpers/sectionExpections'
 import { Fill, SectionExpectation } from '../helpers/types'
 import { Diagonal } from '../../../../../test/integration/helpers/types'
-import { Address } from '../../../../../src'
+import { Address, Coordinate } from '../../../../../src'
 
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', () => {
@@ -22,7 +22,7 @@ describe('cmyktooth effect', () => {
 
 		const color = TRANSPARENT
 		const areaSize = 800
-		const areaOrigin = [ 0, 0 ]
+		const areaOrigin = [ 0, 0 ] as Coordinate
 		const sectionAddress = [ 0, 0 ] as Address
 		const sectionResolution = 1
 		const id = 0
@@ -38,7 +38,7 @@ describe('cmyktooth effect', () => {
 
 		const basicallyCheckWholeCanvasPoints = iterator(8).map(canvasX => {
 			return iterator(8).map(canvasY => {
-				return [ canvasX * 100, canvasY * 100 ]
+				return [ canvasX * 100, canvasY * 100 ] as Coordinate
 			})
 		}).reduce((a, b) => a.concat(b))
 
@@ -62,100 +62,100 @@ describe('cmyktooth effect', () => {
 		const areaSize = 800 / 4
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 0 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 0,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 1 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 2,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 2 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ SEMI_BLACK, TRANSPARENT ],
 			baseId: 4,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 3 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			color: SEMI_BLACK,
 			baseId: 6,
 		})
 
 		sectionExpections.expectMinorDiagonalDividedSection({
-			areaOrigin: [ 0 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ SEMI_BLACK, TRANSPARENT ],
 			baseId: 8,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 1 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 10,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 2 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 12,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 3 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 14,
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 0 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ TRANSPARENT, SEMI_BLACK ],
 			baseId: 16,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 1 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 18,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 2 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 20,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 3 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 22,
 		})
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 0 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 24,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 1 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 26,
 		})
 		sectionExpections.expectMinorDiagonalDividedSection({
-			areaOrigin: [ 2 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ TRANSPARENT, SEMI_BLACK ],
 			baseId: 28,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 3 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			color: SEMI_BLACK,
 			baseId: 30,
@@ -173,100 +173,100 @@ describe('cmyktooth effect', () => {
 		const areaSize = 800 / 4
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 0 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			color: SEMI_CYAN,
 			baseId: 0,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 1 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 			baseId: 2,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 2 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 			baseId: 4,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 3 * areaSize, 0 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 0 * areaSize ] as Coordinate,
 			areaSize,
 			color: SEMI_CYAN,
 			baseId: 6,
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 0 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 			baseId: 8,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 1 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 10,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 2 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 12,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 3 * areaSize, 1 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 1 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 			baseId: 14,
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 0 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 			baseId: 16,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 1 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 18,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 2 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			color: TRANSPARENT,
 			baseId: 20,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 3 * areaSize, 2 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 2 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 			baseId: 22,
 		})
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 0 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 0 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			color: SEMI_CYAN,
 			baseId: 24,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 1 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 1 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 			baseId: 26,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ 2 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 2 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 			baseId: 28,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ 3 * areaSize, 3 * areaSize ],
+			areaOrigin: [ 3 * areaSize, 3 * areaSize ] as Coordinate,
 			areaSize,
 			color: SEMI_CYAN,
 			baseId: 30,
@@ -370,7 +370,7 @@ describe('cmyktooth effect', () => {
 			expectedSectionRow.forEach((expectedSection, col) => {
 				sectionExpections.expectSection({
 					expectedSection,
-					areaOrigin: [ col * areaSize, row * areaSize ],
+					areaOrigin: [ col * areaSize, row * areaSize ] as Coordinate,
 					areaSize,
 					solidColor: SEMI_MAGENTA,
 				})
@@ -435,7 +435,7 @@ describe('cmyktooth effect', () => {
 			expectedSectionRow.forEach((expectedSection, col) => {
 				sectionExpections.expectSection({
 					expectedSection,
-					areaOrigin: [ col * areaSize, row * areaSize ],
+					areaOrigin: [ col * areaSize, row * areaSize ] as Coordinate,
 					areaSize,
 					solidColor: SEMI_YELLOW,
 				})
