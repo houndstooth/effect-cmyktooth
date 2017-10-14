@@ -6,6 +6,7 @@ import {
 	ExpectDiagonalDividedSection,
 	ExpectSolidSection,
 } from '../../../../../test/integration/helpers/types'
+import Address from '../../../../../src/components/types/Address'
 
 const expectSection: ExpectSection = ({ expectedSection, areaSize, solidColor, areaOrigin }) => {
 	let method
@@ -51,7 +52,7 @@ const expectSolidSection: ExpectSolidSection = ({ areaSize, areaOrigin, color, b
 		areaOrigin,
 		areaSize,
 		sectionResolution: 1,
-		sectionAddress: [ 0, 0 ],
+		sectionAddress: [ 0, 0 ] as Address,
 		color,
 		id: baseId,
 	})).toBe(true)
@@ -62,7 +63,7 @@ const expectMinorDiagonalDividedSection: ExpectDiagonalDividedSection = ({ areaS
 		areaOrigin,
 		areaSize,
 		sectionResolution: 2,
-		sectionAddress: [ 0, 0 ],
+		sectionAddress: [ 0, 0 ] as Address,
 		color: colors[ 0 ],
 		id: baseId,
 	})).toBe(true)
@@ -70,7 +71,7 @@ const expectMinorDiagonalDividedSection: ExpectDiagonalDividedSection = ({ areaS
 		areaOrigin,
 		areaSize,
 		sectionResolution: 2,
-		sectionAddress: [ 1, 1 ],
+		sectionAddress: [ 1, 1 ] as Address,
 		color: colors[ 1 ],
 		id: baseId + 1,
 	})).toBe(true)
@@ -82,7 +83,7 @@ const expectPrincipalDiagonalDividedSection: ExpectDiagonalDividedSection = para
 		areaOrigin,
 		areaSize,
 		sectionResolution: 2,
-		sectionAddress: [ 1, 0 ],
+		sectionAddress: [ 1, 0 ] as Address,
 		color: colors[ 0 ],
 		id: baseId,
 	})).toBe(true)
@@ -90,7 +91,7 @@ const expectPrincipalDiagonalDividedSection: ExpectDiagonalDividedSection = para
 		areaOrigin,
 		areaSize,
 		sectionResolution: 2,
-		sectionAddress: [ 0, 1 ],
+		sectionAddress: [ 0, 1 ] as Address,
 		color: colors[ 1 ],
 		id: baseId + 1,
 	})).toBe(true)

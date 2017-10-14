@@ -9,6 +9,7 @@ import state from '../../../../../src/state'
 import * as sectionExpections from '../helpers/sectionExpections'
 import { Fill, SectionExpectation } from '../helpers/types'
 import { Diagonal } from '../../../../../test/integration/helpers/types'
+import { Address } from '../../../../../src'
 
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', () => {
@@ -22,7 +23,7 @@ describe('cmyktooth effect', () => {
 		const color = TRANSPARENT
 		const areaSize = 800
 		const areaOrigin = [ 0, 0 ]
-		const sectionAddress = [ 0, 0 ]
+		const sectionAddress = [ 0, 0 ] as Address
 		const sectionResolution = 1
 		const id = 0
 		expect(sectionCenterIsColor({ areaOrigin, areaSize, sectionAddress, sectionResolution, color, id }))
@@ -43,7 +44,7 @@ describe('cmyktooth effect', () => {
 
 		const color = TRANSPARENT
 		const areaSize = 100
-		const sectionAddress = [ 0, 0 ]
+		const sectionAddress = [ 0, 0 ] as Address
 		const sectionResolution = 1
 		basicallyCheckWholeCanvasPoints.forEach((areaOrigin, id) => {
 			sectionCenterIsColor({ areaOrigin, areaSize, sectionAddress, sectionResolution, color, id })
