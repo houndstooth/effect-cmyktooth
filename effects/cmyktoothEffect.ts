@@ -5,9 +5,9 @@ import {
 	cmyktoothOpacity,
 	cmyktoothViewRotationAboutCanvasCenter,
 } from '../src'
-import { defaults } from '../../../src'
+import { defaults, Houndstooth } from '../../../src'
 
-const cmyktoothEffect = {
+const cmyktoothEffect: Houndstooth = {
 	name: 'cmyktooth',
 	basePattern: {
 		tileSettings: {
