@@ -24,7 +24,7 @@ const cmyktoothEffect: Houndstooth = {
 		},
 		colorSettings: {
 			colorSet: cmyktoothColorSet(),
-			opacity: .5,
+			opacity: 0.5,
 			assignment: {
 				offsetAddress: cmyktoothOffsetAddress,
 			},

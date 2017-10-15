@@ -36,11 +36,9 @@ describe('cmyktooth effect', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const basicallyCheckWholeCanvasPoints = iterator(8).map(canvasX => {
-			return iterator(8).map(canvasY => {
-				return [ canvasX * 100, canvasY * 100 ] as Coordinate
-			})
-		}).reduce((a, b) => a.concat(b))
+		const basicallyCheckWholeCanvasPoints = iterator(8).map(canvasX =>
+			iterator(8).map(canvasY =>
+				[ canvasX * 100, canvasY * 100 ] as Coordinate)).reduce((a, b) => a.concat(b))
 
 		const color = TRANSPARENT
 		const areaSize = 100
