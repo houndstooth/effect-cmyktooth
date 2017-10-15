@@ -58,7 +58,8 @@ const expectSolidSection: ExpectSolidSection = ({ areaSize, areaOrigin, color, b
 	})).toBe(true)
 }
 
-const expectMinorDiagonalDividedSection: ExpectDiagonalDividedSection = ({ areaSize, areaOrigin, colors, baseId }) => {
+const expectMinorDiagonalDividedSection: ExpectDiagonalDividedSection = params => {
+	const { areaSize, areaOrigin, colors, baseId = 0 } = params
 	expect(sectionCenterIsColor({
 		areaOrigin,
 		areaSize,
@@ -78,7 +79,7 @@ const expectMinorDiagonalDividedSection: ExpectDiagonalDividedSection = ({ areaS
 }
 
 const expectPrincipalDiagonalDividedSection: ExpectDiagonalDividedSection = params => {
-	const { areaSize, areaOrigin, colors, baseId } = params
+	const { areaSize, areaOrigin, colors, baseId = 0 } = params
 	expect(sectionCenterIsColor({
 		areaOrigin,
 		areaSize,
