@@ -1,12 +1,12 @@
+import Address from '../../../../../src/components/types/Address'
 import { TRANSPARENT } from '../../../../../src/constants'
 import sectionCenterIsColor from '../../../../../test/integration/helpers/sectionCenterIsColor'
-import { ExpectSection, Fill } from './types'
 import {
 	Diagonal,
 	ExpectDiagonalDividedSection,
 	ExpectSolidSection,
 } from '../../../../../test/integration/helpers/types'
-import Address from '../../../../../src/components/types/Address'
+import { ExpectSection, Fill } from './types'
 
 const expectSection: ExpectSection = ({ expectedSection, areaSize, solidColor, areaOrigin }) => {
 	let method

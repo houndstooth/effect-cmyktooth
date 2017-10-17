@@ -1,5 +1,5 @@
+import { Color, Coordinate, Units } from '../../../../../src'
 import { Diagonal } from '../../../../../test/integration/helpers/types'
-import { Coordinate, Color, Units } from '../../../../../src'
 
 enum Fill {
 	Transparent = 'transparent',

@@ -1,11 +1,11 @@
+import { CanvasSize, defaults, Houndstooth } from '../../../src'
 import {
 	cmyktoothColorSet,
 	cmyktoothOffsetAddress,
-	cmyktoothTileSize,
 	cmyktoothOpacity,
+	cmyktoothTileSize,
 	cmyktoothViewRotationAboutCanvasCenter,
 } from '../src'
-import { defaults, Houndstooth, CanvasSize } from '../../../src'
 
 const cmyktoothEffect: Houndstooth = {
 	name: 'cmyktooth',

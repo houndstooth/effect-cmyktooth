@@ -1,6 +1,6 @@
-import cmyktoothColorSet from '../../../../src/components/cmyktoothColorSet'
 import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../../src/constants'
 import state from '../../../../../../src/state'
+import cmyktoothColorSet from '../../../../src/components/cmyktoothColorSet'
 
 describe('cmyktooth color set', () => {
 	it('cycles through Cyan, Magenta, Yellow, and blacK, with the other color always transparent', () => {

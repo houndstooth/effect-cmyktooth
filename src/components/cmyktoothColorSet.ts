@@ -1,4 +1,4 @@
-import { constants, state, Color } from '../../../../src'
+import { Color, constants, state } from '../../../../src'
 
 const { BLACK, CYAN, MAGENTA, YELLOW, TRANSPARENT } = constants
 

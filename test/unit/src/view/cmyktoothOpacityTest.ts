@@ -1,5 +1,5 @@
-import cmyktoothOpacity from '../../../../src/view/cmyktoothOpacity'
 import state from '../../../../../../src/state'
+import cmyktoothOpacity from '../../../../src/view/cmyktoothOpacity'
 
 describe('cmyktooth opacity', () => {
 	it('decreases harmonically, starting with half', () => {
