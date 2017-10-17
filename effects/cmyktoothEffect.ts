@@ -15,7 +15,7 @@ const cmyktoothEffect: Houndstooth = {
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtHomeAddress: true,
-			rotateViewAboutCanvasCenter: 0,
+			rotateViewAboutCanvasCenter: 0 as any,
 			canvasSize: defaults.DEFAULT_CANVAS_SIZE as CanvasSize,
 		},
 		gridSettings: {
