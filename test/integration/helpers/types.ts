@@ -8,7 +8,7 @@ enum Fill {
 
 type SectionExpectation = [ Diagonal, Fill ]
 
-type ExpectSection = {
+interface ExpectSection {
 	({}: {
 		areaOrigin: Coordinate,
 		areaSize: Units,
