@@ -10,9 +10,9 @@ type SectionExpectation = [ Diagonal, Fill ]
 
 type ExpectSection = {
 	({}: {
-		expectedSection: [ Diagonal, Fill ],
-		areaSize: Units,
 		areaOrigin: Coordinate,
+		areaSize: Units,
+		expectedSection: [ Diagonal, Fill ],
 		solidColor: Color,
 	}): void,
 }
