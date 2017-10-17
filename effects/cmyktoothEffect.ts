@@ -8,44 +8,44 @@ import {
 } from '../src'
 
 const cmyktoothEffect: Houndstooth = {
-	name: 'cmyktooth',
 	basePattern: {
-		tileSettings: {
-			tileSizeSetting: defaults.DEFAULT_CANVAS_SIZE as any,
-		},
-		viewSettings: {
-			centerViewOnCenterOfTileAtHomeAddress: true,
-			rotateViewAboutCanvasCenter: 0 as any,
-			canvasSize: defaults.DEFAULT_CANVAS_SIZE as CanvasSize,
+		colorSettings: {
+			assignment: {
+				offsetAddress: cmyktoothOffsetAddress,
+			},
+			colorSet: cmyktoothColorSet(),
+			opacity: 0.5,
 		},
 		gridSettings: {
 			gridSize: 31,
 			includeNegativeQuadrants: true,
 		},
-		colorSettings: {
-			colorSet: cmyktoothColorSet(),
-			opacity: 0.5,
-			assignment: {
-				offsetAddress: cmyktoothOffsetAddress,
-			},
-		},
 		layerSettings: {
-			startLayer: 0,
 			endLayer: 16,
+			startLayer: 0,
+		},
+		tileSettings: {
+			tileSizeSetting: defaults.DEFAULT_CANVAS_SIZE as any,
+		},
+		viewSettings: {
+			canvasSize: defaults.DEFAULT_CANVAS_SIZE as CanvasSize,
+			centerViewOnCenterOfTileAtHomeAddress: true,
+			rotateViewAboutCanvasCenter: 0 as any,
 		},
 	},
 	layersPattern: {
-		tileSettings: {
-			tileSizeSetting: cmyktoothTileSize,
-		},
 		colorSettings: {
 			colorSet: cmyktoothColorSet,
 			opacity: cmyktoothOpacity,
+		},
+		tileSettings: {
+			tileSizeSetting: cmyktoothTileSize,
 		},
 		viewSettings: {
 			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter,
 		},
 	},
+	name: 'cmyktooth',
 }
 
 export default cmyktoothEffect
