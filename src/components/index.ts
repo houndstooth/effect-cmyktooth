@@ -1,6 +1,6 @@
-import cmyktoothColorSet from './cmyktoothColorSet'
-import cmyktoothOffsetAddress from './cmyktoothOffsetAddress'
-import cmyktoothTileSize from './cmyktoothTileSize'
+import { cmyktoothColorSet } from './cmyktoothColorSet'
+import { cmyktoothOffsetAddress } from './cmyktoothOffsetAddress'
+import { cmyktoothTileSize } from './cmyktoothTileSize'
 
 export {
 	cmyktoothColorSet,

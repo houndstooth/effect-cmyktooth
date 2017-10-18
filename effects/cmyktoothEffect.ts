@@ -48,4 +48,4 @@ const cmyktoothEffect: Houndstooth = {
 	name: 'cmyktooth',
 }
 
-export default cmyktoothEffect
+export { cmyktoothEffect }

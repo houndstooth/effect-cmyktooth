@@ -1,5 +1,5 @@
-import isCloseTo from '../../../../../../test/helpers/isCloseTo'
-import cmyktoothTileSize from '../../../../src/components/cmyktoothTileSize'
+import { isCloseTo } from '../../../../../../test/helpers/isCloseTo'
+import { cmyktoothTileSize } from '../../../../src/components/cmyktoothTileSize'
 
 describe('cmyktooth tile size', () => {
 	it('reduces the size by the square root of two each layer', () => {

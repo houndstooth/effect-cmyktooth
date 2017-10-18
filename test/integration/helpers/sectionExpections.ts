@@ -1,6 +1,6 @@
-import Address from '../../../../../src/components/types/Address'
+import { Address } from '../../../../../src/components/types/Address'
 import { TRANSPARENT } from '../../../../../src/constants'
-import sectionCenterIsColor from '../../../../../test/integration/helpers/sectionCenterIsColor'
+import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
 import {
 	Diagonal,
 	ExpectDiagonalDividedSection,

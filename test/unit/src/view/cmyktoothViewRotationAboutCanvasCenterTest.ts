@@ -1,4 +1,4 @@
-import cmyktoothViewRotationAboutCanvasCenter from '../../../../src/view/cmyktoothViewRotationAboutCanvasCenter'
+import { cmyktoothViewRotationAboutCanvasCenter } from '../../../../src/view/cmyktoothViewRotationAboutCanvasCenter'
 
 describe('cmyktooth view rotation about canvas center', () => {
 	it('rotates the view an eight of the way round each layer', () => {
