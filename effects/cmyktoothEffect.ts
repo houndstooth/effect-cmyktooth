@@ -1,4 +1,5 @@
 import { CanvasSize, defaults, Houndstooth } from '../../../src'
+import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_GRID_SIZE } from '../constants'
 import {
 	cmyktoothColorSet,
 	cmyktoothOffsetAddress,
@@ -17,12 +18,12 @@ const cmyktoothEffect: Houndstooth = {
 			opacity: 0.5,
 		},
 		gridSettings: {
-			gridSize: 31,
+			gridSize: DEFAULT_CMYKTOOTH_GRID_SIZE,
 			includeNegativeQuadrants: true,
 		},
 		layerSettings: {
-			endLayer: 16,
-			startLayer: 0,
+			endLayer: DEFAULT_CMYKTOOTH_END_LAYER as any,
+			startLayer: 0 as any,
 		},
 		tileSettings: {
 			tileSizeSetting: defaults.DEFAULT_CANVAS_SIZE as any,
