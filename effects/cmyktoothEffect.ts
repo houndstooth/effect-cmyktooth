@@ -1,4 +1,4 @@
-import { Dimension, defaults, Effect } from '../../../src'
+import { defaults, Effect, from, to } from '../../../src'
 import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_GRID_SIZE } from '../constants'
 import {
 	cmyktoothColorSet,
@@ -22,16 +22,16 @@ const cmyktoothEffect: Effect = {
 			includeNegativeQuadrants: true,
 		},
 		layerSettings: {
-			endLayer: DEFAULT_CMYKTOOTH_END_LAYER as any,
-			startLayer: 0 as any,
+			endLayer: to.Layer(DEFAULT_CMYKTOOTH_END_LAYER),
+			startLayer: to.Layer(0),
 		},
 		tileSettings: {
-			tileSizeSetting: defaults.DEFAULT_CANVAS_SIZE as any,
+			tileSizeSetting: to.Units(from.Dimension(defaults.DEFAULT_CANVAS_SIZE)),
 		},
 		viewSettings: {
-			canvasSize: defaults.DEFAULT_CANVAS_SIZE as any,
+			canvasSize: defaults.DEFAULT_CANVAS_SIZE,
 			centerViewOnCenterOfTileAtHomeAddress: true,
-			rotateViewAboutCanvasCenter: 0 as any,
+			rotateViewAboutCanvasCenter: to.Radian(0),
 		},
 	},
 	layersPattern: {

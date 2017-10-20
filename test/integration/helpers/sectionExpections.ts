@@ -1,5 +1,5 @@
-import { Address } from '../../../../../src/components/types/Address'
 import { TRANSPARENT } from '../../../../../src/constants'
+import * as to from '../../../../../src/to'
 import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
 import {
 	Diagonal,
@@ -53,7 +53,7 @@ const expectSolidSection: ExpectSolidSection = ({ areaSize, areaOrigin, color, b
 		areaSize,
 		color,
 		id: baseId,
-		sectionAddress: [ 0, 0 ] as Address,
+		sectionAddress: to.Address([ 0, 0 ]),
 		sectionResolution: 1,
 	})).toBe(true)
 }
@@ -65,7 +65,7 @@ const expectMinorDiagonalDividedSection: ExpectDiagonalDividedSection = params =
 		areaSize,
 		color: colors[ 0 ],
 		id: baseId,
-		sectionAddress: [ 0, 0 ] as Address,
+		sectionAddress: to.Address([ 0, 0 ]),
 		sectionResolution: 2,
 	})).toBe(true)
 	expect(sectionCenterIsColor({
@@ -73,7 +73,7 @@ const expectMinorDiagonalDividedSection: ExpectDiagonalDividedSection = params =
 		areaSize,
 		color: colors[ 1 ],
 		id: baseId + 1,
-		sectionAddress: [ 1, 1 ] as Address,
+		sectionAddress: to.Address([ 1, 1 ]),
 		sectionResolution: 2,
 	})).toBe(true)
 }
@@ -85,7 +85,7 @@ const expectPrincipalDiagonalDividedSection: ExpectDiagonalDividedSection = para
 		areaSize,
 		color: colors[ 0 ],
 		id: baseId,
-		sectionAddress: [ 1, 0 ] as Address,
+		sectionAddress: to.Address([ 1, 0 ]),
 		sectionResolution: 2,
 	})).toBe(true)
 	expect(sectionCenterIsColor({
@@ -93,7 +93,7 @@ const expectPrincipalDiagonalDividedSection: ExpectDiagonalDividedSection = para
 		areaSize,
 		color: colors[ 1 ],
 		id: baseId + 1,
-		sectionAddress: [ 0, 1 ] as Address,
+		sectionAddress: to.Address([ 0, 1 ]),
 		sectionResolution: 2,
 	})).toBe(true)
 }

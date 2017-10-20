@@ -1,7 +1,9 @@
-import { Address, Coordinate } from '../../../../../src'
+import { Coordinate } from '../../../../../src'
 import { TRANSPARENT } from '../../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../../src/execute/executeSelectedHoundstoothEffects'
+import * as from from '../../../../../src/from'
 import { state } from '../../../../../src/state'
+import * as to from '../../../../../src/to'
 import { iterator } from '../../../../../src/utilities/codeUtilities'
 import { activateTestMarkerCanvas } from '../../../../../test/integration/helpers/activateTestMarkerCanvas'
 import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
@@ -14,16 +16,16 @@ import { Fill, SectionExpectation } from '../helpers/types'
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(32 as any) } }
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(to.Layer(32)) } }
 
 		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const color = TRANSPARENT
-		const areaSize = 800 as any
-		const areaOrigin = [ 0 as any, 0 as any ] as Coordinate
-		const sectionAddress = [ 0, 0 ] as Address
+		const areaSize = to.Units(800)
+		const areaOrigin = to.Coordinate([ 0, 0 ])
+		const sectionAddress = to.Address([ 0, 0 ])
 		const sectionResolution = 1
 		const id = 0
 		expect(sectionCenterIsColor({ areaOrigin, areaSize, sectionAddress, sectionResolution, color, id }))
@@ -31,18 +33,19 @@ describe('cmyktooth effect', () => {
 
 	it('layer 0 is totally blank', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(0 as any) } }
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(to.Layer(0)) } }
 		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const basicallyCheckWholeCanvasPoints = iterator(8).map(canvasX =>
+		const basicallyCheckWholeCanvasPoints: Coordinate[] = iterator(8).map(canvasX =>
 			iterator(8).map(canvasY =>
-				[ canvasX * 100 as any, canvasY * 100 as any ] as Coordinate)).reduce((a, b) => a.concat(b))
+				to.Coordinate([ canvasX * 100, canvasY * 100 ])).reduce((a, b) =>
+				to.Coordinate(from.Coordinate(a).concat(from.Coordinate(b)))))
 
 		const color = TRANSPARENT
-		const areaSize = 100 as any
-		const sectionAddress = [ 0, 0 ] as Address
+		const areaSize = to.Units(100)
+		const sectionAddress = to.Address([ 0, 0 ])
 		const sectionResolution = 1
 		basicallyCheckWholeCanvasPoints.forEach((areaOrigin, id) => {
 			sectionCenterIsColor({ areaOrigin, areaSize, sectionAddress, sectionResolution, color, id })
@@ -51,109 +54,109 @@ describe('cmyktooth effect', () => {
 
 	it('layer 1 is black, grain going to the right', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(1 as any) } }
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(to.Layer(1)) } }
 		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_BLACK = { r: 0, g: 0, b: 0, a: 0.5 }
-		const areaSize = 800 / 4 as any
+		const areaSize = to.Units(800 / 4)
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 0,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 2,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 4,
 			colors: [ SEMI_BLACK, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 6,
 			color: SEMI_BLACK,
 		})
 
 		sectionExpections.expectMinorDiagonalDividedSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 8,
 			colors: [ SEMI_BLACK, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 10,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 12,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 14,
 			color: TRANSPARENT,
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 16,
 			colors: [ TRANSPARENT, SEMI_BLACK ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 18,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 20,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 22,
 			color: TRANSPARENT,
 		})
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 24,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 26,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectMinorDiagonalDividedSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 28,
 			colors: [ TRANSPARENT, SEMI_BLACK ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 30,
 			color: SEMI_BLACK,
@@ -162,109 +165,109 @@ describe('cmyktooth effect', () => {
 
 	it('layer 2 is cyan, grain going to the right bottom', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(2 as any) } }
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(to.Layer(2)) } }
 		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_CYAN = { r: 0, g: 255, b: 255, a: 0.3333 }
-		const areaSize = 800 / 4 as any
+		const areaSize = to.Units(800 / 4)
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 0,
 			color: SEMI_CYAN,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 2,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 4,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 0 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 0 ]),
 			areaSize,
 			baseId: 6,
 			color: SEMI_CYAN,
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 8,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 10,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 12,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 1 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 1 ]),
 			areaSize,
 			baseId: 14,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 16,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 18,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 20,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 2 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 2 ]),
 			areaSize,
 			baseId: 22,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 0 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 24,
 			color: SEMI_CYAN,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 1 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 26,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: [ areaSize * 2 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 28,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: [ areaSize * 3 as any, areaSize * 3 as any ] as Coordinate,
+			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 3 ]),
 			areaSize,
 			baseId: 30,
 			color: SEMI_CYAN,
@@ -273,13 +276,13 @@ describe('cmyktooth effect', () => {
 
 	it('layer 3 is magenta, grain going to the bottom', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(3 as any) } }
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(to.Layer(3)) } }
 		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_MAGENTA = { r: 255, g: 0, b: 255, a: 0.25 }
-		const areaSize = 800 / 8 as any
+		const areaSize = to.Units(800 / 8)
 
 		const expectedSectionRows: SectionExpectation[][] = [
 			[
@@ -367,7 +370,7 @@ describe('cmyktooth effect', () => {
 		expectedSectionRows.forEach((expectedSectionRow, row) => {
 			expectedSectionRow.forEach((expectedSection, col) => {
 				sectionExpections.expectSection({
-					areaOrigin: [ areaSize * col as any, areaSize * row as any ] as Coordinate,
+					areaOrigin: to.Coordinate([ from.Units(areaSize) * col, from.Units(areaSize) * row ]),
 					areaSize,
 					expectedSection,
 					solidColor: SEMI_MAGENTA,
@@ -378,13 +381,13 @@ describe('cmyktooth effect', () => {
 
 	it('layer 4 is yellow, grain going to the bottom left', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(4 as any) } }
+		const houndstoothOverrides = { basePattern: { layerSettings: thisLayerOnly(to.Layer(4)) } }
 		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_YELLOW = { r: 255, g: 255, b: 0, a: 0.2 }
-		const areaSize = 800 / 8  as any
+		const areaSize = to.Units(800 / 8)
 
 		const expectedSectionRows: SectionExpectation[][] = [
 			[
@@ -432,7 +435,7 @@ describe('cmyktooth effect', () => {
 		expectedSectionRows.concat(expectedSectionRows).forEach((expectedSectionRow, row) => {
 			expectedSectionRow.forEach((expectedSection, col) => {
 				sectionExpections.expectSection({
-					areaOrigin: [ areaSize * col as any, areaSize * row as any ] as Coordinate,
+					areaOrigin: to.Coordinate([ from.Units(areaSize) * col, from.Units(areaSize) * row ]),
 					areaSize,
 					expectedSection,
 					solidColor: SEMI_YELLOW,

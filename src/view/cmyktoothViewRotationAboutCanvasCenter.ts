@@ -1,6 +1,6 @@
-import { constants, Radian } from '../../../../src'
+import { constants, from, Radian, to } from '../../../../src'
 
 const cmyktoothViewRotationAboutCanvasCenter: (p: Radian) => Radian = p =>
-	p as any + constants.EIGHTH_OF_CIRCLE_ROTATION
+	to.Radian(from.Radian(p) + from.Radian(constants.EIGHTH_OF_CIRCLE_ROTATION))
 
 export { cmyktoothViewRotationAboutCanvasCenter }

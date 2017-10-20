@@ -1,5 +1,5 @@
-import { Address } from '../../../../src'
+import { Address, to } from '../../../../src'
 
-const cmyktoothOffsetAddress: () => Address = () => [ 1, 0 ] as Address
+const cmyktoothOffsetAddress: () => Address = () => to.Address([ 1, 0 ])
 
 export { cmyktoothOffsetAddress }
