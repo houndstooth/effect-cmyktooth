@@ -1,4 +1,4 @@
-import { CanvasSize, defaults, Houndstooth } from '../../../src'
+import { CanvasSize, defaults, Effect } from '../../../src'
 import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_GRID_SIZE } from '../constants'
 import {
 	cmyktoothColorSet,
@@ -8,7 +8,7 @@ import {
 	cmyktoothViewRotationAboutCanvasCenter,
 } from '../src'
 
-const cmyktoothEffect: Houndstooth = {
+const cmyktoothEffect: Effect = {
 	basePattern: {
 		colorSettings: {
 			assignment: {
