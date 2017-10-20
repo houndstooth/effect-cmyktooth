@@ -1,4 +1,4 @@
-import { CanvasSize, defaults, Effect } from '../../../src'
+import { Dimension, defaults, Effect } from '../../../src'
 import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_GRID_SIZE } from '../constants'
 import {
 	cmyktoothColorSet,
@@ -29,7 +29,7 @@ const cmyktoothEffect: Effect = {
 			tileSizeSetting: defaults.DEFAULT_CANVAS_SIZE as any,
 		},
 		viewSettings: {
-			canvasSize: defaults.DEFAULT_CANVAS_SIZE as CanvasSize,
+			canvasSize: defaults.DEFAULT_CANVAS_SIZE as any,
 			centerViewOnCenterOfTileAtHomeAddress: true,
 			rotateViewAboutCanvasCenter: 0 as any,
 		},
