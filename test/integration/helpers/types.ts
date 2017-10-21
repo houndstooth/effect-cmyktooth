@@ -2,8 +2,8 @@ import { Color, Coordinate, Units } from '../../../../../src'
 import { Diagonal } from '../../../../../test/integration/helpers/types'
 
 enum Fill {
-	Transparent = 'transparent',
-	Opaque = 'opaque',
+	Transparent,
+	Opaque,
 }
 
 type SectionExpectation = [ Diagonal, Fill ]
