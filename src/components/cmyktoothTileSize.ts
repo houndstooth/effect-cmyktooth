@@ -1,5 +1,5 @@
-import { constants, from, to, Units } from '../../../../src'
+import { constants, from, to, Unit } from '../../../../src'
 
-const cmyktoothTileSize: (p: Units) => Units = p => to.Units(from.Units(p) / constants.SQRT_2)
+const cmyktoothTileSize: (p: Unit) => Unit = p => to.Unit(from.Unit(p) / constants.SQRT_2)
 
 export { cmyktoothTileSize }

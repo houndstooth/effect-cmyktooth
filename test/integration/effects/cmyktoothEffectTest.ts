@@ -23,7 +23,7 @@ describe('cmyktooth effect', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const color = TRANSPARENT
-		const areaSize = to.Units(800)
+		const areaSize = to.Unit(800)
 		const areaOrigin = to.Coordinate([ 0, 0 ])
 		const sectionAddress = to.Address([ 0, 0 ])
 		const sectionResolution = 1
@@ -44,7 +44,7 @@ describe('cmyktooth effect', () => {
 				to.Coordinate(from.Coordinate(a).concat(from.Coordinate(b)))))
 
 		const color = TRANSPARENT
-		const areaSize = to.Units(100)
+		const areaSize = to.Unit(100)
 		const sectionAddress = to.Address([ 0, 0 ])
 		const sectionResolution = 1
 		basicallyCheckWholeCanvasPoints.forEach((areaOrigin, id) => {
@@ -60,103 +60,103 @@ describe('cmyktooth effect', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_BLACK = { r: 0, g: 0, b: 0, a: 0.5 }
-		const areaSize = to.Units(800 / 4)
+		const areaSize = to.Unit(800 / 4)
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 0,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 2,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 4,
 			colors: [ SEMI_BLACK, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 6,
 			color: SEMI_BLACK,
 		})
 
 		sectionExpections.expectMinorDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 8,
 			colors: [ SEMI_BLACK, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 10,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 12,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 14,
 			color: TRANSPARENT,
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 16,
 			colors: [ TRANSPARENT, SEMI_BLACK ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 18,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 20,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 22,
 			color: TRANSPARENT,
 		})
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 24,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 26,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectMinorDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 28,
 			colors: [ TRANSPARENT, SEMI_BLACK ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 30,
 			color: SEMI_BLACK,
@@ -171,103 +171,103 @@ describe('cmyktooth effect', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_CYAN = { r: 0, g: 255, b: 255, a: 0.3333 }
-		const areaSize = to.Units(800 / 4)
+		const areaSize = to.Unit(800 / 4)
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 0,
 			color: SEMI_CYAN,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 2,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 4,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 0 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 0 ]),
 			areaSize,
 			baseId: 6,
 			color: SEMI_CYAN,
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 8,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 10,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 12,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 1 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 1 ]),
 			areaSize,
 			baseId: 14,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 16,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 18,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 20,
 			color: TRANSPARENT,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 2 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 2 ]),
 			areaSize,
 			baseId: 22,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 0, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 24,
 			color: SEMI_CYAN,
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 1, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 26,
 			colors: [ SEMI_CYAN, TRANSPARENT ],
 		})
 		sectionExpections.expectPrincipalDiagonalDividedSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 2, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 2, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 28,
 			colors: [ TRANSPARENT, SEMI_CYAN ],
 		})
 		sectionExpections.expectSolidSection({
-			areaOrigin: to.Coordinate([ from.Units(areaSize) * 3, from.Units(areaSize) * 3 ]),
+			areaOrigin: to.Coordinate([ from.Unit(areaSize) * 3, from.Unit(areaSize) * 3 ]),
 			areaSize,
 			baseId: 30,
 			color: SEMI_CYAN,
@@ -282,7 +282,7 @@ describe('cmyktooth effect', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_MAGENTA = { r: 255, g: 0, b: 255, a: 0.25 }
-		const areaSize = to.Units(800 / 8)
+		const areaSize = to.Unit(800 / 8)
 
 		const expectedSectionRows: SectionExpectation[][] = [
 			[
@@ -370,7 +370,7 @@ describe('cmyktooth effect', () => {
 		expectedSectionRows.forEach((expectedSectionRow, row) => {
 			expectedSectionRow.forEach((expectedSection, col) => {
 				sectionExpections.expectSection({
-					areaOrigin: to.Coordinate([ from.Units(areaSize) * col, from.Units(areaSize) * row ]),
+					areaOrigin: to.Coordinate([ from.Unit(areaSize) * col, from.Unit(areaSize) * row ]),
 					areaSize,
 					expectedSection,
 					solidColor: SEMI_MAGENTA,
@@ -387,7 +387,7 @@ describe('cmyktooth effect', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_YELLOW = { r: 255, g: 255, b: 0, a: 0.2 }
-		const areaSize = to.Units(800 / 8)
+		const areaSize = to.Unit(800 / 8)
 
 		const expectedSectionRows: SectionExpectation[][] = [
 			[
@@ -435,7 +435,7 @@ describe('cmyktooth effect', () => {
 		expectedSectionRows.concat(expectedSectionRows).forEach((expectedSectionRow, row) => {
 			expectedSectionRow.forEach((expectedSection, col) => {
 				sectionExpections.expectSection({
-					areaOrigin: to.Coordinate([ from.Units(areaSize) * col, from.Units(areaSize) * row ]),
+					areaOrigin: to.Coordinate([ from.Unit(areaSize) * col, from.Unit(areaSize) * row ]),
 					areaSize,
 					expectedSection,
 					solidColor: SEMI_YELLOW,

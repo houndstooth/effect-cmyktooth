@@ -26,7 +26,7 @@ const cmyktoothEffect: Effect = {
 			startLayer: to.Layer(0),
 		},
 		tileSettings: {
-			tileSizeSetting: to.Units(from.Dimension(defaults.DEFAULT_CANVAS_SIZE)),
+			tileSizeSetting: to.Unit(from.Dimension(defaults.DEFAULT_CANVAS_SIZE)),
 		},
 		viewSettings: {
 			canvasSize: defaults.DEFAULT_CANVAS_SIZE,

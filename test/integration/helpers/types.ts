@@ -1,4 +1,4 @@
-import { Color, Coordinate, Units } from '../../../../../src'
+import { Color, Coordinate, Unit } from '../../../../../src'
 import { Diagonal } from '../../../../../test/integration/helpers/types'
 
 enum Fill {
@@ -10,7 +10,7 @@ type SectionExpectation = [ Diagonal, Fill ]
 
 type ExpectSection = (_: {
 		areaOrigin: Coordinate,
-		areaSize: Units,
+		areaSize: Unit,
 		expectedSection: [ Diagonal, Fill ],
 		solidColor: Color,
 	}) => void
