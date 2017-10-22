@@ -1,12 +1,8 @@
 import { TRANSPARENT } from '../../../../../src/constants'
 import * as to from '../../../../../src/utilities/to'
 import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
-import {
-	Diagonal,
-	ExpectDiagonalDividedSection,
-	ExpectSolidSection,
-} from '../../../../../test/integration/helpers/types'
-import { ExpectSection, Fill } from './types'
+import { ExpectDiagonalDividedSection, ExpectSolidSection } from '../../../../../test/integration/helpers/types'
+import { ExpectSection } from './types'
 
 const expectSection: ExpectSection = ({ expectedSection, areaSize, solidColor, areaOrigin }) => {
 	let method
@@ -15,31 +11,31 @@ const expectSection: ExpectSection = ({ expectedSection, areaSize, solidColor, a
 	const diagonalType = expectedSection[ 0 ]
 	const sectionDefiningColor = expectedSection[ 1 ]
 
-	if (diagonalType === Diagonal.Solid) {
-		if (sectionDefiningColor === Fill.Transparent) {
+	if (diagonalType === 'solid') {
+		if (sectionDefiningColor === 'transparent') {
 			color = TRANSPARENT
 		}
-		if (sectionDefiningColor === Fill.Opaque) {
+		if (sectionDefiningColor === 'opaque') {
 			color = solidColor
 		}
 
 		expectSolidSection({ areaSize, areaOrigin, color })
 	}
-	else if (diagonalType === Diagonal.SolidButTestPrincipalToAvoidSeam) {
+	else if (diagonalType === 'solidButTestPrincipalToAvoidSeam') {
 		expectPrincipalDiagonalDividedSection({ areaSize, areaOrigin, colors: [ solidColor, solidColor ] })
 	}
 	else {
-		if (diagonalType === Diagonal.Minor) {
+		if (diagonalType === 'minor') {
 			method = expectMinorDiagonalDividedSection
 		}
-		if (diagonalType === Diagonal.Principal) {
+		if (diagonalType === 'principal') {
 			method = expectPrincipalDiagonalDividedSection
 		}
 
-		if (sectionDefiningColor === Fill.Transparent) {
+		if (sectionDefiningColor === 'transparent') {
 			colors = [ TRANSPARENT, solidColor ]
 		}
-		if (sectionDefiningColor === Fill.Opaque) {
+		if (sectionDefiningColor === 'opaque') {
 			colors = [ solidColor, TRANSPARENT ]
 		}
 

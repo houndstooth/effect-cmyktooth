@@ -1,10 +1,9 @@
 import { Color, Coordinate, Unit } from '../../../../../src'
 import { Diagonal } from '../../../../../test/integration/helpers/types'
 
-enum Fill {
-	Transparent,
-	Opaque,
-}
+type Fill =
+	| 'transparent'
+	| 'opaque'
 
 type SectionExpectation = [ Diagonal, Fill ]
 
@@ -16,7 +15,6 @@ type ExpectSection = (_: {
 	}) => void
 
 export {
-	Fill,
 	SectionExpectation,
 	ExpectSection,
 }
