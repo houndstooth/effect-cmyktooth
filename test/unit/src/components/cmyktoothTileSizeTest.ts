@@ -1,6 +1,6 @@
 import { SQRT_2 } from '../../../../../../src/constants'
-import * as from from '../../../../../../src/from'
-import * as to from '../../../../../../src/to'
+import * as from from '../../../../../../src/utilities/from'
+import * as to from '../../../../../../src/utilities/to'
 import { isCloseTo } from '../../../../../../test/helpers/isCloseTo'
 import { cmyktoothTileSize } from '../../../../src/components/cmyktoothTileSize'
 

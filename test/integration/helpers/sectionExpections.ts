@@ -1,5 +1,5 @@
 import { TRANSPARENT } from '../../../../../src/constants'
-import * as to from '../../../../../src/to'
+import * as to from '../../../../../src/utilities/to'
 import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
 import {
 	Diagonal,

@@ -1,6 +1,6 @@
 import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../../src/constants'
 import { state } from '../../../../../../src/state'
-import * as to from '../../../../../../src/to'
+import * as to from '../../../../../../src/utilities/to'
 import { cmyktoothColorSet } from '../../../../src/components/cmyktoothColorSet'
 
 describe('cmyktooth color set', () => {

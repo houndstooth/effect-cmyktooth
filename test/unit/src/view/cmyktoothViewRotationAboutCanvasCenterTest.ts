@@ -1,5 +1,5 @@
 import { EIGHTH_OF_CIRCLE_ROTATION, QUARTER_CIRCLE_ROTATION } from '../../../../../../src/constants'
-import * as to from '../../../../../../src/to'
+import * as to from '../../../../../../src/utilities/to'
 import { cmyktoothViewRotationAboutCanvasCenter } from '../../../../src/view/cmyktoothViewRotationAboutCanvasCenter'
 
 describe('cmyktooth view rotation about canvas center', () => {
