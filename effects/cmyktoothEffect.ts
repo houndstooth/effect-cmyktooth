@@ -11,7 +11,7 @@ import {
 const cmyktoothEffect: Effect = {
 	basePattern: {
 		colorSettings: {
-			assignment: {
+			colorAssignment: {
 				offsetAddress: cmyktoothOffsetAddress,
 			},
 			colorSet: cmyktoothColorSet(),
