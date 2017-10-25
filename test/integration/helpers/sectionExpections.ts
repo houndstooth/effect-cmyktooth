@@ -1,4 +1,5 @@
 import { TRANSPARENT } from '../../../../../src/constants'
+import { Color } from '../../../../../src/render/types/Color'
 import * as to from '../../../../../src/utilities/to'
 import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
 import { ExpectDiagonalDividedSection, ExpectSolidSection } from '../../../../../test/integration/helpers/types'
@@ -7,7 +8,7 @@ import { ExpectSection } from './types'
 const expectSection: ExpectSection = ({ expectedSection, areaSize, solidColor, areaOrigin }) => {
 	let method
 	let color
-	let colors
+	let colors: [ Color, Color ]
 	const diagonalType = expectedSection[ 0 ]
 	const sectionDefiningColor = expectedSection[ 1 ]
 
@@ -17,6 +18,9 @@ const expectSection: ExpectSection = ({ expectedSection, areaSize, solidColor, a
 		}
 		if (sectionDefiningColor === 'opaque') {
 			color = solidColor
+		}
+		else {
+			return
 		}
 
 		expectSolidSection({ areaSize, areaOrigin, color })
@@ -38,8 +42,13 @@ const expectSection: ExpectSection = ({ expectedSection, areaSize, solidColor, a
 		if (sectionDefiningColor === 'opaque') {
 			colors = [ solidColor, TRANSPARENT ]
 		}
+		else {
+			return
+		}
 
-		method({ areaSize, areaOrigin, colors })
+		if (method) {
+			method({ areaSize, areaOrigin, colors })
+		}
 	}
 }
 
