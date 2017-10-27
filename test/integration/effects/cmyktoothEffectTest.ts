@@ -1,6 +1,7 @@
 import { Coordinate } from '../../../../../src'
 import { TRANSPARENT } from '../../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../../src/execute/executeSelectedHoundstoothEffects'
+import { Color } from '../../../../../src/render/types/Color'
 import { state } from '../../../../../src/state'
 import { iterator } from '../../../../../src/utilities/codeUtilities'
 import * as from from '../../../../../src/utilities/from'
@@ -58,7 +59,7 @@ describe('cmyktooth effect', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const SEMI_BLACK = to.Color({ r: 0, g: 0, b: 0, a: 0.5 })
+		const SEMI_BLACK: Color = { r: 0, g: 0, b: 0, a: 0.5 }
 		const areaSize = to.Unit(800 / 4)
 
 		sectionExpections.expectSolidSection({
@@ -169,7 +170,7 @@ describe('cmyktooth effect', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const SEMI_CYAN = to.Color({ r: 0, g: 255, b: 255, a: 0.3333 })
+		const SEMI_CYAN: Color = { r: 0, g: 255, b: 255, a: 0.3333 }
 		const areaSize = to.Unit(800 / 4)
 
 		sectionExpections.expectSolidSection({
@@ -280,7 +281,7 @@ describe('cmyktooth effect', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const SEMI_MAGENTA = to.Color({ r: 255, g: 0, b: 255, a: 0.25 })
+		const SEMI_MAGENTA: Color = { r: 255, g: 0, b: 255, a: 0.25 }
 		const areaSize = to.Unit(800 / 8)
 
 		const expectedSectionRows: SectionExpectation[][] = [
@@ -385,7 +386,7 @@ describe('cmyktooth effect', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const SEMI_YELLOW = to.Color({ r: 255, g: 255, b: 0, a: 0.2 })
+		const SEMI_YELLOW: Color = { r: 255, g: 255, b: 0, a: 0.2 }
 		const areaSize = to.Unit(800 / 8)
 
 		const expectedSectionRows: SectionExpectation[][] = [
