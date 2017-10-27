@@ -1,7 +1,7 @@
 import { Coordinate } from '../../../../../src'
 import { TRANSPARENT } from '../../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../../src/execute/executeSelectedHoundstoothEffects'
-import { Color } from '../../../../../src/render/types/Color'
+import { Color } from '../../../../../src/render'
 import { state } from '../../../../../src/state'
 import { iterator } from '../../../../../src/utilities/codeUtilities'
 import * as from from '../../../../../src/utilities/from'
