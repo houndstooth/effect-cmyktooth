@@ -7,14 +7,18 @@ type Fill =
 
 type SectionExpectation = [ Diagonal, Fill ]
 
-type ExpectSection = (_: {
-		areaOrigin: Coordinate,
-		areaSize: Unit,
-		expectedSection: [ Diagonal, Fill ],
-		solidColor: Color,
-	}) => void
+interface ExpectSectionParams {
+	areaOrigin: Coordinate,
+	areaSize: Unit,
+	expectedSection: [ Diagonal, Fill ],
+	solidColor: Color,
+}
+
+type ExpectSection = (_: ExpectSectionParams) => void
 
 export {
 	SectionExpectation,
 	ExpectSection,
+	ExpectSectionParams,
+	Fill,
 }
