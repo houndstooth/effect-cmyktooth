@@ -18,7 +18,7 @@ import { SectionExpectation } from '../helpers/types'
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', () => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(32)) } }
+		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(16)) } }
 
 		activateTestMarkerCanvas()
 
