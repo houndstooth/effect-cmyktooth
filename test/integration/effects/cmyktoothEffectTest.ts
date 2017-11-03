@@ -16,13 +16,13 @@ import * as sectionExpections from '../helpers/sectionExpections'
 import { SectionExpectation } from '../helpers/types'
 
 describe('cmyktooth effect', () => {
-	it('the absolute center is always blank', () => {
+	it('the absolute center is always blank', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(16)) } }
+		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(15)) } }
 
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const color: Color = TRANSPARENT
 		const areaSize: Unit = to.Unit(800)
@@ -31,14 +31,16 @@ describe('cmyktooth effect', () => {
 		const sectionResolution: number = 1
 		const id: number = 0
 		expect(sectionCenterIsColor({ areaOrigin, areaSize, sectionAddress, sectionResolution, color, id }))
+
+		done()
 	})
 
-	it('layer 0 is totally blank', () => {
+	it('layer 0 is totally blank', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(0)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const basicallyCheckWholeCanvasPoints: Coordinate[] = iterator(8).map((canvasX: number): Coordinate =>
 			iterator(8).map((canvasY: number): Coordinate =>
@@ -52,14 +54,16 @@ describe('cmyktooth effect', () => {
 		basicallyCheckWholeCanvasPoints.forEach((areaOrigin: Coordinate, id: number): void => {
 			sectionCenterIsColor({ areaOrigin, areaSize, sectionAddress, sectionResolution, color, id })
 		})
+
+		done()
 	})
 
-	it('layer 1 is black, grain going to the right', () => {
+	it('layer 1 is black, grain going to the right', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(1)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_BLACK: Color = { r: 0, g: 0, b: 0, a: 0.5 }
 		const areaSize: Unit = to.Unit(800 / 4)
@@ -163,14 +167,16 @@ describe('cmyktooth effect', () => {
 			baseId: 30,
 			color: SEMI_BLACK,
 		})
+
+		done()
 	})
 
-	it('layer 2 is cyan, grain going to the right bottom', () => {
+	it('layer 2 is cyan, grain going to the right bottom', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(2)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_CYAN: Color = { r: 0, g: 255, b: 255, a: 0.3333 }
 		const areaSize: Unit = to.Unit(800 / 4)
@@ -274,14 +280,16 @@ describe('cmyktooth effect', () => {
 			baseId: 30,
 			color: SEMI_CYAN,
 		})
+
+		done()
 	})
 
-	it('layer 3 is magenta, grain going to the bottom', () => {
+	it('layer 3 is magenta, grain going to the bottom', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(3)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_MAGENTA: Color = { r: 255, g: 0, b: 255, a: 0.25 }
 		const areaSize: Unit = to.Unit(800 / 8)
@@ -379,14 +387,16 @@ describe('cmyktooth effect', () => {
 				})
 			})
 		})
+
+		done()
 	})
 
-	it('layer 4 is yellow, grain going to the bottom left', () => {
+	it('layer 4 is yellow, grain going to the bottom left', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(4)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const SEMI_YELLOW: Color = { r: 255, g: 255, b: 0, a: 0.2 }
 		const areaSize: Unit = to.Unit(800 / 8)
@@ -445,5 +455,7 @@ describe('cmyktooth effect', () => {
 				})
 			})
 		})
+
+		done()
 	})
 })

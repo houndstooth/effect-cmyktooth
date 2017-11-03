@@ -23,7 +23,7 @@ const cmyktoothEffect: Effect = {
 		},
 		layerSettings: {
 			endLayer: to.Layer(DEFAULT_CMYKTOOTH_END_LAYER),
-			startLayer: to.Layer(0),
+			startLayer: to.Layer(1),
 		},
 		tileSettings: {
 			tileSize: to.Unit(from.Px(defaults.DEFAULT_CANVAS_SIZE)),
