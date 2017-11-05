@@ -1,5 +1,5 @@
 import { defaults, Effect, from, to } from '../../../src'
-import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_GRID_SIZE } from '../constants'
+import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_TILE_RESOLUTION } from '../constants'
 import {
 	cmyktoothColorSet,
 	cmyktoothOffsetAddress,
@@ -18,7 +18,7 @@ const cmyktoothEffect: Effect = {
 			opacity: 0.5,
 		},
 		gridSettings: {
-			gridSize: DEFAULT_CMYKTOOTH_GRID_SIZE,
+			tileResolution: DEFAULT_CMYKTOOTH_TILE_RESOLUTION,
 			includeNegativeQuadrants: true,
 		},
 		layerSettings: {
