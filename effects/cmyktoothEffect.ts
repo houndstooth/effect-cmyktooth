@@ -18,8 +18,8 @@ const cmyktoothEffect: Effect = {
 			opacity: 0.5,
 		},
 		gridSettings: {
-			tileResolution: DEFAULT_CMYKTOOTH_TILE_RESOLUTION,
 			includeNegativeQuadrants: true,
+			tileResolution: DEFAULT_CMYKTOOTH_TILE_RESOLUTION,
 		},
 		layerSettings: {
 			endLayer: to.Layer(DEFAULT_CMYKTOOTH_END_LAYER),
