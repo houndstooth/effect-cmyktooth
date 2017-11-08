@@ -1,4 +1,5 @@
-import { from, state } from '../../../../src'
+import { state } from '../../../../src'
+import * as from from '../../../../src/from'
 
 const CMYKTOOTH_BASE_OPACITY_DENOMINATOR_CONSTANT: number = 1
 

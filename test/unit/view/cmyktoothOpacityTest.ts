@@ -1,5 +1,6 @@
-import { state, to } from '../../../../../../src'
-import { cmyktoothOpacity } from '../../../../src/view/cmyktoothOpacity'
+import { state } from '../../../../../src'
+import * as to from '../../../../../src/to'
+import { cmyktoothOpacity } from '../../../pattern/view/cmyktoothOpacity'
 
 describe('cmyktooth opacity', () => {
 	it('decreases harmonically, starting with half', () => {

@@ -1,7 +1,7 @@
-import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../../src/constants'
-import { state } from '../../../../../../src/state'
-import * as to from '../../../../../../src/utilities/to'
-import { cmyktoothColorSet } from '../../../../src/components/cmyktoothColorSet'
+import { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../../src/constants'
+import { state } from '../../../../../src/state'
+import * as to from '../../../../../src/to'
+import { cmyktoothColorSet } from '../../../pattern/color/cmyktoothColorSet'
 
 describe('cmyktooth color set', () => {
 	it('cycles through Cyan, Magenta, Yellow, and blacK, with the other color always transparent', () => {

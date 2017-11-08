@@ -1,6 +1,6 @@
 import { TRANSPARENT } from '../../../../../src/constants'
-import { Color } from '../../../../../src/render'
-import * as to from '../../../../../src/utilities/to'
+import { Color } from '../../../../../src/pattern/color/types'
+import * as to from '../../../../../src/to'
 import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
 import {
 	Diagonal, ExpectDiagonalDividedSection, ExpectedDividedSection, ExpectedSolidSection,

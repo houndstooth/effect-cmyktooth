@@ -1,4 +1,6 @@
-import { ColorSet, constants, from, state, to } from '../../../../src'
+import { ColorSet, constants, state } from '../../../../src'
+import * as from from '../../../../src/from'
+import * as to from '../../../../src/to'
 
 const { BLACK, CYAN, MAGENTA, YELLOW, TRANSPARENT } = constants
 

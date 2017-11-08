@@ -1,6 +1,6 @@
-import { EIGHTH_OF_CIRCLE_ROTATION, QUARTER_CIRCLE_ROTATION } from '../../../../../../src/constants'
-import * as to from '../../../../../../src/utilities/to'
-import { cmyktoothViewRotationAboutCanvasCenter } from '../../../../src/view/cmyktoothViewRotationAboutCanvasCenter'
+import { EIGHTH_OF_CIRCLE_ROTATION, QUARTER_CIRCLE_ROTATION } from '../../../../../src/constants'
+import * as to from '../../../../../src/to'
+import { cmyktoothViewRotationAboutCanvasCenter } from '../../../pattern/view/cmyktoothViewRotationAboutCanvasCenter'
 
 describe('cmyktooth view rotation about canvas center', () => {
 	it('rotates the view an eight of the way round each layer', () => {

@@ -1,4 +1,5 @@
-import { cmyktoothColorSet, cmyktoothOffsetAddress, cmyktoothTileSize } from './components'
+import { cmyktoothColorSet, cmyktoothOffsetAddress } from './color'
+import { cmyktoothTileSize } from './tile'
 import { cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } from './view'
 
 export {
