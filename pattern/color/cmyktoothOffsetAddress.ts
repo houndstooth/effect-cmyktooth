@@ -1,5 +1,4 @@
-import { Address } from '../../../../src'
-import * as to from '../../../../src/to'
+import { Address, to } from '../../../../src'
 
 const cmyktoothOffsetAddress: () => Address
 	= (): Address => to.Address([ 1, 0 ])

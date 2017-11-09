@@ -1,6 +1,4 @@
-import { defaults, Effect } from '../../../src'
-import * as from from '../../../src/from'
-import * as to from '../../../src/to'
+import { defaults, Effect, from, to } from '../../../src'
 import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_TILE_RESOLUTION } from '../constants'
 import {
 	cmyktoothColorSet,

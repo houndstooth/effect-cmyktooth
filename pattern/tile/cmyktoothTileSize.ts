@@ -1,6 +1,4 @@
-import { constants, Unit } from '../../../../src'
-import * as from from '../../../../src/from'
-import * as to from '../../../../src/to'
+import { constants, from, to, Unit } from '../../../../src'
 
 const cmyktoothTileSize: (p: Unit) => Unit =
 	(p: Unit): Unit => to.Unit(from.Unit(p) / constants.SQRT_2)
