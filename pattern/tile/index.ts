@@ -1,4 +1,4 @@
-import { cmyktoothTileSize } from './cmyktoothTileSize'
+import * as cmyktoothTileSize from './cmyktoothTileSize'
 
 export {
 	cmyktoothTileSize,

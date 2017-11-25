@@ -1,3 +1,1 @@
-import { cmyktoothEffect } from './cmyktoothEffect'
-
-export { cmyktoothEffect }
+export { cmyktoothEffect } from './cmyktoothEffect'

@@ -1,10 +1,11 @@
-import { EIGHTH_OF_CIRCLE_ROTATION, QUARTER_CIRCLE_ROTATION } from '../../../../../src/constants'
-import * as to from '../../../../../src/to'
-import { cmyktoothViewRotationAboutCanvasCenter } from '../../../pattern/view/cmyktoothViewRotationAboutCanvasCenter'
+import { constants, to } from '../../../../../src'
+import { cmyktoothViewRotationAboutCanvasCenter } from '../../../pattern'
+
+const { EIGHTH_OF_CIRCLE_ROTATION, QUARTER_CIRCLE_ROTATION } = constants
 
 describe('cmyktooth view rotation about canvas center', () => {
 	it('rotates the view an eight of the way round each layer', () => {
-		expect(cmyktoothViewRotationAboutCanvasCenter(to.Radian(0))).toBe(EIGHTH_OF_CIRCLE_ROTATION)
-		expect(cmyktoothViewRotationAboutCanvasCenter(EIGHTH_OF_CIRCLE_ROTATION)).toBe(QUARTER_CIRCLE_ROTATION)
+		expect(cmyktoothViewRotationAboutCanvasCenter.main(to.Radian(0))).toBe(EIGHTH_OF_CIRCLE_ROTATION)
+		expect(cmyktoothViewRotationAboutCanvasCenter.main(EIGHTH_OF_CIRCLE_ROTATION)).toBe(QUARTER_CIRCLE_ROTATION)
 	})
 })

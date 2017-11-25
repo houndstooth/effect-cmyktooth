@@ -1,5 +1,5 @@
-import { cmyktoothColorSet } from './cmyktoothColorSet'
-import { cmyktoothOffsetAddress } from './cmyktoothOffsetAddress'
+import * as cmyktoothColorSet from './cmyktoothColorSet'
+import * as cmyktoothOffsetAddress from './cmyktoothOffsetAddress'
 
 export {
 	cmyktoothColorSet,

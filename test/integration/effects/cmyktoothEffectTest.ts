@@ -25,7 +25,7 @@ describe('cmyktooth effect', () => {
 
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			const color: Color = TRANSPARENT
@@ -45,7 +45,7 @@ describe('cmyktooth effect', () => {
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(0)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			const basicallyCheckWholeCanvasPoints: Coordinate[] = iterator(8).map((canvasX: number): Coordinate =>
@@ -70,7 +70,7 @@ describe('cmyktooth effect', () => {
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(1)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			const SEMI_BLACK: Color = { r: 0, g: 0, b: 0, a: 0.5 }
@@ -185,7 +185,7 @@ describe('cmyktooth effect', () => {
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(2)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			const SEMI_CYAN: Color = { r: 0, g: 255, b: 255, a: 0.3333 }
@@ -300,7 +300,7 @@ describe('cmyktooth effect', () => {
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(3)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			const SEMI_MAGENTA: Color = { r: 255, g: 0, b: 255, a: 0.25 }
@@ -409,7 +409,7 @@ describe('cmyktooth effect', () => {
 		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(4)) } }
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			const SEMI_YELLOW: Color = { r: 255, g: 255, b: 0, a: 0.2 }
