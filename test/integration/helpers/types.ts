@@ -1,5 +1,5 @@
 import { Color, Coordinate, Unit } from '../../../../../src'
-import { Diagonal } from '../../../../../test/integration/helpers/types'
+import { Diagonal } from '../../../../../test'
 
 type Fill =
 	| 'transparent'

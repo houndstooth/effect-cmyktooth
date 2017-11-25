@@ -1,12 +1,15 @@
-import { TRANSPARENT } from '../../../../../src/constants'
-import { Color } from '../../../../../src/pattern/color/types'
-import * as to from '../../../../../src/to'
-import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
+import { Color, constants, to } from '../../../../../src'
 import {
-	Diagonal, ExpectDiagonalDividedSection, ExpectedDividedSection, ExpectedSolidSection,
+	Diagonal,
+	ExpectDiagonalDividedSection,
+	ExpectedDividedSection,
+	ExpectedSolidSection,
 	ExpectSolidSection,
-} from '../../../../../test/integration/helpers/types'
+	sectionCenterIsColor,
+} from '../../../../../test'
 import { ExpectSection, ExpectSectionParams, Fill } from './types'
+
+const { TRANSPARENT } = constants
 
 const expectSection: ExpectSection =
 	({ expectedSection, areaSize, solidColor, areaOrigin }: ExpectSectionParams): void => {

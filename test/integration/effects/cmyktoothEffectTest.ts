@@ -1,19 +1,22 @@
-import { executeSelectedHoundstoothEffects } from '../../../../../src/app/execute/executeSelectedHoundstoothEffects'
-import { TRANSPARENT } from '../../../../../src/constants'
-import * as from from '../../../../../src/from'
-import { Effect } from '../../../../../src/pattern'
-import { Color } from '../../../../../src/pattern/color/types'
-import { Address, Unit } from '../../../../../src/pattern/grid/types'
-import { Coordinate } from '../../../../../src/pattern/stripe/types'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
-import { iterator } from '../../../../../src/utilities/codeUtilities'
-import { activateTestMarkerCanvas } from '../../../../../test/integration/helpers/activateTestMarkerCanvas'
-import { sectionCenterIsColor } from '../../../../../test/integration/helpers/sectionCenterIsColor'
-import { thisLayerOnly } from '../../../../../test/integration/helpers/thisFrameOnly'
-import { cmyktoothEffect } from '../../../effects/cmyktoothEffect'
-import * as sectionExpections from '../helpers/sectionExpections'
-import { SectionExpectation } from '../helpers/types'
+import {
+	Address,
+	codeUtilities,
+	Color,
+	constants,
+	Coordinate,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	from,
+	state,
+	to,
+	Unit,
+} from '../../../../../src'
+import { activateTestMarkerCanvas, sectionCenterIsColor, thisLayerOnly } from '../../../../../test'
+import { cmyktoothEffect } from '../../../effects'
+import { SectionExpectation, sectionExpections } from '../helpers'
+
+const { TRANSPARENT } = constants
+const { iterator } = codeUtilities
 
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', async (done: DoneFn) => {
