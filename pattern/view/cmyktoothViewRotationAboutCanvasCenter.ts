@@ -1,6 +1,6 @@
-import { constants, from, Radian, to } from '../../../../src'
+import { constants, from, Radian, state, to } from '../../../../src'
 
-const cmyktoothViewRotationAboutCanvasCenter: (p: Radian) => Radian =
-	(p: Radian): Radian => to.Radian(from.Radian(p) + from.Radian(constants.EIGHTH_OF_CIRCLE_ROTATION))
+const cmyktoothViewRotationAboutCanvasCenter: () => Radian =
+	(): Radian => to.Radian(from.Layer(state.currentLayer) * from.Radian(constants.EIGHTH_OF_CIRCLE_ROTATION))
 
 export default cmyktoothViewRotationAboutCanvasCenter

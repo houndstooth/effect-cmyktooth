@@ -1,6 +1,8 @@
-import { constants, from, to, Unit } from '../../../../src'
+import { constants, from, getSetting, state, to, Unit } from '../../../../src'
 
-const cmyktoothTileSize: (p: Unit) => Unit =
-	(p: Unit): Unit => to.Unit(from.Unit(p) / constants.SQRT_2)
+const { SQRT_2 } = constants
+
+const cmyktoothTileSize: () => Unit =
+	(): Unit => to.Unit(from.Px(getSetting.default('canvasSize')) / Math.pow(SQRT_2, from.Layer(state.currentLayer)))
 
 export default cmyktoothTileSize
