@@ -12,4 +12,4 @@ const cmyktoothColorSet: () => ColorSet =
 		TRANSPARENT,
 	])
 
-export { cmyktoothColorSet as main }
+export default cmyktoothColorSet

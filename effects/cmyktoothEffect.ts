@@ -12,9 +12,9 @@ const cmyktoothEffect: Effect = {
 	basePattern: {
 		colorSettings: {
 			colorAssignmentSettings: {
-				offsetAddress: cmyktoothOffsetAddress.main,
+				offsetAddress: cmyktoothOffsetAddress.default,
 			},
-			colorSet: cmyktoothColorSet.main(),
+			colorSet: cmyktoothColorSet.default(),
 			opacity: 0.5,
 		},
 		gridSettings: {
@@ -35,14 +35,14 @@ const cmyktoothEffect: Effect = {
 	},
 	layersPattern: {
 		colorSettings: {
-			colorSet: cmyktoothColorSet.main,
-			opacity: cmyktoothOpacity.main,
+			colorSet: cmyktoothColorSet.default,
+			opacity: cmyktoothOpacity.default,
 		},
 		tileSettings: {
-			tileSize: cmyktoothTileSize.main,
+			tileSize: cmyktoothTileSize.default,
 		},
 		viewSettings: {
-			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter.main,
+			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter.default,
 		},
 	},
 	name: 'cmyktooth',
