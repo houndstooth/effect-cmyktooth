@@ -4,16 +4,15 @@ import {
 	Color,
 	constants,
 	Coordinate,
-	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
 	state,
 	to,
 	Unit,
 } from '../../../../../src'
-import { sectionCenterIsColor, thisLayerOnly } from '../../../../../test'
+import { sectionCenterIsColor } from '../../../../../test'
 import { cmyktoothEffect } from '../../../effects'
-import { SectionExpectation, sectionExpections } from '../helpers'
+import { SectionExpectation, sectionExpections, thisLayerOnly } from '../helpers'
 
 const { TRANSPARENT } = constants
 const { iterator } = codeUtilities
@@ -21,9 +20,9 @@ const { iterator } = codeUtilities
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(15)) } }
+		thisLayerOnly(15)
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.default()
 
 		setTimeout(() => {
 			const color: Color = TRANSPARENT
@@ -40,9 +39,9 @@ describe('cmyktooth effect', () => {
 
 	it('layer 0 is totally blank', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(0)) } }
+		thisLayerOnly(0)
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.default()
 
 		setTimeout(() => {
 			const basicallyCheckWholeCanvasPoints: Coordinate[] = iterator(8).map((canvasX: number): Coordinate =>
@@ -64,9 +63,9 @@ describe('cmyktooth effect', () => {
 
 	it('layer 1 is black, grain going to the right', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(1)) } }
+		thisLayerOnly(1)
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.default()
 
 		setTimeout(() => {
 			const SEMI_BLACK: Color = { r: 0, g: 0, b: 0, a: 0.5 }
@@ -178,9 +177,9 @@ describe('cmyktooth effect', () => {
 
 	it('layer 2 is cyan, grain going to the right bottom', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(2)) } }
+		thisLayerOnly(2)
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.default()
 
 		setTimeout(() => {
 			const SEMI_CYAN: Color = { r: 0, g: 255, b: 255, a: 0.3333 }
@@ -292,9 +291,9 @@ describe('cmyktooth effect', () => {
 
 	it('layer 3 is magenta, grain going to the bottom', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(3)) } }
+		thisLayerOnly(3)
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.default()
 
 		setTimeout(() => {
 			const SEMI_MAGENTA: Color = { r: 255, g: 0, b: 255, a: 0.25 }
@@ -400,9 +399,9 @@ describe('cmyktooth effect', () => {
 
 	it('layer 4 is yellow, grain going to the bottom left', async (done: DoneFn) => {
 		state.selectedHoundstoothEffects = [ cmyktoothEffect ]
-		const houndstoothOverrides: Effect = { basePattern: { layerSettings: thisLayerOnly(to.Layer(4)) } }
+		thisLayerOnly(4)
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.default()
 
 		setTimeout(() => {
 			const SEMI_YELLOW: Color = { r: 255, g: 255, b: 0, a: 0.2 }
