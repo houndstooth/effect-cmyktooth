@@ -1,4 +1,4 @@
-import { Effect, to } from '../../../src'
+import { NamedEffect, to } from '../../../src'
 import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_TILE_RESOLUTION } from '../constants'
 import {
 	cmyktoothColorSet,
@@ -8,7 +8,7 @@ import {
 	cmyktoothViewRotationAboutCanvasCenter,
 } from '../pattern'
 
-const cmyktoothEffect: Effect = {
+const cmyktoothEffect: NamedEffect = {
 	basePattern: {
 		colorSettings: {
 			colorAssignmentSettings: {
