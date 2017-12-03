@@ -1,0 +1,28 @@
+const CMYKTOOTH_DESCRIPTION: string = [
+	'--- cmyktooth ---',
+	'',
+	'A layered houndstooth which, where each new layer:',
+	'- shrinks by √2',
+	'- rotates by π/4',
+	'- cycles through a set of 4 colors (CMYK: cyan, magenta, yellow, black)',
+	'- tiles 2 colors: semi-opaque of the cycling color; and transparent',
+	'- reduces the opacity of the semi-opaque color, harmonically ',
+	'  (i.e. it should be 1/n, where n is the layer number)',
+	'- remains centered on a transparent tile, such that the center tile\'s edges',
+	'  connect the midpoints of the previous layer\'s center tile\'s edges;',
+	'  the end result being that the center point of the pattern remains transparent',
+	'  all the way down through potentially infinite layers.',
+	'',
+	'Start the first layer with one transparent tile taking up the entire canvas.',
+	'The semi-opaque color for this layer, following the harmonic rule, has',
+	'opacity 1/1, i.e. it is not actually semi-opaque, as it is completely opaque;',
+	'however this is moot because it remains unseen, since the entire canvas is',
+	'taken up by one of the transparent tiles. So, no visible part of any deeper',
+	'layer is blocked by any completely opaque section of a shallower layer, but',
+	'visible coloration that does get applied is as bold as possible. The formative',
+	'early layers are still perceptible in the final pattern, mid-level layers add',
+	'detail, and beyond a certain point additional layers should be barely ',
+	'perceptible at all.',
+].join('\n')
+
+export default CMYKTOOTH_DESCRIPTION

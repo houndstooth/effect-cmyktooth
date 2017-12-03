@@ -7,6 +7,7 @@ import {
 	cmyktoothTileSize,
 	cmyktoothViewRotationAboutCanvasCenter,
 } from '../pattern'
+import CMYKTOOTH_DESCRIPTION from './cmyktoothDescription'
 
 const cmyktoothEffect: NamedEffect = {
 	basePattern: {
@@ -26,6 +27,7 @@ const cmyktoothEffect: NamedEffect = {
 			centerViewOnCenterOfTileAtHomeAddress: true,
 		},
 	},
+	description: CMYKTOOTH_DESCRIPTION,
 	layersPattern: {
 		colorSettings: {
 			colorSet: cmyktoothColorSet.default,
