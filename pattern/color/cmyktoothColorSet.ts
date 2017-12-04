@@ -8,7 +8,7 @@ const CMYKTOOTH_COLOR_COUNT: number = CMYKTOOTH_COLORS.length
 
 const cmyktoothColorSet: () => ColorSet =
 	(): ColorSet => to.ColorSet([
-		CMYKTOOTH_COLORS[ from.Layer(state.currentLayer) % CMYKTOOTH_COLOR_COUNT ],
+		CMYKTOOTH_COLORS[ from.Layer(state.execute.currentLayer) % CMYKTOOTH_COLOR_COUNT ],
 		TRANSPARENT,
 	])
 

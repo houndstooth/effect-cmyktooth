@@ -7,18 +7,18 @@ const subject: () => Unit = cmyktoothTileSize.default
 
 describe('cmyktooth tile size', () => {
 	it('for the first layer, is the same as the canvas size', () => {
-		state.currentLayer = to.Layer(0)
+		state.execute.currentLayer = to.Layer(0)
 		expect(from.Unit(subject())).toBe(from.Px(getSetting.default('canvasSize')))
 	})
 
 	it('reduces the size by the square root of two each layer', () => {
-		state.currentLayer = to.Layer(0)
+		state.execute.currentLayer = to.Layer(0)
 		const atLayerZero: number = from.Unit(subject())
 
-		state.currentLayer = to.Layer(1)
+		state.execute.currentLayer = to.Layer(1)
 		const atLayerOne: number = from.Unit(subject())
 
-		state.currentLayer = to.Layer(2)
+		state.execute.currentLayer = to.Layer(2)
 		const atLayerTwo: number = from.Unit(subject())
 
 		expect(isCloseTo(atLayerOne, atLayerZero / SQRT_2)).toBe(true)
