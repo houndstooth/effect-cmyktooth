@@ -1,14 +1,14 @@
-import { constants, from, getSetting, state, to, Unit } from '../../../../../src'
+import { constants, from, state, to, Unit } from '../../../../../src'
 import { isCloseTo } from '../../../../../test'
 import { cmyktoothTileSize } from '../../../pattern'
 
-const { SQRT_2 } = constants
+const { CANVAS_SIZE, SQRT_2 } = constants
 const subject: () => Unit = cmyktoothTileSize.default
 
 describe('cmyktooth tile size', () => {
 	it('for the first layer, is the same as the canvas size', () => {
 		state.execute.currentLayer = to.Layer(0)
-		expect(from.Unit(subject())).toBe(from.Px(getSetting.default('canvasSize')))
+		expect(from.Unit(subject())).toBe(from.Px(CANVAS_SIZE))
 	})
 
 	it('reduces the size by the square root of two each layer', () => {
