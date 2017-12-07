@@ -5,7 +5,7 @@ import {
 	Color,
 	constants,
 	Coordinate,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	from,
 	to,
 	Unit,
@@ -19,10 +19,10 @@ const { iterator } = codeUtilities
 
 describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', async (done: DoneFn) => {
-		appState.controls.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		appState.controls.selectedEffects = [ cmyktoothEffect ]
 		thisLayerOnly(15)
 
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const color: Color = TRANSPARENT
@@ -38,10 +38,10 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 0 is totally blank', async (done: DoneFn) => {
-		appState.controls.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		appState.controls.selectedEffects = [ cmyktoothEffect ]
 		thisLayerOnly(0)
 
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const basicallyCheckWholeCanvasPoints: Coordinate[] = iterator(8).map((canvasX: number): Coordinate =>
@@ -62,10 +62,10 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 1 is black, grain going to the right', async (done: DoneFn) => {
-		appState.controls.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		appState.controls.selectedEffects = [ cmyktoothEffect ]
 		thisLayerOnly(1)
 
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_BLACK: Color = { r: 0, g: 0, b: 0, a: 0.5 }
@@ -176,10 +176,10 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 2 is cyan, grain going to the right bottom', async (done: DoneFn) => {
-		appState.controls.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		appState.controls.selectedEffects = [ cmyktoothEffect ]
 		thisLayerOnly(2)
 
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_CYAN: Color = { r: 0, g: 255, b: 255, a: 0.3333 }
@@ -290,10 +290,10 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 3 is magenta, grain going to the bottom', async (done: DoneFn) => {
-		appState.controls.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		appState.controls.selectedEffects = [ cmyktoothEffect ]
 		thisLayerOnly(3)
 
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_MAGENTA: Color = { r: 255, g: 0, b: 255, a: 0.25 }
@@ -398,10 +398,10 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 4 is yellow, grain going to the bottom left', async (done: DoneFn) => {
-		appState.controls.selectedHoundstoothEffects = [ cmyktoothEffect ]
+		appState.controls.selectedEffects = [ cmyktoothEffect ]
 		thisLayerOnly(4)
 
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_YELLOW: Color = { r: 255, g: 255, b: 0, a: 0.2 }
