@@ -1,8 +1,10 @@
-import { to } from '../../../../../src'
+import { Address, to } from '../../../../../src'
 import { cmyktoothOffsetAddress } from '../../../pattern'
+
+const subject: () => Address = cmyktoothOffsetAddress.default
 
 describe('cmyktooth offset address', () => {
 	it('is one x, zero y', () => {
-		expect(cmyktoothOffsetAddress.default()).toEqual(to.Address([ 1, 0 ]))
+		expect(subject()).toEqual(to.Address([ 1, 0 ]))
 	})
 })

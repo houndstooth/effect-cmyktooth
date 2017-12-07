@@ -2,10 +2,11 @@ import { appState, constants, from, to, Unit } from '../../../../../src'
 import { isCloseTo } from '../../../../../test'
 import { cmyktoothTileSize } from '../../../pattern'
 
-const { CANVAS_SIZE, SQRT_2 } = constants
 const subject: () => Unit = cmyktoothTileSize.default
 
 describe('cmyktooth tile size', () => {
+	const { CANVAS_SIZE, SQRT_2 } = constants
+
 	it('for the first layer, is the same as the canvas size', () => {
 		appState.execute.currentLayer = to.Layer(0)
 		expect(from.Unit(subject())).toBe(from.Px(CANVAS_SIZE))
