@@ -3,7 +3,7 @@ import { cmyktoothViewRotationAboutCanvasCenter } from '../../../pattern'
 
 const subject: () => Radian = cmyktoothViewRotationAboutCanvasCenter.default
 
-xdescribe('cmyktooth view rotation about canvas center', () => {
+describe('cmyktooth view rotation about canvas center', () => {
 	const { EIGHTH_OF_CIRCLE_ROTATION, QUARTER_CIRCLE_ROTATION, NO_ROTATION } = constants
 
 	it('rotates the view an eight of the way round each layer', () => {

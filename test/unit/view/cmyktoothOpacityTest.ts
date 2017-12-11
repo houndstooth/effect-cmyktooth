@@ -3,7 +3,7 @@ import { cmyktoothOpacity } from '../../../pattern'
 
 const subject: () => number = cmyktoothOpacity.default
 
-xdescribe('cmyktooth opacity', () => {
+describe('cmyktooth opacity', () => {
 	it('decreases harmonically, starting with half', () => {
 		appState.execute.currentLayer = to.Layer(0)
 		expect(subject()).toBe(1 / 1)

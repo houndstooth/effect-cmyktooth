@@ -3,7 +3,7 @@ import { cmyktoothColorSet } from '../../../pattern'
 
 const subject: () => ColorSet = cmyktoothColorSet.default
 
-xdescribe('cmyktooth color set', () => {
+describe('cmyktooth color set', () => {
 	const { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 
 	it('cycles through Cyan, Magenta, Yellow, and blacK, with the other color always transparent', () => {
