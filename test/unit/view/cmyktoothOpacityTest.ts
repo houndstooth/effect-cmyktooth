@@ -1,9 +1,9 @@
-import { appState, to } from '../../../../../src'
+import { appState, to } from '../../../../../src/indexForTest'
 import { cmyktoothOpacity } from '../../../pattern'
 
 const subject: () => number = cmyktoothOpacity.default
 
-describe('cmyktooth opacity', () => {
+xdescribe('cmyktooth opacity', () => {
 	it('decreases harmonically, starting with half', () => {
 		appState.execute.currentLayer = to.Layer(0)
 		expect(subject()).toBe(1 / 1)

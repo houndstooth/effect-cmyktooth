@@ -1,10 +1,10 @@
-import { appState, constants, from, to, Unit } from '../../../../../src'
+import { appState, constants, from, to, Unit } from '../../../../../src/indexForTest'
 import { isCloseTo } from '../../../../../test'
 import { cmyktoothTileSize } from '../../../pattern'
 
 const subject: () => Unit = cmyktoothTileSize.default
 
-describe('cmyktooth tile size', () => {
+xdescribe('cmyktooth tile size', () => {
 	const { CANVAS_SIZE, SQRT_2 } = constants
 
 	it('for the first layer, is the same as the canvas size', () => {

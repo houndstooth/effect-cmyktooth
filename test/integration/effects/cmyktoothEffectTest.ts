@@ -9,7 +9,7 @@ import {
 	from,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { sectionCenterIsColor } from '../../../../../test'
 import { cmyktoothEffect } from '../../../effects'
 import { SectionExpectation, sectionExpections, thisLayerOnly } from '../helpers'

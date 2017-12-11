@@ -1,9 +1,9 @@
-import { appState, ColorSet, constants, to } from '../../../../../src'
+import { appState, ColorSet, constants, to } from '../../../../../src/indexForTest'
 import { cmyktoothColorSet } from '../../../pattern'
 
 const subject: () => ColorSet = cmyktoothColorSet.default
 
-describe('cmyktooth color set', () => {
+xdescribe('cmyktooth color set', () => {
 	const { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 
 	it('cycles through Cyan, Magenta, Yellow, and blacK, with the other color always transparent', () => {

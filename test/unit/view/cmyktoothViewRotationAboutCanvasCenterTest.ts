@@ -1,9 +1,9 @@
-import { appState, constants, Radian, to } from '../../../../../src'
+import { appState, constants, Radian, to } from '../../../../../src/indexForTest'
 import { cmyktoothViewRotationAboutCanvasCenter } from '../../../pattern'
 
 const subject: () => Radian = cmyktoothViewRotationAboutCanvasCenter.default
 
-describe('cmyktooth view rotation about canvas center', () => {
+xdescribe('cmyktooth view rotation about canvas center', () => {
 	const { EIGHTH_OF_CIRCLE_ROTATION, QUARTER_CIRCLE_ROTATION, NO_ROTATION } = constants
 
 	it('rotates the view an eight of the way round each layer', () => {

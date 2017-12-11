@@ -1,4 +1,4 @@
-import { executeLayer, ExecuteLayerParams, from } from '../../../../../src'
+import { executeLayer, ExecuteLayerParams, from } from '../../../../../src/indexForTest'
 
 const originalExecuteLayer: (_: ExecuteLayerParams) => Promise<void> = executeLayer.default
 

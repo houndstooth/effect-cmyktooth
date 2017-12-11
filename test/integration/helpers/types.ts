@@ -1,4 +1,4 @@
-import { Color, Coordinate, Unit } from '../../../../../src'
+import { Color, Coordinate, Unit } from '../../../../../src/indexForTest'
 import { Diagonal } from '../../../../../test'
 
 type Fill =

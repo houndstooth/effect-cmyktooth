@@ -1,4 +1,4 @@
-import { Color, constants, to } from '../../../../../src'
+import { Color, constants, to } from '../../../../../src/indexForTest'
 import {
 	Diagonal,
 	ExpectDiagonalDividedSection,

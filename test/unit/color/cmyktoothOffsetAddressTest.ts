@@ -1,4 +1,4 @@
-import { Address, to } from '../../../../../src'
+import { Address, to } from '../../../../../src/indexForTest'
 import { cmyktoothOffsetAddress } from '../../../pattern'
 
 const subject: () => Address = cmyktoothOffsetAddress.default
