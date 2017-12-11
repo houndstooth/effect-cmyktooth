@@ -9,10 +9,9 @@ import {
 	to,
 	Unit,
 } from '../../../../../src/indexForTest'
-import { sectionCenterIsColor } from '../../../../../test'
+import { sectionCenterIsColor, setAppStateForEffectTests } from '../../../../../test'
 import { cmyktoothEffect } from '../../../effects'
 import { SectionExpectation, sectionExpections, thisLayerOnly } from '../helpers'
-import { setAppStateForEffectTests } from '../../../../../test'
 
 const { TRANSPARENT } = constants
 const { iterator } = codeUtilities

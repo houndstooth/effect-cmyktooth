@@ -1,6 +1,6 @@
 import { to } from '../../../../../src/indexForTest'
-import { cmyktoothOpacity } from '../../../pattern'
 import { setAppStateForEffectTests } from '../../../../../test'
+import { cmyktoothOpacity } from '../../../pattern'
 
 const subject: () => number = cmyktoothOpacity.default
 

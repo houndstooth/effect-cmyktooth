@@ -1,6 +1,6 @@
 import { constants, Radian, to } from '../../../../../src/indexForTest'
-import { cmyktoothViewRotationAboutCanvasCenter } from '../../../pattern'
 import { setAppStateForEffectTests } from '../../../../../test'
+import { cmyktoothViewRotationAboutCanvasCenter } from '../../../pattern'
 
 const subject: () => Radian = cmyktoothViewRotationAboutCanvasCenter.default
 

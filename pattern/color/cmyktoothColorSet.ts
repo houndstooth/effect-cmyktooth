@@ -1,4 +1,4 @@
-import { getCurrentLayer, ColorSet, constants, from, to } from '../../../../src'
+import { ColorSet, constants, from, getCurrentLayer, to } from '../../../../src'
 
 const { BLACK, CYAN, MAGENTA, YELLOW, TRANSPARENT } = constants
 

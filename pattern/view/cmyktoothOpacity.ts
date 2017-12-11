@@ -1,4 +1,4 @@
-import { getCurrentLayer, from } from '../../../../src'
+import { from, getCurrentLayer } from '../../../../src'
 
 const CMYKTOOTH_BASE_OPACITY_DENOMINATOR_CONSTANT: number = 1
 

@@ -1,6 +1,6 @@
 import { ColorSet, constants, to } from '../../../../../src/indexForTest'
-import { cmyktoothColorSet } from '../../../pattern'
 import { setAppStateForEffectTests } from '../../../../../test'
+import { cmyktoothColorSet } from '../../../pattern'
 
 const subject: () => ColorSet = cmyktoothColorSet.default
 
