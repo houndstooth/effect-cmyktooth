@@ -1,11 +1,13 @@
-import { constants, from, to, Unit } from '../../../../../src/indexForTest'
+import { CANVAS_SIZE, from, to, Unit } from '../../../../../src/indexForTest'
 import { isCloseTo, setAppStateForEffectTests } from '../../../../../test'
+import { SQRT_2 } from '../../../constants'
 import { cmyktoothTileSize } from '../../../pattern'
 
-const subject: () => Unit = cmyktoothTileSize.default
-
 describe('cmyktooth tile size', () => {
-	const { CANVAS_SIZE, SQRT_2 } = constants
+	let subject: () => Unit
+	beforeEach(() => {
+		subject = cmyktoothTileSize.default
+	})
 
 	it('for the first layer, is the same as the canvas size', () => {
 		setAppStateForEffectTests.setCurrentLayer(to.Layer(0))

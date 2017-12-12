@@ -1,5 +1,6 @@
-import { NamedEffect, to } from '../../../src'
-import { DEFAULT_CMYKTOOTH_END_LAYER, DEFAULT_CMYKTOOTH_TILE_RESOLUTION } from '../constants'
+// tslint:disable:no-magic-numbers
+
+import { Layer, NamedEffect } from '../../../src'
 import {
 	cmyktoothColorSet,
 	cmyktoothOffsetAddress,
@@ -8,6 +9,10 @@ import {
 	cmyktoothViewRotationAboutCanvasCenter,
 } from '../pattern'
 import CMYKTOOTH_DESCRIPTION from './cmyktoothDescription'
+
+// tslint:disable-next-line:no-any
+const DEFAULT_CMYKTOOTH_END_LAYER: Layer = 16 as any
+const DEFAULT_CMYKTOOTH_TILE_RESOLUTION: number = 81
 
 const cmyktoothEffect: NamedEffect = {
 	basePattern: {
@@ -21,7 +26,7 @@ const cmyktoothEffect: NamedEffect = {
 			tileResolution: DEFAULT_CMYKTOOTH_TILE_RESOLUTION,
 		},
 		layerSettings: {
-			endLayer: to.Layer(DEFAULT_CMYKTOOTH_END_LAYER),
+			endLayer: DEFAULT_CMYKTOOTH_END_LAYER,
 		},
 		viewSettings: {
 			centerViewOnCenterOfTileAtHomeAddress: true,

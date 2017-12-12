@@ -1,12 +1,10 @@
-import { ColorSet, constants, to } from '../../../../../src/indexForTest'
+import { BLACK, ColorSet, CYAN, MAGENTA, to, TRANSPARENT,  YELLOW } from '../../../../../src/indexForTest'
 import { setAppStateForEffectTests } from '../../../../../test'
 import { cmyktoothColorSet } from '../../../pattern'
 
 const subject: () => ColorSet = cmyktoothColorSet.default
 
 describe('cmyktooth color set', () => {
-	const { BLACK, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
-
 	it('cycles through Cyan, Magenta, Yellow, and blacK, with the other color always transparent', () => {
 		setAppStateForEffectTests.setCurrentLayer(to.Layer(0))
 		expect(subject()).toEqual([ YELLOW, TRANSPARENT ])

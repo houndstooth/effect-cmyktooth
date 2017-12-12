@@ -2,19 +2,18 @@ import {
 	Address,
 	codeUtilities,
 	Color,
-	constants,
 	Coordinate,
 	Effect,
 	executeSelectedEffects,
 	from,
 	to,
+	TRANSPARENT,
 	Unit,
 } from '../../../../../src/indexForTest'
 import { sectionCenterIsColor, setAppStateForEffectTests } from '../../../../../test'
 import { cmyktoothEffect } from '../../../effects'
 import { SectionExpectation, sectionExpections, thisLayerOnly } from '../helpers'
 
-const { TRANSPARENT } = constants
 const { iterator } = codeUtilities
 
 describe('cmyktooth effect', () => {

@@ -1,7 +1,12 @@
-const DEFAULT_CMYKTOOTH_END_LAYER: number = 16
-const DEFAULT_CMYKTOOTH_TILE_RESOLUTION: number = 81
+// tslint:disable:no-magic-numbers
+
+import { Radian } from '../../src'
+
+const SQRT_2: number = Math.sqrt(2)
+// tslint:disable-next-line:no-any
+const EIGHTH_OF_CIRCLE_ROTATION: Radian = Math.PI / 4 as any
 
 export {
-	DEFAULT_CMYKTOOTH_END_LAYER,
-	DEFAULT_CMYKTOOTH_TILE_RESOLUTION,
+	EIGHTH_OF_CIRCLE_ROTATION,
+	SQRT_2,
 }

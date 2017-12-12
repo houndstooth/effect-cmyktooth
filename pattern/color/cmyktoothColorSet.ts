@@ -1,6 +1,4 @@
-import { ColorSet, constants, from, getCurrentLayer, to } from '../../../../src'
-
-const { BLACK, CYAN, MAGENTA, YELLOW, TRANSPARENT } = constants
+import { BLACK, ColorSet, CYAN, from, getCurrentLayer, MAGENTA, to, TRANSPARENT, YELLOW } from '../../../../src'
 
 const CMYKTOOTH_COLORS: ColorSet = to.ColorSet([ YELLOW, BLACK, CYAN, MAGENTA ])
 

@@ -1,6 +1,5 @@
-import { constants, from, getCurrentLayer, to, Unit } from '../../../../src'
-
-const { CANVAS_SIZE, SQRT_2 } = constants
+import { CANVAS_SIZE, from, getCurrentLayer, to, Unit } from '../../../../src'
+import { SQRT_2 } from '../../constants'
 
 const cmyktoothTileSize: () => Unit =
 	(): Unit => {

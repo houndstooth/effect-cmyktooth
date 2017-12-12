@@ -1,4 +1,4 @@
-import { Color, constants, to } from '../../../../../src/indexForTest'
+import { Color, to, TRANSPARENT } from '../../../../../src/indexForTest'
 import {
 	Diagonal,
 	ExpectDiagonalDividedSection,
@@ -8,8 +8,6 @@ import {
 	sectionCenterIsColor,
 } from '../../../../../test'
 import { ExpectSection, ExpectSectionParams, Fill } from './types'
-
-const { TRANSPARENT } = constants
 
 const expectSection: ExpectSection =
 	({ expectedSection, areaSize, solidColor, areaOrigin }: ExpectSectionParams): void => {
