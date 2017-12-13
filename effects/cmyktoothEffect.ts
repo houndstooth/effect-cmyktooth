@@ -42,7 +42,7 @@ const cmyktoothEffect: NamedEffect = {
 			tileSize: cmyktoothTileSize.default,
 		},
 		viewSettings: {
-			rotateViewAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter.default,
+			rotationAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter.default,
 		},
 	},
 	name: 'cmyktooth',
