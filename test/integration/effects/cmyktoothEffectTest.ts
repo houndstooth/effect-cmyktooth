@@ -14,8 +14,6 @@ import { sectionCenterIsColor, setAppStateForEffectTests } from '../../../../../
 import { cmyktoothEffect } from '../../../effects'
 import { SectionExpectation, sectionExpections, thisLayerOnly } from '../helpers'
 
-const { iterator } = codeUtilities
-
 describe('cmyktooth effect', () => {
 	const overrides: Effect = {
 		basePattern: {
@@ -49,8 +47,8 @@ describe('cmyktooth effect', () => {
 		executeSelectedEffects.default({ overrides })
 
 		setTimeout(() => {
-			const basicallyCheckWholeCanvasPoints: Coordinate[] = iterator(8).map((canvasX: number): Coordinate =>
-				iterator(8).map((canvasY: number): Coordinate =>
+			const checkMostPoints: Coordinate[] = codeUtilities.iterator(8).map((canvasX: number): Coordinate =>
+				codeUtilities.iterator(8).map((canvasY: number): Coordinate =>
 					to.Coordinate([ canvasX * 100, canvasY * 100 ])).reduce((a: Coordinate, b: Coordinate): Coordinate =>
 					to.Coordinate(from.Coordinate(a).concat(from.Coordinate(b)))))
 
@@ -58,7 +56,7 @@ describe('cmyktooth effect', () => {
 			const areaSize: Unit = to.Unit(100)
 			const sectionAddress: Address = to.Address([ 0, 0 ])
 			const sectionResolution: number = 1
-			basicallyCheckWholeCanvasPoints.forEach((areaOrigin: Coordinate, id: number): void => {
+			checkMostPoints.forEach((areaOrigin: Coordinate, id: number): void => {
 				sectionCenterIsColor({ areaOrigin, areaSize, sectionAddress, sectionResolution, color, id })
 			})
 

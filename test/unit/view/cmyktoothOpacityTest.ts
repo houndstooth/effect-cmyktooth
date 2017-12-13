@@ -2,10 +2,10 @@ import { to } from '../../../../../src/indexForTest'
 import { setAppStateForEffectTests } from '../../../../../test'
 import { cmyktoothOpacity } from '../../../pattern'
 
-const subject: () => number = cmyktoothOpacity.default
-
 describe('cmyktooth opacity', () => {
 	it('decreases harmonically, starting with half', () => {
+		const subject: () => number = cmyktoothOpacity.default
+
 		setAppStateForEffectTests.setCurrentLayer(to.Layer(0))
 		expect(subject()).toBe(1 / 1)
 		setAppStateForEffectTests.setCurrentLayer(to.Layer(1))

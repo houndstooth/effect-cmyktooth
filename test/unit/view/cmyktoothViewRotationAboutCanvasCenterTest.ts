@@ -9,7 +9,6 @@ const NO_ROTATION: Radian = 0 as any
 const QUARTER_CIRCLE_ROTATION: Radian = Math.PI / 2 as any
 
 describe('cmyktooth view rotation about canvas center', () => {
-
 	it('rotates the view an eight of the way round each layer', () => {
 		const subject: () => Radian = cmyktoothViewRotationAboutCanvasCenter.default
 
