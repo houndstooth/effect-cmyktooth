@@ -3,7 +3,6 @@ import {
 	codeUtilities,
 	Color,
 	Coordinate,
-	Effect,
 	executeSelectedEffects,
 	from,
 	to,
@@ -15,17 +14,19 @@ import { cmyktoothEffect } from '../../../effects'
 import { SectionExpectation, sectionExpections, thisLayerOnly } from '../helpers'
 
 describe('cmyktooth effect', () => {
-	const overrides: Effect = {
-		basePattern: {
-			gridSettings: { tileResolution: 4 },
-		},
-	}
+	beforeEach(() => {
+		setAppStateForEffectTests.setOverrides({
+			basePattern: {
+				gridSettings: { tileResolution: 4 },
+			},
+		})
+	})
 
 	it('the absolute center is always blank', async (done: DoneFn) => {
 		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(15)
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const color: Color = TRANSPARENT
@@ -44,7 +45,7 @@ describe('cmyktooth effect', () => {
 		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(0)
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const checkMostPoints: Coordinate[] = codeUtilities.iterator(8).map((canvasX: number): Coordinate =>
@@ -68,7 +69,7 @@ describe('cmyktooth effect', () => {
 		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(1)
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_BLACK: Color = { r: 0, g: 0, b: 0, a: 0.5 }
@@ -182,7 +183,7 @@ describe('cmyktooth effect', () => {
 		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(2)
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_CYAN: Color = { r: 0, g: 255, b: 255, a: 0.3333 }
@@ -296,7 +297,7 @@ describe('cmyktooth effect', () => {
 		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(3)
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_MAGENTA: Color = { r: 255, g: 0, b: 255, a: 0.25 }
@@ -404,7 +405,7 @@ describe('cmyktooth effect', () => {
 		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(4)
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const SEMI_YELLOW: Color = { r: 255, g: 255, b: 0, a: 0.2 }
