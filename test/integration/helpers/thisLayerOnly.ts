@@ -4,11 +4,11 @@ const originalExecuteLayer: (_: ExecuteLayerParams) => Promise<void> = executeLa
 
 const thisLayerOnly: (layer: number) => void =
 	(layer: number): void => {
-		spyOn(executeLayer, 'default').and.callFake((params: ExecuteLayerParams): void => {
-			if (from.Layer(params.layer) !== layer) {
+		spyOn(executeLayer, 'default').and.callFake((executeLayerParams: ExecuteLayerParams): void => {
+			if (from.Layer(executeLayerParams.layer) !== layer) {
 				return
 			}
-			originalExecuteLayer(params).then().catch()
+			originalExecuteLayer(executeLayerParams).then().catch()
 		})
 	}
 
