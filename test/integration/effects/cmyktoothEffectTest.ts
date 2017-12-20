@@ -3,7 +3,7 @@ import {
 	codeUtilities,
 	Color,
 	Coordinate,
-	executeSelectedEffects,
+	executePattern,
 	from,
 	to,
 	TRANSPARENT,
@@ -27,7 +27,7 @@ describe('cmyktooth effect', () => {
 	it('the absolute center is always blank', async (done: DoneFn) => {
 		thisLayerOnly(15)
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			const color: Color = TRANSPARENT
@@ -45,7 +45,7 @@ describe('cmyktooth effect', () => {
 	it('layer 0 is totally blank', async (done: DoneFn) => {
 		thisLayerOnly(0)
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			const checkMostPoints: Coordinate[] = codeUtilities.iterator(8).map((canvasX: number): Coordinate =>
@@ -68,7 +68,7 @@ describe('cmyktooth effect', () => {
 	it('layer 1 is black, grain going to the right', async (done: DoneFn) => {
 		thisLayerOnly(1)
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			const SEMI_BLACK: Color = { r: 0, g: 0, b: 0, a: 0.5 }
@@ -181,7 +181,7 @@ describe('cmyktooth effect', () => {
 	it('layer 2 is cyan, grain going to the right bottom', async (done: DoneFn) => {
 		thisLayerOnly(2)
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			const SEMI_CYAN: Color = { r: 0, g: 255, b: 255, a: 0.3333 }
@@ -294,7 +294,7 @@ describe('cmyktooth effect', () => {
 	it('layer 3 is magenta, grain going to the bottom', async (done: DoneFn) => {
 		thisLayerOnly(3)
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			const SEMI_MAGENTA: Color = { r: 255, g: 0, b: 255, a: 0.25 }
@@ -401,7 +401,7 @@ describe('cmyktooth effect', () => {
 	it('layer 4 is yellow, grain going to the bottom left', async (done: DoneFn) => {
 		thisLayerOnly(4)
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			const SEMI_YELLOW: Color = { r: 255, g: 255, b: 0, a: 0.2 }
