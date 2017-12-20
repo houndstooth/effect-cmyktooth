@@ -15,6 +15,8 @@ import { SectionExpectation, sectionExpections, thisLayerOnly } from '../helpers
 
 describe('cmyktooth effect', () => {
 	beforeEach(() => {
+		setAppStateForEffectTests.setAvailableEffects({ cmyktooth: cmyktoothEffect })
+		setAppStateForEffectTests.setSelectedEffects([ 'cmyktooth' ])
 		setAppStateForEffectTests.setOverrides({
 			basePattern: {
 				gridSettings: { tileResolution: 4 },
@@ -23,7 +25,6 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('the absolute center is always blank', async (done: DoneFn) => {
-		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(15)
 
 		executeSelectedEffects.default()
@@ -42,7 +43,6 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 0 is totally blank', async (done: DoneFn) => {
-		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(0)
 
 		executeSelectedEffects.default()
@@ -66,7 +66,6 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 1 is black, grain going to the right', async (done: DoneFn) => {
-		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(1)
 
 		executeSelectedEffects.default()
@@ -180,7 +179,6 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 2 is cyan, grain going to the right bottom', async (done: DoneFn) => {
-		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(2)
 
 		executeSelectedEffects.default()
@@ -294,7 +292,6 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 3 is magenta, grain going to the bottom', async (done: DoneFn) => {
-		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(3)
 
 		executeSelectedEffects.default()
@@ -402,7 +399,6 @@ describe('cmyktooth effect', () => {
 	})
 
 	it('layer 4 is yellow, grain going to the bottom left', async (done: DoneFn) => {
-		setAppStateForEffectTests.setSelectedEffects([ cmyktoothEffect ])
 		thisLayerOnly(4)
 
 		executeSelectedEffects.default()
