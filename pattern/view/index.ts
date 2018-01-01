@@ -1,7 +1,9 @@
 import * as cmyktoothOpacity from './cmyktoothOpacity'
-import * as cmyktoothViewRotationAboutCanvasCenter from './cmyktoothViewRotationAboutCanvasCenter'
+import * as cmyktoothScroll from './cmyktoothScroll'
+import * as cmyktoothTilt from './cmyktoothTilt'
 
 export {
 	cmyktoothOpacity,
-	cmyktoothViewRotationAboutCanvasCenter,
+	cmyktoothScroll,
+	cmyktoothTilt,
 }

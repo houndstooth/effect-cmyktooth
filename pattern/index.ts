@@ -1,3 +1,3 @@
 export { cmyktoothColorSet, cmyktoothOffsetAddress } from './color'
 export { cmyktoothTileSize } from './tile'
-export { cmyktoothOpacity, cmyktoothViewRotationAboutCanvasCenter } from './view'
+export { cmyktoothOpacity, cmyktoothScroll, cmyktoothTilt } from './view'

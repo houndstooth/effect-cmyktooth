@@ -5,8 +5,9 @@ import {
 	cmyktoothColorSet,
 	cmyktoothOffsetAddress,
 	cmyktoothOpacity,
+	cmyktoothScroll,
 	cmyktoothTileSize,
-	cmyktoothViewRotationAboutCanvasCenter,
+	cmyktoothTilt,
 } from '../pattern'
 import CMYKTOOTH_DESCRIPTION from './cmyktoothDescription'
 
@@ -28,9 +29,6 @@ const cmyktoothEffect: NamedEffect = {
 		layerSettings: {
 			endLayer: DEFAULT_CMYKTOOTH_END_LAYER,
 		},
-		viewSettings: {
-			centerViewOnCenterOfTileAtHomeAddress: true,
-		},
 	},
 	description: CMYKTOOTH_DESCRIPTION,
 	layersPattern: {
@@ -42,7 +40,8 @@ const cmyktoothEffect: NamedEffect = {
 			tileSize: cmyktoothTileSize.default,
 		},
 		viewSettings: {
-			rotationAboutCanvasCenter: cmyktoothViewRotationAboutCanvasCenter.default,
+			scroll: cmyktoothScroll.default,
+			tilt: cmyktoothTilt.default,
 		},
 	},
 	name: 'cmyktooth',
