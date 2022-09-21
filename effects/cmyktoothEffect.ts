@@ -9,6 +9,7 @@ import {
 	cmyktoothTileSize,
 	cmyktoothTilt,
 } from '../pattern'
+
 import CMYKTOOTH_DESCRIPTION from './cmyktoothDescription'
 
 // tslint:disable-next-line:no-any

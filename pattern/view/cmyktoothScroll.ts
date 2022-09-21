@@ -2,6 +2,7 @@
 
 import { CANVAS_SIZE, from, HALF, mathUtilities, Pixel, Px, to } from '../../../../src'
 import { cmyktoothTileSize } from '../tile'
+
 import cmyktoothTilt from './cmyktoothTilt'
 
 const cmyktoothScroll: () => Px[] =

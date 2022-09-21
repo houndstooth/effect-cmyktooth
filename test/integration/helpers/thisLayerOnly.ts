@@ -1,10 +1,12 @@
-import { executeLayer, ExecuteLayerParams, from } from '../../../../../src/indexForTest'
+import { wrapper } from '../../../../../src/app/execute/layer/executeLayer'
+import { ExecuteLayerParams, from } from '../../../../../src/indexForTest'
 
-const originalExecuteLayer: (_: ExecuteLayerParams) => Promise<void> = executeLayer.default
+const originalExecuteLayer: (_: ExecuteLayerParams) => Promise<void> = wrapper.executeLayer
 
 const thisLayerOnly: (layer: number) => void =
 	(layer: number): void => {
-		spyOn(executeLayer, 'default').and.callFake((executeLayerParams: ExecuteLayerParams): void => {
+		// @ts-ignore
+		spyOn(wrapper, 'executeLayer').and.callFake((executeLayerParams: ExecuteLayerParams): void => {
 			if (from.Layer(executeLayerParams.layer) !== layer) {
 				return
 			}

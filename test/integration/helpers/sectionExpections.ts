@@ -7,6 +7,7 @@ import {
 	ExpectSolidSection,
 	sectionCenterIsColor,
 } from '../../../../../test'
+
 import { ExpectSection, ExpectSectionParams, Fill } from './types'
 
 const expectSection: ExpectSection =

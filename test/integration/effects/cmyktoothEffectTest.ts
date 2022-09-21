@@ -24,7 +24,7 @@ describe('cmyktooth effect', () => {
 		})
 	})
 
-	it('the absolute center is always blank', async (done: DoneFn) => {
+	it('the absolute center is always blank', (done: DoneFn) => {
 		thisLayerOnly(15)
 
 		executeEffect.default()
@@ -42,7 +42,7 @@ describe('cmyktooth effect', () => {
 		},         0)
 	})
 
-	it('layer 0 is totally blank', async (done: DoneFn) => {
+	it('layer 0 is totally blank', (done: DoneFn) => {
 		thisLayerOnly(0)
 
 		executeEffect.default()
@@ -65,7 +65,7 @@ describe('cmyktooth effect', () => {
 		},         0)
 	})
 
-	it('layer 1 is black, grain going to the right', async (done: DoneFn) => {
+	it('layer 1 is black, grain going to the right', (done: DoneFn) => {
 		thisLayerOnly(1)
 
 		executeEffect.default()
@@ -178,7 +178,7 @@ describe('cmyktooth effect', () => {
 		},         0)
 	})
 
-	it('layer 2 is cyan, grain going to the right bottom', async (done: DoneFn) => {
+	it('layer 2 is cyan, grain going to the right bottom', (done: DoneFn) => {
 		thisLayerOnly(2)
 
 		executeEffect.default()
@@ -291,7 +291,7 @@ describe('cmyktooth effect', () => {
 		},         0)
 	})
 
-	it('layer 3 is magenta, grain going to the bottom', async (done: DoneFn) => {
+	it('layer 3 is magenta, grain going to the bottom', (done: DoneFn) => {
 		thisLayerOnly(3)
 
 		executeEffect.default()
@@ -398,7 +398,7 @@ describe('cmyktooth effect', () => {
 		},         0)
 	})
 
-	it('layer 4 is yellow, grain going to the bottom left', async (done: DoneFn) => {
+	it('layer 4 is yellow, grain going to the bottom left', (done: DoneFn) => {
 		thisLayerOnly(4)
 
 		executeEffect.default()
